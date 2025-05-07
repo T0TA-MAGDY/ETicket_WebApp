@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ticketer.Data;
 
@@ -11,9 +12,11 @@ using ticketer.Data;
 namespace ticketer.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250507100029_update")]
+    partial class update
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -393,11 +396,17 @@ namespace ticketer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Showtime_Id"));
 
+                    b.Property<int?>("CinemaId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Cinema_Id")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
+
+                    b.Property<int?>("MovieId")
+                        .HasColumnType("int");
 
                     b.Property<int>("Movie_Id")
                         .HasColumnType("int");
@@ -407,7 +416,11 @@ namespace ticketer.Migrations
 
                     b.HasKey("Showtime_Id");
 
+                    b.HasIndex("CinemaId");
+
                     b.HasIndex("Cinema_Id");
+
+                    b.HasIndex("MovieId");
 
                     b.HasIndex("Movie_Id");
 
@@ -591,14 +604,22 @@ namespace ticketer.Migrations
 
             modelBuilder.Entity("ticketer.Models.Showtime", b =>
                 {
-                    b.HasOne("ticketer.Models.Cinema", "Cinema")
+                    b.HasOne("ticketer.Models.Cinema", null)
                         .WithMany("Showtimes")
+                        .HasForeignKey("CinemaId");
+
+                    b.HasOne("ticketer.Models.Cinema", "Cinema")
+                        .WithMany()
                         .HasForeignKey("Cinema_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("ticketer.Models.Movie", "Movie")
+                    b.HasOne("ticketer.Models.Movie", null)
                         .WithMany("Showtimes")
+                        .HasForeignKey("MovieId");
+
+                    b.HasOne("ticketer.Models.Movie", "Movie")
+                        .WithMany()
                         .HasForeignKey("Movie_Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
