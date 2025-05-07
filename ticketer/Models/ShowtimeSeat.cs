@@ -13,19 +13,16 @@ namespace ticketer.Models
          [Key]
     public int ShowtimeSeats_Id { get; set; }
 
-    [ForeignKey("Seat")]
-    public int Seat_Id { get; set; }
-
-    [ForeignKey("Showtime")]
-    public int Showtime_Id { get; set; }
-
+    
+        public int Seat_Id { get; set; }
+        public Seat? Seat { get; set; }
+        public int Timing_Id { get; set; }
+        public Timing? timing { get; set; }
+   
     public bool IsBooked { get; set; }
 
     [DataType(DataType.Currency)]
     public decimal Price { get; set; }
-
-    public Seat? Seat { get; set; }
-    public Showtime? Showtime { get; set; }
         public ICollection<Ticket> Tickets { get; set; }
 
     }
