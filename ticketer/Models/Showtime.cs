@@ -12,12 +12,9 @@ namespace ticketer.Models
         [Key]
         public int Showtime_Id { get; set; }
 
-        [Required]
-        [ForeignKey("Cinema")]
+     
         public int Cinema_Id { get; set; }
 
-        [Required]
-        [ForeignKey("Movie")]
         public int Movie_Id { get; set; }
 
         [DataType(DataType.Time)]

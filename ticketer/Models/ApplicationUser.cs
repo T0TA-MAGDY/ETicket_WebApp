@@ -10,10 +10,10 @@ namespace ticketer.Models
 {
     public class ApplicationUser:IdentityUser
     {
-        
+
         [Display(Name = "Full name")]
-        public string FullName { get; set; }
-                public ICollection<TicketOrder> TicketOrders { get; set; }= new List<TicketOrder>();
+        public string FullName { get; set; } = "Rasha";
+           public ICollection<TicketOrder> TicketOrders { get; set; }= new List<TicketOrder>();
 
     }
    

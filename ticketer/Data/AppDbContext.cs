@@ -56,16 +56,14 @@ namespace ticketer.Data
                 .HasConversion<string>();
             // Showtime -> Movie, Cinema
             modelBuilder.Entity<Showtime>()
-              .HasOne(s => s.Movie)
-              .WithMany()
-              .HasForeignKey(s => s.Movie_Id)
-              .OnDelete(DeleteBehavior.Cascade);
+      .HasOne(s => s.Cinema)
+      .WithMany(c => c.Showtimes)
+      .HasForeignKey(s => s.Cinema_Id);
 
             modelBuilder.Entity<Showtime>()
-                .HasOne(s => s.Cinema)
-                .WithMany()
-                .HasForeignKey(s => s.Cinema_Id)
-                .OnDelete(DeleteBehavior.NoAction);  // No cascade for CinemaId
+                .HasOne(s => s.Movie)
+                .WithMany(m => m.Showtimes)
+                .HasForeignKey(s => s.Movie_Id);
 
 
             // Seat -> Cinema
