@@ -74,17 +74,17 @@ namespace ticketer.Data
                 .OnDelete(DeleteBehavior.NoAction);  // Explicitly setting no cascading delete
 
             // ShowtimeSeat -> Showtime, Seat
-            modelBuilder.Entity<ShowtimeSeat>()
-                .HasOne(ss => ss.Showtime)
-                .WithMany(s => s.ShowtimeSeats)
-                .HasForeignKey(ss => ss.Showtime_Id)
-                .OnDelete(DeleteBehavior.NoAction);  // Explicitly setting no cascading delete
+            //modelBuilder.Entity<ShowtimeSeat>()
+            //    .HasOne(ss => ss.timing)
+            //    .WithMany(s => s.ShowtimeSeats)
+            //    .HasForeignKey(ss => ss.Timing_Id)
+            //    .OnDelete(DeleteBehavior.NoAction);  // Explicitly setting no cascading delete
 
-            modelBuilder.Entity<ShowtimeSeat>()
-                .HasOne(ss => ss.Seat)
-                .WithMany(s => s.ShowtimeSeats)
-                .HasForeignKey(ss => ss.Seat_Id)
-                .OnDelete(DeleteBehavior.NoAction);  // Explicitly setting no cascading delete
+            //modelBuilder.Entity<ShowtimeSeat>()
+            //    .HasOne(ss => ss.Seat)
+            //    .WithMany(s => s.ShowtimeSeats)
+            //    .HasForeignKey(ss => ss.Seat_Id)
+            //    .OnDelete(DeleteBehavior.NoAction);  // Explicitly setting no cascading delete
 
             // Ticket -> ShowtimeSeat, TicketOrder
             modelBuilder.Entity<Ticket>()

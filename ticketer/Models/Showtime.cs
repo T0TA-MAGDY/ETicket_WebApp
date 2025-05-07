@@ -11,23 +11,17 @@ namespace ticketer.Models
     {
         [Key]
         public int Showtime_Id { get; set; }
-
-     
         public int Cinema_Id { get; set; }
 
         public int Movie_Id { get; set; }
 
-        [DataType(DataType.Time)]
-        public TimeSpan StartTime { get; set; }
-
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
-
-        // Non-nullable navigation properties, as Showtimes should always have a Cinema and Movie
         public Cinema Cinema { get; set; }
         public Movie Movie { get; set; }
 
-        // Initialize collections to avoid null reference exceptions
-        public ICollection<ShowtimeSeat> ShowtimeSeats { get; set; } = new List<ShowtimeSeat>();
+        
+       
+        public ICollection<Timing> Timing { get; set; }
     }
 }
