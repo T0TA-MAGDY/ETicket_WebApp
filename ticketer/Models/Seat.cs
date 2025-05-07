@@ -22,7 +22,7 @@ namespace ticketer.Models
     public string? SeatType { get; set; }
 
     public Cinema? Cinema { get; set; }
-        public ICollection<ShowtimeSeat> ShowtimeSeats { get; set; }
+     public ICollection<ShowtimeSeat> ShowtimeSeats { get; set; }
 
     }
 }

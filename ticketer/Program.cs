@@ -14,6 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ticketer.Data.Static;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +29,8 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddDefaultTokenProviders();
 
 var app = builder.Build();
+AppDbInitializer.Seed(app); // for static data
+await AppDbInitializer.SeedUsersAndRolesAsync(app); // for users and roles
 
 // Configure the HTTP request pipeline
 if (!app.Environment.IsDevelopment())
