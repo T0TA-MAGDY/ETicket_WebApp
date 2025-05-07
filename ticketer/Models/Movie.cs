@@ -32,7 +32,7 @@ namespace ticketer.Models
         public string TrailerURL { get; set; }
 
         [Required] // Mark as required
-public MovieCategory MovieCategory { get; set; }
+        public MovieCategory MovieCategory { get; set; }
 
         // Relationships
 
