@@ -6,9 +6,10 @@ using System.Linq;
 using ticketer.Data; 
 using ticketer.Models;
 using ticketer.Data.Enums;
+using ticketer.Data.Static;
 namespace ticketer.Data
 {
-    public class AppDbIntializer
+    public class AppDbInitializer
     {
         public static void Seed(IApplicationBuilder applicationBuilder)
         {
