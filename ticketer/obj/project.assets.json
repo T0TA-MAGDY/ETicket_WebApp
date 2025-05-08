@@ -4896,19 +4896,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ALSERAG FOR LAPTOP\\.nuget\\packages\\": {}
+    "C:\\Users\\MHz\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\field_training\\Eticket\\ETicket_WebApp\\ticketer\\ticketer.csproj",
+      "projectUniqueName": "C:\\Users\\MHz\\Source\\Repos\\ETicket2\\ticketer\\ticketer.csproj",
       "projectName": "ticketer",
-      "projectPath": "D:\\field_training\\Eticket\\ETicket_WebApp\\ticketer\\ticketer.csproj",
-      "packagesPath": "C:\\Users\\ALSERAG FOR LAPTOP\\.nuget\\packages\\",
-      "outputPath": "D:\\field_training\\Eticket\\ETicket_WebApp\\ticketer\\obj\\",
+      "projectPath": "C:\\Users\\MHz\\Source\\Repos\\ETicket2\\ticketer\\ticketer.csproj",
+      "packagesPath": "C:\\Users\\MHz\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\MHz\\Source\\Repos\\ETicket2\\ticketer\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\ALSERAG FOR LAPTOP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\MHz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

@@ -1,0 +1,211 @@
+﻿@model ticketer.ViewModels.MovieViewModel
+@{
+    ViewData["Title"] = "Add New Movie";
+}
+
+<div class="container mt-4">
+    <h1>@ViewData["Title"]</h1>
+
+    <form method="post" asp-action="SaveAdd" id="movieForm">
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+        <!-- Basic Movie Info -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Description"></label>
+                    <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ImageURL"></label>
+                    <input asp-for="ImageURL" class="form-control" />
+                    <span asp-validation-for="ImageURL" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="TrailerURL"></label>
+                    <input asp-for="TrailerURL" class="form-control" />
+                    <span asp-validation-for="TrailerURL" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ReleaseDate"></label>
+                    <input asp-for="ReleaseDate" type="date" class="form-control" />
+                    <span asp-validation-for="ReleaseDate" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="MovieCategory"></label>
+                    <select asp-for="MovieCategory" class="form-control">
+                        @foreach (var category in Enum.GetValues(typeof(ticketer.Data.Enums.MovieCategory)))
+                        {
+                            <option value="@category">@category</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Relationships -->
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="ProducerId"></label>
+                    <select asp-for="ProducerId" class="form-control" asp-items="Model.FormOptions.Producers">
+                        <option value="">-- Select Producer --</option>
+                    </select>
+                    <span asp-validation-for="ProducerId" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Actors Selection -->
+        <div class="form-group mt-3">
+            <label>Actor</label>
+            <div class="border p-3 actor-container">
+                @foreach (var actor in Model.FormOptions.Actors)
+                {
+                    <div class="form-check">
+                        <input type="checkbox"
+                               name="ActorIds[]"
+                               value="@actor.Value"
+                               id="actor-@actor.Value"
+                               class="form-check-input" />
+
+                        <label class="form-check-label" for="actor-@actor.Value">
+                            @actor.Text
+                        </label>
+                    </div>
+                }
+            </div>
+            <span asp-validation-for="ActorIds" class="text-danger"></span>
+        </div>
+
+        <!-- Showtimes Section -->
+        <div class="form-group mt-4">
+            <h3>Showtimes</h3>
+            <div id="showtimes-container">
+                @for (int i = 0; i < Model.Showtimes.Count; i++)
+                {
+                    <div class="showtime-group border p-3 mb-3">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Cinema</label>
+                                    <select asp-for="Showtimes[i].CinemaId" class="form-control" asp-items="Model.FormOptions.Cinemas">
+                                        <option value="">-- Select Cinema --</option>
+                                    </select>
+                                    <span asp-validation-for="Showtimes[i].CinemaId" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Date</label>
+                                    <input asp-for="Showtimes[i].Date" type="date" class="form-control" />
+                                    <span asp-validation-for="Showtimes[i].Date" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Time</label>
+                                    <input asp-for="Showtimes[i].StartTime" type="time" class="form-control" />
+                                    <span asp-validation-for="Showtimes[i].StartTime" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-2 d-flex align-items-end">
+                                <button type="button" class="btn btn-danger remove-showtime">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <button type="button" id="add-showtime" class="btn btn-primary mt-2">
+                <i class="fas fa-plus"></i> Add Showtime
+            </button>
+        </div>
+
+        <div class="form-group mt-4">
+            <button type="submit" class="btn btn-success btn-lg">
+                <i class="fas fa-save"></i> Save Movie
+            </button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function () {
+            // Add new showtime
+            $('#add-showtime').click(function () {
+                var index = $('#showtimes-container .showtime-group').length;
+                var tomorrow = new Date();
+                tomorrow.setDate(tomorrow.getDate() + 1);
+
+                var newShowtime = `
+                                    <div class="showtime-group border p-3 mb-3">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Cinema</label>
+                                                    <select name="Showtimes[${index}].CinemaId" class="form-control">
+                                                        <option value="">-- Select Cinema --</option>
+        @foreach (var cinema in Model.FormOptions.Cinemas)
+        {
+                                                                    <option value="@cinema.Value">@cinema.Text</option>
+        }
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>Date</label>
+                                                    <input type="date" name="Showtimes[${index}].Date"
+                                                           class="form-control"
+                                                           value="${tomorrow.toISOString().split('T')[0]}" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>Time</label>
+                                                    <input type="time" name="Showtimes[${index}].StartTime"
+                                                           class="form-control"
+                                                           value="18:00" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2 d-flex align-items-end">
+                                                <button type="button" class="btn btn-danger remove-showtime">Remove</button>
+                                            </div>
+                                        </div>
+                                    </div>`;
+                $('#showtimes-container').append(newShowtime);
+            });
+
+            // Remove showtime
+            $(document).on('click', '.remove-showtime', function () {
+                $(this).closest('.showtime-group').remove();
+                reindexShowtimes();
+            });
+
+            function reindexShowtimes() {
+                $('#showtimes-container .showtime-group').each(function (i) {
+                    $(this).find('select, input').each(function () {
+                        var name = $(this).attr('name')
+                            .replace(/Showtimes\[\d+\]/g, Showtimes[${ i }]);
+                        $(this).attr('name', name);
+                    });
+                });
+            }
+        });
+    </script>
+}

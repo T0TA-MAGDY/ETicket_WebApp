@@ -20,8 +20,8 @@ namespace ticketer.Models
         public Cinema Cinema { get; set; }
         public Movie Movie { get; set; }
 
-        
-       
-        public ICollection<Timing> Timing { get; set; }
+
+        public ICollection<ShowtimeSeat> Seats { get; set; }
+        public ICollection<Timing> Timings { get; set; }
     }
 }

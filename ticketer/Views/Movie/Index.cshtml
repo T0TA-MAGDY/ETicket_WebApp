@@ -3,7 +3,11 @@
 @{
     ViewData["Title"] = "List of Movies";
 }
+<h2>Movies</h2>
 
+<div class="mb-3">
+    <a asp-action="Add" class="btn btn-primary">➕ Add New Movie</a>
+</div>
 <div class="row">
     @foreach (var item in Model)
     {
