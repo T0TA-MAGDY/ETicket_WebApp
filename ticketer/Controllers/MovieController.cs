@@ -19,36 +19,28 @@ namespace ticketer.Controllers
         {
             _context = context;
         }
-
-        public IActionResult Index()
-        {
-            var movies = _context.Movies
-                .Include(m => m.Producer)
-                .Include(m => m.MovieActors)
-                    .ThenInclude(ma => ma.Actor)
-                .ToList();
-            return View(movies);
-        }
-
-        public IActionResult Details(int id)
-        {
-            var movie = _context.Movies
-                .Include(m => m.Producer)
-                .Include(m => m.MovieActors)
-                    .ThenInclude(ma => ma.Actor)
-                .Include(m => m.Showtimes)
-                    .ThenInclude(s => s.Cinema)
-                .Include(m => m.Showtimes)
-                    .ThenInclude(s => s.Timings)
-                .FirstOrDefault(m => m.Id == id);
-
-            if (movie == null)
+            public IActionResult Index(string searchString)
             {
-                return NotFound();
+                var moviesQuery = _context.Movies
+                    .Include(m => m.Producer)
+                    .Include(m => m.MovieActors)
+                        .ThenInclude(ma => ma.Actor)
+                    .Include(m => m.Showtimes)
+                        .ThenInclude(s => s.Cinema)
+                    .AsQueryable();
+
+                if (!string.IsNullOrEmpty(searchString))
+                {
+                    moviesQuery = moviesQuery.Where(m =>
+                        m.Name.Contains(searchString) ||
+                        m.MovieCategory.ToString().Contains(searchString) ||
+                        m.Showtimes.Any(s => s.Cinema.Name.Contains(searchString)));
+                }
+
+                var movies = moviesQuery.ToList();
+                return View(movies);
             }
 
-            return View(movie);
-        }
 
         public IActionResult Showdetails(int id)
         {
@@ -211,6 +203,146 @@ namespace ticketer.Controllers
                 model.FormOptions.Actors = await GetActors();
                 model.FormOptions.Cinemas = await GetCinemas();
                 return View("Add", model);
+            }
+        }
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var movie = await _context.Movies
+                .Include(m => m.Producer)
+                .Include(m => m.MovieActors)
+                    .ThenInclude(ma => ma.Actor)
+                .Include(m => m.Showtimes)
+                    .ThenInclude(s => s.Cinema)
+                .FirstOrDefaultAsync(m => m.Id == id);
+
+            if (movie == null)
+            {
+                return NotFound();
+            }
+
+            var viewModel = new MovieViewModel
+            {
+                Name = movie.Name,
+                Description = movie.Description,
+                ImageURL = movie.ImageURL,
+                TrailerURL = movie.TrailerURL,
+                ReleaseDate = movie.ReleaseDate,
+                MovieCategory = movie.MovieCategory,
+                ProducerId = movie.ProducerId,
+                ActorIds = movie.MovieActors.Select(ma => ma.ActorId).ToList(),
+                FormOptions = new MovieFormOptionsVM
+                {
+                    Actors = await GetActors(),
+                    Producers = await GetProducers(),
+                    Cinemas = await GetCinemas()
+                }
+            };
+
+            return View("Edit",viewModel);
+        }
+        // POST: Movie/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, MovieViewModel model)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                model.FormOptions = new MovieFormOptionsVM
+                {
+                    Actors = await GetActors(),
+                    Producers = await GetProducers(),
+                    Cinemas = await GetCinemas()
+                };
+                return View(model);
+            }
+
+            try
+            {
+                var movie = await _context.Movies.FindAsync(id);
+                if (movie == null)
+                {
+                    return NotFound();
+                }
+
+                movie.Name = model.Name;
+                movie.Description = model.Description;
+                movie.ImageURL = model.ImageURL;
+                movie.TrailerURL = model.TrailerURL;
+                movie.ReleaseDate = model.ReleaseDate;
+                movie.MovieCategory = model.MovieCategory;
+                movie.ProducerId = model.ProducerId;
+
+                // Remove existing actors and add new ones
+                var existingActors = _context.MovieActors.Where(ma => ma.MovieId == id).ToList();
+                _context.MovieActors.RemoveRange(existingActors);
+                foreach (var actorId in model.ActorIds)
+                {
+                    _context.MovieActors.Add(new MovieActor
+                    {
+                        MovieId = id,
+                        ActorId = actorId
+                    });
+                }
+
+                // Update showtimes
+                var existingShowtimes = _context.Showtimes.Where(s => s.Movie_Id == id).ToList();
+                _context.Showtimes.RemoveRange(existingShowtimes);
+                foreach (var showtime in model.Showtimes.Where(s => s.CinemaId > 0))
+                {
+                    var newShowtime = new Showtime
+                    {
+                        Movie_Id = movie.Id,
+                        Cinema_Id = showtime.CinemaId,
+                        Date = showtime.Date
+                    };
+                    _context.Showtimes.Add(newShowtime);
+                    await _context.SaveChangesAsync(); // Get ID
+
+                    var newTiming = new Timing
+                    {
+                        showtime_id = newShowtime.Showtime_Id,
+                        StartTime = showtime.StartTime,
+                        Price = showtime.Price
+                    };
+                    _context.Timings.Add(newTiming);
+                    await _context.SaveChangesAsync();
+
+                    // Add tickets for each showtime
+                    for (int row = 1; row <= 10; row++) // 10 rows
+                    {
+                        for (int seat = 1; seat <= 8; seat++) // 8 seats per row
+                        {
+                            var ticket = new Ticket
+                            {
+                                Timing_Id = newTiming.Id,
+                                RowNumber = row,
+                                SeatNumber = seat,
+                                SeatType = (row <= 2) ? "Premium" : "Regular", // First 2 rows Premium
+                                IsBooked = false
+                            };
+                            _context.Tickets.Add(ticket);
+                        }
+                    }
+                }
+
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                var errorMessage = ex.InnerException?.Message ?? ex.Message;
+                ModelState.AddModelError("", "Error updating movie: " + errorMessage);
+                model.FormOptions.Producers = await GetProducers();
+                model.FormOptions.Actors = await GetActors();
+                model.FormOptions.Cinemas = await GetCinemas();
+                return View(model);
             }
         }
 
