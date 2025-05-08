@@ -21,7 +21,6 @@ namespace ticketer.Models
         public Movie Movie { get; set; }
 
 
-        public ICollection<ShowtimeSeat> Seats { get; set; }
         public ICollection<Timing> Timings { get; set; }
     }
 }

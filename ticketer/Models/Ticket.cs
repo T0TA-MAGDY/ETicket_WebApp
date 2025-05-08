@@ -8,16 +8,19 @@ namespace ticketer.Models
 {
     public class Ticket
     {
-         [Key]
-    public int Ticket_Id { get; set; }
+        [Key]
+        public int Ticket_Id { get; set; }
+        public int RowNumber { get; set; }
+        public int SeatNumber { get; set; }
+        public int Timing_Id { get; set; }
+        public Timing? timing { get; set; }
+        public bool IsBooked { get; set; } = false;
 
-    [ForeignKey("ShowtimeSeat")]
-    public int ShowtimeSeat_Id { get; set; }
+        public string SeatType { get; set; }  // "Regular" or "Premium"
 
-    [ForeignKey("Order")]
-    public int Order_Id { get; set; }
+        [ForeignKey("Order")]
+        public int Order_Id { get; set; }
 
-    public ShowtimeSeat? ShowtimeSeat { get; set; }
-    public TicketOrder? Order { get; set; }
+        public TicketOrder? Order { get; set; }
     }
 }

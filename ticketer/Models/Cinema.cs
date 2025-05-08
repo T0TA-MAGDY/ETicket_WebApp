@@ -26,6 +26,5 @@ namespace ticketer.Models
 
         // Initialize collections to avoid null references
         public ICollection<Showtime> Showtimes { get; set; } = new List<Showtime>();
-        public ICollection<Seat> Seats { get; set; } = new List<Seat>();
     }
 }

@@ -19,11 +19,11 @@ namespace ticketer.Data
         public DbSet<Actor> Actors { get; set; }
         public DbSet<MovieActor> MovieActors { get; set; }
         public DbSet<Cinema> Cinemas { get; set; }
-        public DbSet<Seat> Seats { get; set; }
         public DbSet<Showtime> Showtimes { get; set; }
-        public DbSet<ShowtimeSeat> ShowtimeSeats { get; set; }
         public DbSet<TicketOrder> TicketOrders { get; set; }
         public DbSet<Timing> Timings { get; set; }
+        public DbSet<Ticket> Tickets { get; set; }
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -66,11 +66,11 @@ namespace ticketer.Data
 
 
             // Seat -> Cinema
-            modelBuilder.Entity<Seat>()
-                .HasOne(s => s.Cinema)
-                .WithMany(c => c.Seats)
-                .HasForeignKey(s => s.Cinema_Id)
-                .OnDelete(DeleteBehavior.NoAction);  // Explicitly setting no cascading delete
+            // modelBuilder.Entity<Seat>()
+            //     .HasOne(s => s.Cinema)
+            //     .WithMany(c => c.Seats)
+            //     .HasForeignKey(s => s.Cinema_Id)
+            //     .OnDelete(DeleteBehavior.NoAction);  // Explicitly setting no cascading delete
 
             // ShowtimeSeat -> Showtime, Seat
             //modelBuilder.Entity<ShowtimeSeat>()
@@ -86,18 +86,25 @@ namespace ticketer.Data
             //    .OnDelete(DeleteBehavior.NoAction);  // Explicitly setting no cascading delete
 
             // Ticket -> ShowtimeSeat, TicketOrder
-            modelBuilder.Entity<Ticket>()
-                .HasOne(t => t.ShowtimeSeat)
-                .WithMany(ss => ss.Tickets)
-                .HasForeignKey(t => t.ShowtimeSeat_Id)
-                .OnDelete(DeleteBehavior.NoAction);  // Explicitly setting no cascading delete
-
+            // modelBuilder.Entity<Ticket>()
+            //     .HasOne(t => t.ShowtimeSeat)
+            //     .WithMany(ss => ss.Tickets)
+            //     .HasForeignKey(t => t.ShowtimeSeat_Id)
+            //     .OnDelete(DeleteBehavior.NoAction);  // Explicitly setting no cascading delete
+            modelBuilder.Entity<Timing>()
+                           .HasOne(t => t.Showtime)
+                           .WithMany(s => s.Timings)
+                           .HasForeignKey(t => t.showtime_id);
             modelBuilder.Entity<Ticket>()
                 .HasOne(t => t.Order)
                 .WithMany(o => o.Tickets)
                 .HasForeignKey(t => t.Order_Id)
                 .OnDelete(DeleteBehavior.NoAction);  // Explicitly setting no cascading delete
 
+            modelBuilder.Entity<Ticket>()
+                            .HasOne(t => t.timing)
+                            .WithMany(tm => tm.Tickets)
+                            .HasForeignKey(t => t.Timing_Id);
             // TicketOrder -> User
             modelBuilder.Entity<TicketOrder>()
                 .HasOne(o => o.User)
