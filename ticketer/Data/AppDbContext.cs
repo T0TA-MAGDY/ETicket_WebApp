@@ -23,8 +23,7 @@ namespace ticketer.Data
         public DbSet<Showtime> Showtimes { get; set; }
         public DbSet<ShowtimeSeat> ShowtimeSeats { get; set; }
         public DbSet<TicketOrder> TicketOrders { get; set; }
-        public DbSet<Ticket> Tickets { get; set; }
-
+        public DbSet<Timing> Timings { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
