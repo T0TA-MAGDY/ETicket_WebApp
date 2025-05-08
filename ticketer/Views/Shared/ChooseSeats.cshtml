@@ -1,0 +1,31 @@
+@model List<ticketer.Models.Ticket>
+@{
+    ViewBag.Title = "Choose Seats";
+    int showtimeId = ViewBag.ShowtimeId;
+}
+
+<h2>Choose Your Seats</h2>
+
+<form asp-action="ConfirmSeats" method="post">
+    <input type="hidden" name="showtimeId" value="@showtimeId" />
+    
+    <div style="display: flex; flex-wrap: wrap; width: 600px;">
+        @foreach (var seat in Model)
+        {
+            <div style="margin: 5px;">
+                @if (seat.IsBooked)
+                {
+                    <button type="button" style="background-color: gray;" disabled>@seat.RowNumber@seat.SeatNumber</button>
+                }
+                else
+                {
+                    <input type="checkbox" name="selectedTicketIds" value="@seat.Ticket_Id" id="seat_@seat.Ticket_Id" />
+                    <label for="seat_@seat.Ticket_Id">@seat.RowNumber@seat.SeatNumber</label>
+                }
+            </div>
+        }
+    </div>
+
+    <br />
+    <button type="submit">Confirm Seats</button>
+</form>
