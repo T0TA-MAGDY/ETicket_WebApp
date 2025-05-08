@@ -111,6 +111,13 @@ namespace ticketer.Data
                 .WithMany(u => u.TicketOrders)
                 .HasForeignKey(o => o.User_Id)
                 .OnDelete(DeleteBehavior.NoAction);  // Explicitly setting no cascading delete
+
+            modelBuilder.Entity<TicketOrder>()
+        .Property(t => t.TotalPrice)
+        .HasPrecision(18, 2);
+            modelBuilder.Entity<Timing>()
+        .Property(t => t.Price)
+        .HasPrecision(18, 2);
         }
 
     }

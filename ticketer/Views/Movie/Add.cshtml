@@ -122,6 +122,14 @@
                                     <span asp-validation-for="Showtimes[i].StartTime" class="text-danger"></span>
                                 </div>
                             </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label>Price</label>
+                                    <input asp-for="Showtimes[i].Price" type="number" step="0.01" class="form-control" />
+                                    <span asp-validation-for="Showtimes[i].Price" class="text-danger"></span>
+                                </div>
+                            </div>
+                            
                             <div class="col-md-2 d-flex align-items-end">
                                 <button type="button" class="btn btn-danger remove-showtime">Remove</button>
                             </div>
@@ -183,6 +191,12 @@
                                                            value="18:00" />
                                                 </div>
                                             </div>
+                                            <div class="col-md-2">
+    <div class="form-group">
+        <label>Price</label>
+        <input type="number" step="0.01" name="Showtimes[${index}].Price" class="form-control" value="100.00" />
+    </div>
+</div>
                                             <div class="col-md-2 d-flex align-items-end">
                                                 <button type="button" class="btn btn-danger remove-showtime">Remove</button>
                                             </div>
@@ -197,15 +211,17 @@
                 reindexShowtimes();
             });
 
-            function reindexShowtimes() {
-                $('#showtimes-container .showtime-group').each(function (i) {
-                    $(this).find('select, input').each(function () {
-                        var name = $(this).attr('name')
-                            .replace(/Showtimes\[\d+\]/g, Showtimes[${ i }]);
-                        $(this).attr('name', name);
-                    });
-                });
+           function reindexShowtimes() {
+    $('#showtimes-container .showtime-group').each(function (i) {
+        $(this).find('select, input').each(function () {
+            var name = $(this).attr('name');
+            if (name) {
+                name = name.replace(/Showtimes\[\d+\]/g, `Showtimes[${i}]`);
+                $(this).attr('name', name);
             }
+        });
+    });
+}
         });
     </script>
 }

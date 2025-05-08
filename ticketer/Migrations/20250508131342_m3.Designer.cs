@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ticketer.Data;
 
@@ -11,9 +12,11 @@ using ticketer.Data;
 namespace ticketer.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250508131342_m3")]
+    partial class m3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -397,7 +400,7 @@ namespace ticketer.Migrations
                     b.Property<bool>("IsBooked")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("Order_Id")
+                    b.Property<int>("Order_Id")
                         .HasColumnType("int");
 
                     b.Property<int>("RowNumber")
@@ -584,7 +587,8 @@ namespace ticketer.Migrations
                     b.HasOne("ticketer.Models.TicketOrder", "Order")
                         .WithMany("Tickets")
                         .HasForeignKey("Order_Id")
-                        .OnDelete(DeleteBehavior.NoAction);
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
 
                     b.HasOne("ticketer.Models.Timing", "timing")
                         .WithMany("Tickets")

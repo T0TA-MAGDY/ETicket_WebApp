@@ -8,10 +8,12 @@ namespace ticketer.Models
         public int Id { get; set; }
         [DataType(DataType.Time)]
         public TimeSpan StartTime { get; set; }
+        public decimal Price { get; set; }
         [ForeignKey("showtime_id")]
         public int showtime_id { get; set; }
 
         public Showtime Showtime { get; set; }
+
 
         public ICollection<Ticket> Tickets { get; set; } = new List<Ticket>();
     }

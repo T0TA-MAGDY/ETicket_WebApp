@@ -4896,24 +4896,32 @@
     ]
   },
   "packageFolders": {
-    "/Users/macq/.nuget/packages/": {}
+    "C:\\Users\\MHz\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/macq/Ticketer/ticketer/ticketer.csproj",
+      "projectUniqueName": "C:\\Users\\MHz\\Source\\Repos\\ETicket2\\ticketer\\ticketer.csproj",
       "projectName": "ticketer",
-      "projectPath": "/Users/macq/Ticketer/ticketer/ticketer.csproj",
-      "packagesPath": "/Users/macq/.nuget/packages/",
-      "outputPath": "/Users/macq/Ticketer/ticketer/obj/",
+      "projectPath": "C:\\Users\\MHz\\Source\\Repos\\ETicket2\\ticketer\\ticketer.csproj",
+      "packagesPath": "C:\\Users\\MHz\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\MHz\\Source\\Repos\\ETicket2\\ticketer\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "/Users/macq/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\MHz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -4975,7 +4983,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.401/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

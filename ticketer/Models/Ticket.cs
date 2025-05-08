@@ -19,7 +19,7 @@ namespace ticketer.Models
         public string SeatType { get; set; }  // "Regular" or "Premium"
 
         [ForeignKey("Order")]
-        public int Order_Id { get; set; }
+        public int? Order_Id { get; set; }
 
         public TicketOrder? Order { get; set; }
     }
