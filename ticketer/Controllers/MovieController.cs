@@ -149,13 +149,35 @@ namespace ticketer.Controllers
                     _context.Showtimes.Add(newShowtime);
                     await _context.SaveChangesAsync(); // Get ID
 
-                    _context.Timings.Add(new Timing
+                    var newTiming = new Timing
                     {
                         showtime_id = newShowtime.Showtime_Id,
-                        StartTime = showtime.StartTime
-                    });
-                }
+                        StartTime = showtime.StartTime,
+                        Price = showtime.Price
+                    };
+                    _context.Timings.Add(newTiming);
+                    await _context.SaveChangesAsync();
 
+
+                    var tickets = new List<Ticket>();
+
+                    for (int row = 1; row <= 10; row++) // 10 rows
+                    {
+                        for (int seat = 1; seat <= 15; seat++) // 15 seats per row
+                        {
+                            var ticket = new Ticket
+                            {
+                                Timing_Id = newTiming.Id,
+                                RowNumber = row,
+                                SeatNumber = seat,
+                                SeatType = (row <= 2) ? "Premium" : "Regular", // First 2 rows Premium
+                                IsBooked = false
+                            };
+                            _context.Tickets.Add(ticket);
+                        }
+                    }
+
+                }
                 await _context.SaveChangesAsync();
                 await transaction.CommitAsync();
 
@@ -164,7 +186,10 @@ namespace ticketer.Controllers
             catch (Exception ex)
             {
                 await transaction.RollbackAsync();
-                ModelState.AddModelError("", "Error saving movie: " + ex.Message);
+
+                var errorMessage = ex.InnerException?.Message ?? ex.Message; 
+                ModelState.AddModelError("", "Error saving movie: " + errorMessage);
+
                 model.FormOptions.Producers = await GetProducers();
                 model.FormOptions.Actors = await GetActors();
                 model.FormOptions.Cinemas = await GetCinemas();
