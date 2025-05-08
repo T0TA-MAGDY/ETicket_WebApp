@@ -1,31 +1,158 @@
 @model List<ticketer.Models.Ticket>
+
 @{
     ViewBag.Title = "Choose Seats";
-    int showtimeId = ViewBag.ShowtimeId;
+    int? timingId = ViewBag.Timing_Id;
+    var groupedSeats = Model.GroupBy(s => s.RowNumber).OrderBy(g => g.Key);
 }
 
-<h2>Choose Your Seats</h2>
+<style>
+    .cinema-screen {
+        margin: 20px auto;
+        width: 60%;
+        background: linear-gradient(to right, #ccc, #eee, #ccc);
+        text-align: center;
+        padding: 10px;
+        border-radius: 10px;
+        font-weight: bold;
+    }
 
-<form asp-action="ConfirmSeats" method="post">
-    <input type="hidden" name="showtimeId" value="@showtimeId" />
-    
-    <div style="display: flex; flex-wrap: wrap; width: 600px;">
-        @foreach (var seat in Model)
-        {
-            <div style="margin: 5px;">
-                @if (seat.IsBooked)
+    .seats-layout {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 30px;
+    }
+
+    .seat-row {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 12px;
+        align-items: center;
+    }
+
+    .row-label {
+        margin-right: 15px;
+        width: 20px;
+        font-weight: bold;
+    }
+
+    .seat {
+        width: 35px;
+        height: 35px;
+        margin: 0 5px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        cursor: pointer;
+        border: 1px solid #aaa;
+        transition: 0.2s;
+    }
+
+    .seat.available {
+        background-color: #e0e0e0;
+    }
+
+    .seat.booked {
+        background-color: #888;
+        cursor: not-allowed;
+    }
+
+    .seat.premium {
+        background-color: gold;
+    }
+
+    .seat:hover {
+        transform: scale(1.1);
+    }
+
+    .aisle-space {
+        width: 30px;
+    }
+
+    .legend {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+        gap: 20px;
+    }
+
+    .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+</style>
+
+<h2 style="text-align:center;">🎥 Choose Your Seats</h2>
+
+<form asp-action="ConfirmSeats" method="post" style="text-align:center;">
+    <input type="hidden" name="timingId" value="@timingId" />
+
+    <div class="cinema-screen">SCREEN</div>
+
+    <div class="seats-layout">
+        @foreach (var rowGroup in groupedSeats)
+{
+    <div class="seat-row">
+        <div class="row-label">@((char)(rowGroup.Key + 64))</div>  <!-- A, B, C, etc. -->
+        
+        @* Loop through seats *@
+        @{
+            int seatCounter = 0;
+            foreach (var seat in rowGroup.OrderBy(s => s.SeatNumber))
+            {
+                // Insert aisle gap after 5 seats
+                if (seatCounter == 5)
                 {
-                    <button type="button" style="background-color: gray;" disabled>@seat.RowNumber@seat.SeatNumber</button>
+                    <div class="aisle-space"></div>
+                }
+
+                var seatClass = seat.IsBooked ? "booked" : (seat.SeatType == "Premium" ? "premium" : "available");
+
+                if (seat.IsBooked)
+                {
+                    <div class="seat @seatClass">@seat.SeatNumber</div>
                 }
                 else
                 {
-                    <input type="checkbox" name="selectedTicketIds" value="@seat.Ticket_Id" id="seat_@seat.Ticket_Id" />
-                    <label for="seat_@seat.Ticket_Id">@seat.RowNumber@seat.SeatNumber</label>
+                    <input type="checkbox" name="selectedTicketIds" value="@seat.Ticket_Id" id="seat_@seat.Ticket_Id" class="seat-checkbox" />
+                    <label for="seat_@seat.Ticket_Id" class="seat @seatClass">@seat.SeatNumber</label>
                 }
-            </div>
+
+                seatCounter++;
+            }
         }
     </div>
+}
 
-    <br />
-    <button type="submit">Confirm Seats</button>
+    </div>
+
+    <div class="legend">
+        <div class="legend-item">
+            <div class="seat available"></div> Available
+        </div>
+        <div class="legend-item">
+            <div class="seat premium"></div> Premium
+        </div>
+        <div class="legend-item">
+            <div class="seat booked"></div> Booked
+        </div>
+    </div>
+
+    <div style="margin-top: 40px;">
+        <button type="submit" style="padding: 10px 25px; background-color: #007bff; color: white; border: none; border-radius: 6px; font-size: 16px; cursor: pointer;">
+            Confirm Seats
+        </button>
+    </div>
 </form>
+
+<script>
+    // Optional: Toggle the checkbox selection when the seat is clicked
+    function toggleSeatSelection(seatId) {
+        var checkbox = document.getElementById(seatId);
+        checkbox.checked = !checkbox.checked;
+    }
+</script>
