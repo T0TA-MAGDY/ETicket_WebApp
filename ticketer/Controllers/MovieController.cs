@@ -180,7 +180,7 @@ namespace ticketer.Controllers
 
                     for (int row = 1; row <= 10; row++) // 10 rows
                     {
-                        for (int seat = 1; seat <= 15; seat++) // 15 seats per row
+                        for (int seat = 1; seat <= 8; seat++) // 15 seats per row
                         {
                             var ticket = new Ticket
                             {

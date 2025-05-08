@@ -17,63 +17,63 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ticketer
 build_property.RootNamespace = ticketer
-build_property.ProjectDir = D:\field_training\Eticket\ticketer\
+build_property.ProjectDir = /Users/macq/Ticketer/ticketer/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\field_training\Eticket\ticketer
+build_property.MSBuildProjectDirectory = /Users/macq/Ticketer/ticketer
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/field_training/Eticket/ticketer/Views/BookingConfirmation.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ0NvbmZpcm1hdGlvbi5jc2h0bWw=
+[/Users/macq/Ticketer/ticketer/Views/BookingConfirmation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQm9va2luZ0NvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/field_training/Eticket/ticketer/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+[/Users/macq/Ticketer/ticketer/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/field_training/Eticket/ticketer/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+[/Users/macq/Ticketer/ticketer/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/field_training/Eticket/ticketer/Views/Movie/Add.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcQWRkLmNzaHRtbA==
+[/Users/macq/Ticketer/ticketer/Views/Movie/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTW92aWUvQWRkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/field_training/Eticket/ticketer/Views/Movie/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcRGV0YWlscy5jc2h0bWw=
+[/Users/macq/Ticketer/ticketer/Views/Movie/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTW92aWUvRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/field_training/Eticket/ticketer/Views/Movie/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcSW5kZXguY3NodG1s
+[/Users/macq/Ticketer/ticketer/Views/Movie/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTW92aWUvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/field_training/Eticket/ticketer/Views/Movie/showdetails.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcc2hvd2RldGFpbHMuY3NodG1s
+[/Users/macq/Ticketer/ticketer/Views/Movie/showdetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTW92aWUvc2hvd2RldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/field_training/Eticket/ticketer/Views/Shared/ChooseSeats.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENob29zZVNlYXRzLmNzaHRtbA==
+[/Users/macq/Ticketer/ticketer/Views/Shared/ChooseSeats.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Nob29zZVNlYXRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/field_training/Eticket/ticketer/Views/Shared/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+[/Users/macq/Ticketer/ticketer/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/field_training/Eticket/ticketer/Views/Shared/_ValidationScriptsPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+[/Users/macq/Ticketer/ticketer/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/field_training/Eticket/ticketer/Views/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+[/Users/macq/Ticketer/ticketer/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/field_training/Eticket/ticketer/Views/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+[/Users/macq/Ticketer/ticketer/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/field_training/Eticket/ticketer/Views/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-ewumuddgva
+[/Users/macq/Ticketer/ticketer/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-z3oagpa95e
