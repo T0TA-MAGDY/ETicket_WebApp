@@ -1,0 +1,38 @@
+﻿@model Movie
+
+<h2>@Model.Name</h2>
+<p>@Model.Description</p>
+
+<hr />
+
+<h3>Showtimes</h3>
+
+@if (Model.Showtimes.Any())
+{
+    @foreach (var showTimeGroup in Model.Showtimes.GroupBy(st => st.Cinema.Name))
+    {
+        <h4>Cinema: @showTimeGroup.Key</h4>
+
+        @foreach (var dateGroup in showTimeGroup.GroupBy(st => st.Date))
+        {
+            <strong>Date: @dateGroup.Key.ToShortDateString()</strong>
+            <ul>
+                @foreach (var showTime in dateGroup)
+                {
+                    foreach (var timing in showTime.Timings)
+                    {
+                       
+                         <a class="btn btn-outline-primary float-right" asp-controller="Ticket" asp-action="ChooseSeats" asp-route-id="@timing.Id">@timing.StartTime.ToString(@"hh\:mm") </a>
+
+                        
+                    }
+                }
+            </ul>
+        }
+    }
+}
+else
+{
+    <p>No showtimes available for this movie.</p>
+}
+

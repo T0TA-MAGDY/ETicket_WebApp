@@ -17,59 +17,63 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ticketer
 build_property.RootNamespace = ticketer
-build_property.ProjectDir = C:\Users\MHz\Source\Repos\ETicket2\ticketer\
+build_property.ProjectDir = D:\field_training\Eticket\ticketer\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\MHz\Source\Repos\ETicket2\ticketer
+build_property.MSBuildProjectDirectory = D:\field_training\Eticket\ticketer
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/MHz/Source/Repos/ETicket2/ticketer/Views/BookingConfirmation.cshtml]
+[D:/field_training/Eticket/ticketer/Views/BookingConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ0NvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MHz/Source/Repos/ETicket2/ticketer/Views/Home/Index.cshtml]
+[D:/field_training/Eticket/ticketer/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MHz/Source/Repos/ETicket2/ticketer/Views/Home/Privacy.cshtml]
+[D:/field_training/Eticket/ticketer/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MHz/Source/Repos/ETicket2/ticketer/Views/Movie/Add.cshtml]
+[D:/field_training/Eticket/ticketer/Views/Movie/Add.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcQWRkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MHz/Source/Repos/ETicket2/ticketer/Views/Movie/Details.cshtml]
+[D:/field_training/Eticket/ticketer/Views/Movie/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MHz/Source/Repos/ETicket2/ticketer/Views/Movie/Index.cshtml]
+[D:/field_training/Eticket/ticketer/Views/Movie/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MHz/Source/Repos/ETicket2/ticketer/Views/Shared/ChooseSeats.cshtml]
+[D:/field_training/Eticket/ticketer/Views/Movie/showdetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcc2hvd2RldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/field_training/Eticket/ticketer/Views/Shared/ChooseSeats.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENob29zZVNlYXRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MHz/Source/Repos/ETicket2/ticketer/Views/Shared/Error.cshtml]
+[D:/field_training/Eticket/ticketer/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MHz/Source/Repos/ETicket2/ticketer/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/field_training/Eticket/ticketer/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MHz/Source/Repos/ETicket2/ticketer/Views/_ViewImports.cshtml]
+[D:/field_training/Eticket/ticketer/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MHz/Source/Repos/ETicket2/ticketer/Views/_ViewStart.cshtml]
+[D:/field_training/Eticket/ticketer/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MHz/Source/Repos/ETicket2/ticketer/Views/Shared/_Layout.cshtml]
+[D:/field_training/Eticket/ticketer/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-ewumuddgva

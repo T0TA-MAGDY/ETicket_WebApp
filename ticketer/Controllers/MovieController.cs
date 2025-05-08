@@ -50,6 +50,23 @@ namespace ticketer.Controllers
             return View(movie);
         }
 
+        public IActionResult Showdetails(int id)
+        {
+            var movie = _context.Movies
+       .Include(m => m.Showtimes)
+           .ThenInclude(st => st.Cinema)
+       .Include(m => m.Showtimes)
+           .ThenInclude(st => st.Timings)
+       .FirstOrDefault(m => m.Id == id);
+
+            if (movie == null)
+            {
+                return NotFound();
+            }
+
+            return View(movie);
+        }
+
 
         // GET: Movie/Add
         [HttpGet]
