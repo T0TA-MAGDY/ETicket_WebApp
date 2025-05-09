@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace ticketer.Controllers
 {
-    [Authorize(Roles = UserRoles.Admin)]
+   // [Authorize(Roles = UserRoles.Admin)]
     public class CinemasController : Controller
     {
         private readonly ICinemasService _service;
@@ -22,7 +22,7 @@ namespace ticketer.Controllers
             _service = service;
         }
 
-        [AllowAnonymous]
+      //  [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var allCinemas = await _service.GetAllAsync();

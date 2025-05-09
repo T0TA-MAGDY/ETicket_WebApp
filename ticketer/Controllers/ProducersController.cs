@@ -13,7 +13,7 @@ using eTickets.Data.Services;
 
 namespace eTickets.Controllers
 {
-    [Authorize(Roles = UserRoles.Admin)]
+  //  [Authorize(Roles = UserRoles.Admin)]
     public class ProducersController : Controller
     {
         private readonly IProducersService _service;
@@ -23,7 +23,7 @@ namespace eTickets.Controllers
             _service = service;
         }
 
-        [AllowAnonymous]
+      //  [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var allProducers = await _service.GetAllAsync();
@@ -31,7 +31,7 @@ namespace eTickets.Controllers
         }
 
         //GET: producers/details/1
-        [AllowAnonymous]
+      //  [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
             var producerDetails = await _service.GetByIdAsync(id);
