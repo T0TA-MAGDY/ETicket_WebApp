@@ -1,28 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "D:\\field_training\\Eticket\\ticketer\\ticketer.csproj": {}
+    "/Users/macq/Ticketer/ticketer/ticketer.csproj": {}
   },
   "projects": {
-    "D:\\field_training\\Eticket\\ticketer\\ticketer.csproj": {
+    "/Users/macq/Ticketer/ticketer/ticketer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\field_training\\Eticket\\ticketer\\ticketer.csproj",
+        "projectUniqueName": "/Users/macq/Ticketer/ticketer/ticketer.csproj",
         "projectName": "ticketer",
-        "projectPath": "D:\\field_training\\Eticket\\ticketer\\ticketer.csproj",
-        "packagesPath": "C:\\Users\\ALSERAG FOR LAPTOP\\.nuget\\packages\\",
-        "outputPath": "D:\\field_training\\Eticket\\ticketer\\obj\\",
+        "projectPath": "/Users/macq/Ticketer/ticketer/ticketer.csproj",
+        "packagesPath": "/Users/macq/.nuget/packages/",
+        "outputPath": "/Users/macq/Ticketer/ticketer/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ALSERAG FOR LAPTOP\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/macq/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -88,7 +85,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.401/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
