@@ -1,235 +1,98 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\ETicket_WebApp\\",
+  "WorkspaceRootPath": "D:\\field_training\\Eticket\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\controllers\\producerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\controllers\\producerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\data\\services\\iproducersservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\data\\services\\iproducersservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\controllers\\cinemascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\controllers\\cinemascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\controllers\\actorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\controllers\\actorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\data\\services\\iclinemaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\data\\services\\iclinemaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\data\\services\\iactorsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\data\\services\\iactorsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\data\\base\\entitybaserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\data\\base\\entitybaserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\data\\base\\ientitybaserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\data\\base\\ientitybaserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\data\\base\\ientitybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\data\\base\\ientitybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\data\\appdbintializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\data\\appdbintializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\ticketer.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\ticketer.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\views\\movie\\showdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\views\\movie\\showdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\views\\movie\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\views\\movie\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\controllers\\moviecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\controllers\\moviecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\viewmodels\\showtimeinputvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\viewmodels\\showtimeinputvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\viewmodels\\movieviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\viewmodels\\movieviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\views\\movie\\add.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\views\\movie\\add.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\views\\movie\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\views\\movie\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\models\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\models\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|d:\\field_training\\eticket\\ticketer\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|d:\\field_training\\eticket\\ticketer\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|d:\\field_training\\eticket\\ticketer\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\views\\bookingconfirmation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\views\\bookingconfirmation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|d:\\field_training\\eticket\\ticketer\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|d:\\field_training\\eticket\\ticketer\\views\\shared\\_identity.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\views\\shared\\_identity.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|d:\\field_training\\eticket\\ticketer\\views\\account\\registercompleted.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\views\\account\\registercompleted.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\controllers\\ticketcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\controllers\\ticketcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\models\\ticket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\models\\ticket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\viewmodels\\movieformoptionsvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\viewmodels\\movieformoptionsvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\controllers\\timingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\controllers\\timingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\models\\timing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\models\\timing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\models\\showtime.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\models\\showtime.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\models\\movieactor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\models\\movieactor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\models\\producer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\models\\producer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\models\\actor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\models\\actor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\models\\ticketorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\models\\ticketorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\migrations\\20250507100029_update.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\migrations\\20250507100029_update.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|d:\\field_training\\eticket\\ticketer\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\models\\cinema.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|d:\\field_training\\eticket\\ticketer\\data\\appdbintializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\data\\appdbintializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|d:\\field_training\\eticket\\ticketer\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|d:\\field_training\\eticket\\ticketer\\viewmodels\\loginvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\viewmodels\\loginvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|d:\\field_training\\eticket\\ticketer\\viewmodels\\registervm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\viewmodels\\registervm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|d:\\field_training\\eticket\\ticketer\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|d:\\field_training\\eticket\\ticketer\\models\\producer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\models\\producer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|d:\\field_training\\eticket\\ticketer\\migrations\\20250507100029_update.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\migrations\\20250507100029_update.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|d:\\field_training\\eticket\\ticketer\\models\\cinema.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\models\\cinema.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|d:\\field_training\\eticket\\ticketer\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\migrations\\20250507185939_fixdublicate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|d:\\field_training\\eticket\\ticketer\\migrations\\20250507185939_fixdublicate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\migrations\\20250507185939_fixdublicate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\field_training\\Eticket\\ETicket_WebApp\\ticketer\\Migrations\\20250507184908_update_showtime.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\field_training\\Eticket\\ETicket_WebApp\\ticketer\\Migrations\\20250507184908_update_showtime.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ETicket_WebApp\\ticketer\\Migrations\\20250507184908_update_showtime.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\data\\static\\userroles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|d:\\field_training\\eticket\\ticketer\\data\\static\\userroles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\data\\static\\userroles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\data\\enums\\moviecategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|d:\\field_training\\eticket\\ticketer\\data\\enums\\moviecategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\data\\enums\\moviecategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\migrations\\20250507122401_fix.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|d:\\field_training\\eticket\\ticketer\\migrations\\20250507122401_fix.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\migrations\\20250507122401_fix.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\migrations\\20250507121050_up2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|d:\\field_training\\eticket\\ticketer\\migrations\\20250507121050_up2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\migrations\\20250507121050_up2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\migrations\\20250507205830_addedtimingtoshowtimes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|d:\\field_training\\eticket\\ticketer\\migrations\\20250507205830_addedtimingtoshowtimes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\migrations\\20250507205830_addedtimingtoshowtimes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\MHz\\Source\\Repos\\ETicket2\\ticketer\\Models\\ShowtimeSeat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\MHz\\Source\\Repos\\ETicket2\\ticketer\\Models\\Seat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\migrations\\20250508131342_m3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\migrations\\20250508131342_m3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\migrations\\20250508130648_m2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\migrations\\20250508130648_m2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\migrations\\20250508150106_nullable-order-id.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\migrations\\20250508150106_nullable-order-id.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\migrations\\20250508132226_m4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\migrations\\20250508132226_m4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|e:\\eticket_webapp\\ticketer\\migrations\\20250508183127_editdatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1B3314E-A147-4525-97D9-AFF60DBEAF62}|ticketer\\ticketer.csproj|solutionrelative:ticketer\\migrations\\20250508183127_editdatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -239,520 +102,176 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "IProducersService.cs",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Data\\Services\\IProducersService.cs",
-              "RelativeDocumentMoniker": "ticketer\\Data\\Services\\IProducersService.cs",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Data\\Services\\IProducersService.cs",
-              "RelativeToolTip": "ticketer\\Data\\Services\\IProducersService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T01:43:44.468Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ProducersController.cs",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Controllers\\ProducersController.cs",
-              "RelativeDocumentMoniker": "ticketer\\Controllers\\ProducersController.cs",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Controllers\\ProducersController.cs",
-              "RelativeToolTip": "ticketer\\Controllers\\ProducersController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T01:42:34.437Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "IActorsService.cs",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Data\\Services\\IActorsService.cs",
-              "RelativeDocumentMoniker": "ticketer\\Data\\Services\\IActorsService.cs",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Data\\Services\\IActorsService.cs",
-              "RelativeToolTip": "ticketer\\Data\\Services\\IActorsService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T01:31:53.556Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ActorsController.cs",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Controllers\\ActorsController.cs",
-              "RelativeDocumentMoniker": "ticketer\\Controllers\\ActorsController.cs",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Controllers\\ActorsController.cs",
-              "RelativeToolTip": "ticketer\\Controllers\\ActorsController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T01:26:50.244Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "IEntityBaseRepository.cs",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Data\\Base\\IEntityBaseRepository.cs",
-              "RelativeDocumentMoniker": "ticketer\\Data\\Base\\IEntityBaseRepository.cs",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Data\\Base\\IEntityBaseRepository.cs",
-              "RelativeToolTip": "ticketer\\Data\\Base\\IEntityBaseRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T01:22:09.37Z",
-              "EditorCaption": ""
+              "DocumentIndex": 11,
+              "Title": "_ViewStart.cshtml",
+              "DocumentMoniker": "D:\\field_training\\Eticket\\ticketer\\Views\\_ViewStart.cshtml",
+              "RelativeDocumentMoniker": "ticketer\\Views\\_ViewStart.cshtml",
+              "ToolTip": "D:\\field_training\\Eticket\\ticketer\\Views\\_ViewStart.cshtml",
+              "RelativeToolTip": "ticketer\\Views\\_ViewStart.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-08T21:12:09.657Z",
+              "IsPinned": true
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "EntityBaseRepository.cs",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Data\\Base\\EntityBaseRepository.cs",
-              "RelativeDocumentMoniker": "ticketer\\Data\\Base\\EntityBaseRepository.cs",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Data\\Base\\EntityBaseRepository.cs",
-              "RelativeToolTip": "ticketer\\Data\\Base\\EntityBaseRepository.cs",
-              "ViewState": "AgIAADIAAAAAAAAAAAAuwBIAAAAJAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\field_training\\Eticket\\ticketer\\Program.cs",
+              "RelativeDocumentMoniker": "ticketer\\Program.cs",
+              "ToolTip": "D:\\field_training\\Eticket\\ticketer\\Program.cs",
+              "RelativeToolTip": "ticketer\\Program.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAABwPS4AAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T01:21:34.95Z",
+              "WhenOpened": "2025-05-07T20:50:52.901Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CinemasController.cs",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Controllers\\CinemasController.cs",
-              "RelativeDocumentMoniker": "ticketer\\Controllers\\CinemasController.cs",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Controllers\\CinemasController.cs",
-              "RelativeToolTip": "ticketer\\Controllers\\CinemasController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAwAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "D:\\field_training\\Eticket\\ticketer\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "ticketer\\Controllers\\AccountController.cs",
+              "ToolTip": "D:\\field_training\\Eticket\\ticketer\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "ticketer\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAAC8AAACAmpmZmdkgwC8AAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T01:05:21.066Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "Add.cshtml",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Views\\Movie\\Add.cshtml",
-              "RelativeDocumentMoniker": "ticketer\\Views\\Movie\\Add.cshtml",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Views\\Movie\\Add.cshtml",
-              "RelativeToolTip": "ticketer\\Views\\Movie\\Add.cshtml",
-              "ViewState": "AgIAANEAAAAAAAAAAAAAwOIAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-07T21:04:45.398Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Views\\Movie\\Edit.cshtml",
-              "RelativeDocumentMoniker": "ticketer\\Views\\Movie\\Edit.cshtml",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Views\\Movie\\Edit.cshtml",
-              "RelativeToolTip": "ticketer\\Views\\Movie\\Edit.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-08T21:41:47.166Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "IEntityBase.cs",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Data\\Base\\IEntityBase.cs",
-              "RelativeDocumentMoniker": "ticketer\\Data\\Base\\IEntityBase.cs",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Data\\Base\\IEntityBase.cs",
-              "RelativeToolTip": "ticketer\\Data\\Base\\IEntityBase.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-07T13:17:56.177Z",
+              "WhenOpened": "2025-05-09T15:28:53.915Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "IClinemaService.cs",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Data\\Services\\IClinemaService.cs",
-              "RelativeDocumentMoniker": "ticketer\\Data\\Services\\IClinemaService.cs",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Data\\Services\\IClinemaService.cs",
-              "RelativeToolTip": "ticketer\\Data\\Services\\IClinemaService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T01:16:06.817Z",
+              "Title": "_Identity.cshtml",
+              "DocumentMoniker": "D:\\field_training\\Eticket\\ticketer\\Views\\Shared\\_Identity.cshtml",
+              "RelativeDocumentMoniker": "ticketer\\Views\\Shared\\_Identity.cshtml",
+              "ToolTip": "D:\\field_training\\Eticket\\ticketer\\Views\\Shared\\_Identity.cshtml",
+              "RelativeToolTip": "ticketer\\Views\\Shared\\_Identity.cshtml",
+              "ViewState": "AgIAAAAAAABAZmZmZmYkwAEAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-09T16:55:05.33Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "Movie.cs",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Models\\Movie.cs",
-              "RelativeDocumentMoniker": "ticketer\\Models\\Movie.cs",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Models\\Movie.cs",
-              "RelativeToolTip": "ticketer\\Models\\Movie.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAYwCwAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-07T00:24:42.255Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "ShowtimeInputVM.cs",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\ViewModels\\ShowtimeInputVM.cs",
-              "RelativeDocumentMoniker": "ticketer\\ViewModels\\ShowtimeInputVM.cs",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\ViewModels\\ShowtimeInputVM.cs",
-              "RelativeToolTip": "ticketer\\ViewModels\\ShowtimeInputVM.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAQwBAAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-07T23:47:12.42Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "ticketer\\Views\\Home\\Index.cshtml",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "ticketer\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "D:\\field_training\\Eticket\\ticketer\\Views\\Account\\Login.cshtml",
+              "RelativeDocumentMoniker": "ticketer\\Views\\Account\\Login.cshtml",
+              "ToolTip": "D:\\field_training\\Eticket\\ticketer\\Views\\Account\\Login.cshtml",
+              "RelativeToolTip": "ticketer\\Views\\Account\\Login.cshtml",
+              "ViewState": "AgIAACQAAAAAAAAAAACHPSYAAABSAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-08T21:10:24.453Z"
+              "WhenOpened": "2025-05-09T16:15:35.962Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "D:\\field_training\\Eticket\\ticketer\\Views\\Account\\Register.cshtml",
+              "RelativeDocumentMoniker": "ticketer\\Views\\Account\\Register.cshtml",
+              "ToolTip": "D:\\field_training\\Eticket\\ticketer\\Views\\Account\\Register.cshtml",
+              "RelativeToolTip": "ticketer\\Views\\Account\\Register.cshtml",
+              "ViewState": "AgIAABAAAAAADDMzMzPrvzAAAABRAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-09T15:48:23.787Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\field_training\\Eticket\\ticketer\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "ticketer\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\field_training\\Eticket\\ticketer\\Views\\Shared\\_Layout.cshtml*",
+              "RelativeToolTip": "ticketer\\Views\\Shared\\_Layout.cshtml*",
+              "ViewState": "AgIAAB4AAABAX2ZmZmYkwCkAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-09T16:33:08.837Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RegisterCompleted.cshtml",
+              "DocumentMoniker": "D:\\field_training\\Eticket\\ticketer\\Views\\Account\\RegisterCompleted.cshtml",
+              "RelativeDocumentMoniker": "ticketer\\Views\\Account\\RegisterCompleted.cshtml",
+              "ToolTip": "D:\\field_training\\Eticket\\ticketer\\Views\\Account\\RegisterCompleted.cshtml",
+              "RelativeToolTip": "ticketer\\Views\\Account\\RegisterCompleted.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-09T17:34:10.649Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AppDbIntializer.cs",
+              "DocumentMoniker": "D:\\field_training\\Eticket\\ticketer\\Data\\AppDbIntializer.cs",
+              "RelativeDocumentMoniker": "ticketer\\Data\\AppDbIntializer.cs",
+              "ToolTip": "D:\\field_training\\Eticket\\ticketer\\Data\\AppDbIntializer.cs",
+              "RelativeToolTip": "ticketer\\Data\\AppDbIntializer.cs",
+              "ViewState": "AgIAAA4BAAAARjMzM/MlwEcBAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-09T17:26:28.034Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "D:\\field_training\\Eticket\\ticketer\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "ticketer\\Properties\\launchSettings.json",
+              "ToolTip": "D:\\field_training\\Eticket\\ticketer\\Properties\\launchSettings.json",
+              "RelativeToolTip": "ticketer\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAIAAAAAAAAAAABAPQ8AAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-09T16:42:56.343Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "ticketer\\Controllers\\HomeController.cs",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "ticketer\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAA1wA8AAAAYAAAAAAAAAA==",
+              "Title": "LoginVM.cs",
+              "DocumentMoniker": "D:\\field_training\\Eticket\\ticketer\\ViewModels\\LoginVM.cs",
+              "RelativeDocumentMoniker": "ticketer\\ViewModels\\LoginVM.cs",
+              "ToolTip": "D:\\field_training\\Eticket\\ticketer\\ViewModels\\LoginVM.cs",
+              "RelativeToolTip": "ticketer\\ViewModels\\LoginVM.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T21:10:46.818Z",
+              "WhenOpened": "2025-05-09T15:26:16.14Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "launchSettings.json",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Properties\\launchSettings.json",
-              "RelativeDocumentMoniker": "ticketer\\Properties\\launchSettings.json",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Properties\\launchSettings.json",
-              "RelativeToolTip": "ticketer\\Properties\\launchSettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-05-08T21:11:56.586Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "_ViewImports.cshtml",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Views\\_ViewImports.cshtml",
-              "RelativeDocumentMoniker": "ticketer\\Views\\_ViewImports.cshtml",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Views\\_ViewImports.cshtml",
-              "RelativeToolTip": "ticketer\\Views\\_ViewImports.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-08T21:12:07.322Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
-              "Title": "AppDbIntializer.cs",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Data\\AppDbIntializer.cs",
-              "RelativeDocumentMoniker": "ticketer\\Data\\AppDbIntializer.cs",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Data\\AppDbIntializer.cs",
-              "RelativeToolTip": "ticketer\\Data\\AppDbIntializer.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAADwvxMAAAAQAAAAAAAAAA==",
+              "Title": "RegisterVM.cs",
+              "DocumentMoniker": "D:\\field_training\\Eticket\\ticketer\\ViewModels\\RegisterVM.cs",
+              "RelativeDocumentMoniker": "ticketer\\ViewModels\\RegisterVM.cs",
+              "ToolTip": "D:\\field_training\\Eticket\\ticketer\\ViewModels\\RegisterVM.cs",
+              "RelativeToolTip": "ticketer\\ViewModels\\RegisterVM.cs",
+              "ViewState": "AgIAAAYAAAAAZmZmZmYswA0AAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-06T22:35:40.168Z",
+              "WhenOpened": "2025-05-09T15:05:26.215Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\appsettings.json",
-              "RelativeDocumentMoniker": "ticketer\\appsettings.json",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\appsettings.json",
-              "RelativeToolTip": "ticketer\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-05-07T20:50:54.243Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "showdetails.cshtml",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Views\\Movie\\showdetails.cshtml",
-              "RelativeDocumentMoniker": "ticketer\\Views\\Movie\\showdetails.cshtml",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Views\\Movie\\showdetails.cshtml",
-              "RelativeToolTip": "ticketer\\Views\\Movie\\showdetails.cshtml",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-08T18:35:12.005Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Views\\Movie\\Index.cshtml",
-              "RelativeDocumentMoniker": "ticketer\\Views\\Movie\\Index.cshtml",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Views\\Movie\\Index.cshtml",
-              "RelativeToolTip": "ticketer\\Views\\Movie\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-07T11:27:30.486Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 12,
-              "Title": "ticketer.csproj",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\ticketer.csproj",
-              "RelativeDocumentMoniker": "ticketer\\ticketer.csproj",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\ticketer.csproj",
-              "RelativeToolTip": "ticketer\\ticketer.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-05-07T02:54:49.496Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "MovieViewModel.cs",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\ViewModels\\MovieViewModel.cs",
-              "RelativeDocumentMoniker": "ticketer\\ViewModels\\MovieViewModel.cs",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\ViewModels\\MovieViewModel.cs",
-              "RelativeToolTip": "ticketer\\ViewModels\\MovieViewModel.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAowAsAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-07T20:43:23.876Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "MovieController.cs",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Controllers\\MovieController.cs",
-              "RelativeDocumentMoniker": "ticketer\\Controllers\\MovieController.cs",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Controllers\\MovieController.cs",
-              "RelativeToolTip": "ticketer\\Controllers\\MovieController.cs",
-              "ViewState": "AgIAABwBAAAAAAAAAAAAwEcBAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-07T11:25:36.476Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "Privacy.cshtml",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Views\\Home\\Privacy.cshtml",
-              "RelativeDocumentMoniker": "ticketer\\Views\\Home\\Privacy.cshtml",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Views\\Home\\Privacy.cshtml",
-              "RelativeToolTip": "ticketer\\Views\\Home\\Privacy.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-08T21:10:05.578Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "ticketer\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "ticketer\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-08T21:15:18.358Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "_ViewStart.cshtml",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Views\\_ViewStart.cshtml",
-              "RelativeDocumentMoniker": "ticketer\\Views\\_ViewStart.cshtml",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Views\\_ViewStart.cshtml",
-              "RelativeToolTip": "ticketer\\Views\\_ViewStart.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-08T21:12:09.657Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "BookingConfirmation.cshtml",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Views\\BookingConfirmation.cshtml",
-              "RelativeDocumentMoniker": "ticketer\\Views\\BookingConfirmation.cshtml",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Views\\BookingConfirmation.cshtml",
-              "RelativeToolTip": "ticketer\\Views\\BookingConfirmation.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-08T21:15:04.652Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "TicketController.cs",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Controllers\\TicketController.cs",
-              "RelativeDocumentMoniker": "ticketer\\Controllers\\TicketController.cs",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Controllers\\TicketController.cs",
-              "RelativeToolTip": "ticketer\\Controllers\\TicketController.cs",
-              "ViewState": "AgIAADwAAAAAXmZmZqYmwEgAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T12:54:25.518Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 57,
-              "Title": "20250508183127_editdatabase.cs",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Migrations\\20250508183127_editdatabase.cs",
-              "RelativeDocumentMoniker": "ticketer\\Migrations\\20250508183127_editdatabase.cs",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Migrations\\20250508183127_editdatabase.cs",
-              "RelativeToolTip": "ticketer\\Migrations\\20250508183127_editdatabase.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T18:31:27.953Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "MovieFormOptionsVM.cs",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\ViewModels\\MovieFormOptionsVM.cs",
-              "RelativeDocumentMoniker": "ticketer\\ViewModels\\MovieFormOptionsVM.cs",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\ViewModels\\MovieFormOptionsVM.cs",
-              "RelativeToolTip": "ticketer\\ViewModels\\MovieFormOptionsVM.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABCAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T01:54:30.782Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 55,
-              "Title": "20250508150106_nullable-order-id.cs",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Migrations\\20250508150106_nullable-order-id.cs",
-              "RelativeDocumentMoniker": "ticketer\\Migrations\\20250508150106_nullable-order-id.cs",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Migrations\\20250508150106_nullable-order-id.cs",
-              "RelativeToolTip": "ticketer\\Migrations\\20250508150106_nullable-order-id.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T15:01:06.172Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "Ticket.cs",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Models\\Ticket.cs",
-              "RelativeDocumentMoniker": "ticketer\\Models\\Ticket.cs",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Models\\Ticket.cs",
-              "RelativeToolTip": "ticketer\\Models\\Ticket.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAA6wBUAAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-07T17:38:47.455Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "TimingController.cs",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Controllers\\TimingController.cs",
-              "RelativeDocumentMoniker": "ticketer\\Controllers\\TimingController.cs",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Controllers\\TimingController.cs",
-              "RelativeToolTip": "ticketer\\Controllers\\TimingController.cs",
-              "ViewState": "AgIAADoAAAAAAAAAAAAAwEgAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T12:54:23.194Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "Timing.cs",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Models\\Timing.cs",
-              "RelativeDocumentMoniker": "ticketer\\Models\\Timing.cs",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Models\\Timing.cs",
-              "RelativeToolTip": "ticketer\\Models\\Timing.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAqwAwAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-07T17:37:09.141Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "Showtime.cs",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Models\\Showtime.cs",
-              "RelativeDocumentMoniker": "ticketer\\Models\\Showtime.cs",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Models\\Showtime.cs",
-              "RelativeToolTip": "ticketer\\Models\\Showtime.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-07T12:09:08.213Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 56,
-              "Title": "20250508132226_m4.cs",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Migrations\\20250508132226_m4.cs",
-              "RelativeDocumentMoniker": "ticketer\\Migrations\\20250508132226_m4.cs",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Migrations\\20250508132226_m4.cs",
-              "RelativeToolTip": "ticketer\\Migrations\\20250508132226_m4.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T13:22:26.737Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 34,
-              "Title": "AppDbContext.cs",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Data\\AppDbContext.cs",
-              "RelativeDocumentMoniker": "ticketer\\Data\\AppDbContext.cs",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Data\\AppDbContext.cs",
-              "RelativeToolTip": "ticketer\\Data\\AppDbContext.cs",
-              "ViewState": "AgIAAGQAAAAAAAAAAAAcwHcAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-07T10:16:31.288Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 54,
-              "Title": "20250508130648_m2.cs",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Migrations\\20250508130648_m2.cs",
-              "RelativeDocumentMoniker": "ticketer\\Migrations\\20250508130648_m2.cs",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Migrations\\20250508130648_m2.cs",
-              "RelativeToolTip": "ticketer\\Migrations\\20250508130648_m2.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T13:06:48.683Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 53,
-              "Title": "20250508131342_m3.cs",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Migrations\\20250508131342_m3.cs",
-              "RelativeDocumentMoniker": "ticketer\\Migrations\\20250508131342_m3.cs",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Migrations\\20250508131342_m3.cs",
-              "RelativeToolTip": "ticketer\\Migrations\\20250508131342_m3.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T13:13:42.81Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 36,
-              "Title": "ErrorViewModel.cs",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Models\\ErrorViewModel.cs",
-              "RelativeDocumentMoniker": "ticketer\\Models\\ErrorViewModel.cs",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Models\\ErrorViewModel.cs",
-              "RelativeToolTip": "ticketer\\Models\\ErrorViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-07T17:39:24.126Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 37,
               "Title": "Producer.cs",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Models\\Producer.cs",
+              "DocumentMoniker": "D:\\field_training\\Eticket\\ticketer\\Models\\Producer.cs",
               "RelativeDocumentMoniker": "ticketer\\Models\\Producer.cs",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Models\\Producer.cs",
+              "ToolTip": "D:\\field_training\\Eticket\\ticketer\\Models\\Producer.cs",
               "RelativeToolTip": "ticketer\\Models\\Producer.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAADwvx0AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -760,79 +279,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
-              "Title": "MovieActor.cs",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Models\\MovieActor.cs",
-              "RelativeDocumentMoniker": "ticketer\\Models\\MovieActor.cs",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Models\\MovieActor.cs",
-              "RelativeToolTip": "ticketer\\Models\\MovieActor.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAADwvwQAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-07T17:39:10.596Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 51,
-              "Title": "ShowtimeSeat.cs",
-              "DocumentMoniker": "C:\\Users\\MHz\\Source\\Repos\\ETicket2\\ticketer\\Models\\ShowtimeSeat.cs",
-              "ToolTip": "C:\\Users\\MHz\\Source\\Repos\\ETicket2\\ticketer\\Models\\ShowtimeSeat.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAQwBQAAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-07T12:15:30.003Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 38,
-              "Title": "Actor.cs",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Models\\Actor.cs",
-              "RelativeDocumentMoniker": "ticketer\\Models\\Actor.cs",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Models\\Actor.cs",
-              "RelativeToolTip": "ticketer\\Models\\Actor.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvxUAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-04T13:22:23.684Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 52,
-              "Title": "Seat.cs",
-              "DocumentMoniker": "C:\\Users\\MHz\\Source\\Repos\\ETicket2\\ticketer\\Models\\Seat.cs",
-              "ToolTip": "C:\\Users\\MHz\\Source\\Repos\\ETicket2\\ticketer\\Models\\Seat.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAIwBsAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-07T18:30:03.982Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 39,
-              "Title": "TicketOrder.cs",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Models\\TicketOrder.cs",
-              "RelativeDocumentMoniker": "ticketer\\Models\\TicketOrder.cs",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Models\\TicketOrder.cs",
-              "RelativeToolTip": "ticketer\\Models\\TicketOrder.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAIwB8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-07T17:38:52.015Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 41,
-              "Title": "Program.cs",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Program.cs",
-              "RelativeDocumentMoniker": "ticketer\\Program.cs",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Program.cs",
-              "RelativeToolTip": "ticketer\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-07T20:50:52.901Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 13,
               "Title": "20250507100029_update.cs",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Migrations\\20250507100029_update.cs",
+              "DocumentMoniker": "D:\\field_training\\Eticket\\ticketer\\Migrations\\20250507100029_update.cs",
               "RelativeDocumentMoniker": "ticketer\\Migrations\\20250507100029_update.cs",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Migrations\\20250507100029_update.cs",
+              "ToolTip": "D:\\field_training\\Eticket\\ticketer\\Migrations\\20250507100029_update.cs",
               "RelativeToolTip": "ticketer\\Migrations\\20250507100029_update.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -840,11 +291,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 22,
               "Title": "20250507205830_AddedTimingToShowtimes.cs",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Migrations\\20250507205830_AddedTimingToShowtimes.cs",
+              "DocumentMoniker": "D:\\field_training\\Eticket\\ticketer\\Migrations\\20250507205830_AddedTimingToShowtimes.cs",
               "RelativeDocumentMoniker": "ticketer\\Migrations\\20250507205830_AddedTimingToShowtimes.cs",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Migrations\\20250507205830_AddedTimingToShowtimes.cs",
+              "ToolTip": "D:\\field_training\\Eticket\\ticketer\\Migrations\\20250507205830_AddedTimingToShowtimes.cs",
               "RelativeToolTip": "ticketer\\Migrations\\20250507205830_AddedTimingToShowtimes.cs",
               "ViewState": "AgIAAEAAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -852,11 +303,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 14,
               "Title": "Cinema.cs",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Models\\Cinema.cs",
+              "DocumentMoniker": "D:\\field_training\\Eticket\\ticketer\\Models\\Cinema.cs",
               "RelativeDocumentMoniker": "ticketer\\Models\\Cinema.cs",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Models\\Cinema.cs",
+              "ToolTip": "D:\\field_training\\Eticket\\ticketer\\Models\\Cinema.cs",
               "RelativeToolTip": "ticketer\\Models\\Cinema.cs",
               "ViewState": "AgIAAA8AAAAAAAAAAAAUwB8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -864,11 +315,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 15,
               "Title": "ApplicationUser.cs",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Models\\ApplicationUser.cs",
+              "DocumentMoniker": "D:\\field_training\\Eticket\\ticketer\\Models\\ApplicationUser.cs",
               "RelativeDocumentMoniker": "ticketer\\Models\\ApplicationUser.cs",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Models\\ApplicationUser.cs",
+              "ToolTip": "D:\\field_training\\Eticket\\ticketer\\Models\\ApplicationUser.cs",
               "RelativeToolTip": "ticketer\\Models\\ApplicationUser.cs",
               "ViewState": "AgIAAAEAAAAAAAAAAAAiwBMAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -876,11 +327,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 16,
               "Title": "20250507185939_fixdublicate.cs",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Migrations\\20250507185939_fixdublicate.cs",
+              "DocumentMoniker": "D:\\field_training\\Eticket\\ticketer\\Migrations\\20250507185939_fixdublicate.cs",
               "RelativeDocumentMoniker": "ticketer\\Migrations\\20250507185939_fixdublicate.cs",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Migrations\\20250507185939_fixdublicate.cs",
+              "ToolTip": "D:\\field_training\\Eticket\\ticketer\\Migrations\\20250507185939_fixdublicate.cs",
               "RelativeToolTip": "ticketer\\Migrations\\20250507185939_fixdublicate.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -888,21 +339,23 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 17,
               "Title": "20250507184908_update_showtime.cs",
               "DocumentMoniker": "D:\\field_training\\Eticket\\ETicket_WebApp\\ticketer\\Migrations\\20250507184908_update_showtime.cs",
+              "RelativeDocumentMoniker": "ETicket_WebApp\\ticketer\\Migrations\\20250507184908_update_showtime.cs",
               "ToolTip": "D:\\field_training\\Eticket\\ETicket_WebApp\\ticketer\\Migrations\\20250507184908_update_showtime.cs",
+              "RelativeToolTip": "ETicket_WebApp\\ticketer\\Migrations\\20250507184908_update_showtime.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-07T18:49:08.538Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 18,
               "Title": "UserRoles.cs",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Data\\Static\\UserRoles.cs",
+              "DocumentMoniker": "D:\\field_training\\Eticket\\ticketer\\Data\\Static\\UserRoles.cs",
               "RelativeDocumentMoniker": "ticketer\\Data\\Static\\UserRoles.cs",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Data\\Static\\UserRoles.cs",
+              "ToolTip": "D:\\field_training\\Eticket\\ticketer\\Data\\Static\\UserRoles.cs",
               "RelativeToolTip": "ticketer\\Data\\Static\\UserRoles.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -910,11 +363,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 20,
               "Title": "20250507122401_fix.cs",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Migrations\\20250507122401_fix.cs",
+              "DocumentMoniker": "D:\\field_training\\Eticket\\ticketer\\Migrations\\20250507122401_fix.cs",
               "RelativeDocumentMoniker": "ticketer\\Migrations\\20250507122401_fix.cs",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Migrations\\20250507122401_fix.cs",
+              "ToolTip": "D:\\field_training\\Eticket\\ticketer\\Migrations\\20250507122401_fix.cs",
               "RelativeToolTip": "ticketer\\Migrations\\20250507122401_fix.cs",
               "ViewState": "AgIAAFMAAAAAvMzMzMwUwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -922,11 +375,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 21,
               "Title": "20250507121050_up2.cs",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Migrations\\20250507121050_up2.cs",
+              "DocumentMoniker": "D:\\field_training\\Eticket\\ticketer\\Migrations\\20250507121050_up2.cs",
               "RelativeDocumentMoniker": "ticketer\\Migrations\\20250507121050_up2.cs",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Migrations\\20250507121050_up2.cs",
+              "ToolTip": "D:\\field_training\\Eticket\\ticketer\\Migrations\\20250507121050_up2.cs",
               "RelativeToolTip": "ticketer\\Migrations\\20250507121050_up2.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -934,11 +387,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 19,
               "Title": "MovieCategory.cs",
-              "DocumentMoniker": "E:\\ETicket_WebApp\\ticketer\\Data\\Enums\\MovieCategory.cs",
+              "DocumentMoniker": "D:\\field_training\\Eticket\\ticketer\\Data\\Enums\\MovieCategory.cs",
               "RelativeDocumentMoniker": "ticketer\\Data\\Enums\\MovieCategory.cs",
-              "ToolTip": "E:\\ETicket_WebApp\\ticketer\\Data\\Enums\\MovieCategory.cs",
+              "ToolTip": "D:\\field_training\\Eticket\\ticketer\\Data\\Enums\\MovieCategory.cs",
               "RelativeToolTip": "ticketer\\Data\\Enums\\MovieCategory.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
