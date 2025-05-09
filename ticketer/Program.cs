@@ -23,15 +23,20 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
+    
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<AppDbContext>()
     .AddDefaultTokenProviders();
 
 var app = builder.Build();
+app.UseAuthentication(); 
+app.UseAuthorization();
 AppDbInitializer.Seed(app); // for static data
 await AppDbInitializer.SeedUsersAndRolesAsync(app); // for users and roles
 
+app.UseAuthentication(); 
+app.UseAuthorization();
 // Configure the HTTP request pipeline
 if (!app.Environment.IsDevelopment())
 {
@@ -44,8 +49,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthentication(); // 🔥 YOU MUST ADD THIS
-app.UseAuthorization();
+
 
 app.MapControllerRoute(
     name: "default",

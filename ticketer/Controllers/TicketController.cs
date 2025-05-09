@@ -41,7 +41,7 @@ namespace ticketer.Controllers
         }
 
         // Book selected seats
-        [HttpPost]
+        
         [HttpPost]
         public async Task<IActionResult> BookSeats(int timingId, List<int> selectedTicketIds)
         {
@@ -87,6 +87,7 @@ namespace ticketer.Controllers
             {
                 ticket.Order_Id = order.Order_Id;
                 ticket.IsBooked = true;
+             _context.Tickets.Update(ticket);
             }
             await _context.SaveChangesAsync();
 
