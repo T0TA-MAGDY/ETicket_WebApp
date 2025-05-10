@@ -46,19 +46,18 @@
                 </div>
 
                 <div class="form-group">
-    <label asp-for="MovieCategory"></label>
-    <select asp-for="MovieCategory" class="form-control">
-        <option value="">-- Select Movie Category --</option> <!-- Default option -->
-
-        @foreach (var category in Enum.GetValues(typeof(MovieCategory)).Cast<MovieCategory>())
-        {
-            <option value="@category" >
-                @category
-            </option>
-        }
-    </select>
-    <span asp-validation-for="MovieCategory" class="text-danger"></span>
-</div>
+                    <label asp-for="MovieCategory"></label>
+                    <select asp-for="MovieCategory" class="form-control">
+                        <option value="">-- Select Movie Category --</option> <!-- Default option -->
+                        @foreach (var category in Enum.GetValues(typeof(MovieCategory)).Cast<MovieCategory>())
+                        {
+                            <option value="@category">
+                                @category
+                            </option>
+                        }
+                    </select>
+                    <span asp-validation-for="MovieCategory" class="text-danger"></span>
+                </div>
             </div>
         </div>
 
@@ -105,6 +104,10 @@
                 @for (int i = 0; i < Model.Showtimes.Count; i++)
                 {
                     <div class="showtime-group border p-3 mb-3">
+                        <!-- Hidden fields for existing records -->
+                        <input type="hidden" asp-for="Showtimes[i].ShowTimeId" />
+                        <input type="hidden" asp-for="Showtimes[i].TimingId" />
+
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
@@ -136,7 +139,7 @@
                                     <span asp-validation-for="Showtimes[i].Price" class="text-danger"></span>
                                 </div>
                             </div>
-                            
+
                             <div class="col-md-2 d-flex align-items-end">
                                 <button type="button" class="btn btn-danger remove-showtime">Remove</button>
                             </div>
@@ -144,6 +147,7 @@
                     </div>
                 }
             </div>
+
             <button type="button" id="add-showtime" class="btn btn-primary mt-2">
                 <i class="fas fa-plus"></i> Add Showtime
             </button>
@@ -161,74 +165,74 @@
     <partial name="_ValidationScriptsPartial" />
     <script>
         $(document).ready(function () {
-            // Add new showtime
             $('#add-showtime').click(function () {
                 var index = $('#showtimes-container .showtime-group').length;
                 var tomorrow = new Date();
                 tomorrow.setDate(tomorrow.getDate() + 1);
 
                 var newShowtime = `
-                                    <div class="showtime-group border p-3 mb-3">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label>Cinema</label>
-                                                    <select name="Showtimes[${index}].CinemaId" class="form-control">
-                                                        <option value="">-- Select Cinema --</option>
+        <div class="showtime-group border p-3 mb-3">
+            <input type="hidden" name="Showtimes[${index}].ShowTimeId" value="0" />
+            <input type="hidden" name="Showtimes[${index}].TimingId" value="0" />
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Cinema</label>
+                        <select name="Showtimes[${index}].CinemaId" class="form-control">
+                            <option value="">-- Select Cinema --</option>
         @foreach (var cinema in Model.FormOptions.Cinemas)
         {
-                                                                    <option value="@cinema.Value">@cinema.Text</option>
+                                    <option value="@cinema.Value">@cinema.Text</option>
         }
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <label>Date</label>
-                                                    <input type="date" name="Showtimes[${index}].Date"
-                                                           class="form-control"
-                                                           value="${tomorrow.toISOString().split('T')[0]}" />
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <label>Time</label>
-                                                    <input type="time" name="Showtimes[${index}].StartTime"
-                                                           class="form-control"
-                                                           value="18:00" />
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-    <div class="form-group">
-        <label>Price</label>
-        <input type="number" step="0.01" name="Showtimes[${index}].Price" class="form-control" value="100.00" />
-    </div>
-</div>
-                                            <div class="col-md-2 d-flex align-items-end">
-                                                <button type="button" class="btn btn-danger remove-showtime">Remove</button>
-                                            </div>
-                                        </div>
-                                    </div>`;
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input type="date" name="Showtimes[${index}].Date"
+                               class="form-control"
+                               value="${tomorrow.toISOString().split('T')[0]}" />
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Time</label>
+                        <input type="time" name="Showtimes[${index}].StartTime"
+                               class="form-control"
+                               value="18:00" />
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label>Price</label>
+                        <input type="number" step="0.01" name="Showtimes[${index}].Price" class="form-control" value="100.00" />
+                    </div>
+                </div>
+                <div class="col-md-2 d-flex align-items-end">
+                    <button type="button" class="btn btn-danger remove-showtime">Remove</button>
+                </div>
+            </div>
+        </div>`;
                 $('#showtimes-container').append(newShowtime);
             });
 
-            // Remove showtime
             $(document).on('click', '.remove-showtime', function () {
                 $(this).closest('.showtime-group').remove();
                 reindexShowtimes();
             });
 
-           function reindexShowtimes() {
-    $('#showtimes-container .showtime-group').each(function (i) {
-        $(this).find('select, input').each(function () {
-            var name = $(this).attr('name');
-            if (name) {
-                name = name.replace(/Showtimes\[\d+\]/g, `Showtimes[${i}]`);
-                $(this).attr('name', name);
+            function reindexShowtimes() {
+                $('#showtimes-container .showtime-group').each(function (i) {
+                    $(this).find('select, input').each(function () {
+                        var name = $(this).attr('name');
+                        if (name) {
+                            name = name.replace(/Showtimes\[\d+\]/g, Showtimes[${ i }]);
+                            $(this).attr('name', name);
+                        }
+                    });
+                });
             }
-        });
-    });
-}
         });
     </script>
 }
