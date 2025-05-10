@@ -263,7 +263,6 @@ namespace ticketer.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, MovieViewModel model)
         {
-
             if (!ModelState.IsValid)
             {
                 model.FormOptions = new MovieFormOptionsVM
@@ -275,12 +274,8 @@ namespace ticketer.Controllers
                 return View(model);
             }
 
-
             var movie = await _context.Movies.FindAsync(id);
-            if (movie == null)
-            {
-                return NotFound();
-            }
+            if (movie == null) return NotFound();
 
             movie.Name = model.Name;
             movie.Description = model.Description;
@@ -290,38 +285,52 @@ namespace ticketer.Controllers
             movie.MovieCategory = model.MovieCategory;
             movie.ProducerId = model.ProducerId;
 
-            // Remove existing actors and add new ones
+            // Remove old actors
             var existingActors = _context.MovieActors.Where(ma => ma.MovieId == id).ToList();
             _context.MovieActors.RemoveRange(existingActors);
             foreach (var actorId in model.ActorIds)
             {
-                _context.MovieActors.Add(new MovieActor
-                {
-                    MovieId = id,
-                    ActorId = actorId
-                });
+                _context.MovieActors.Add(new MovieActor { MovieId = id, ActorId = actorId });
             }
 
-            // Get existing showtimes with timings
+            // Gather form IDs
+            var submittedShowtimeIds = model.Showtimes.Where(s => s.ShowTimeId > 0).Select(s => s.ShowTimeId).ToList();
+            var submittedTimingIds = model.Showtimes.Where(s => s.TimingId > 0).Select(s => s.TimingId).ToList();
+
+            // Load existing showtimes
             var existingShowtimes = await _context.Showtimes
                 .Include(s => s.Timings)
                 .Where(s => s.Movie_Id == id)
                 .ToListAsync();
 
+            // Remove deleted showtimes
+            var showtimesToRemove = existingShowtimes
+                .Where(es => !submittedShowtimeIds.Contains(es.Showtime_Id))
+                .ToList();
+
+            foreach (var st in showtimesToRemove)
+            {
+                var timingIds = st.Timings.Select(t => t.Id).ToList();
+                var tickets = _context.Tickets.Where(t => timingIds.Contains(t.Timing_Id));
+                _context.Tickets.RemoveRange(tickets);
+
+                _context.Timings.RemoveRange(st.Timings);
+                _context.Showtimes.Remove(st);
+            }
+
+            // Handle updates and new showtimes/timings
             foreach (var showtimeVM in model.Showtimes.Where(s => s.CinemaId > 0))
             {
                 Showtime existingShowtime = null;
 
                 if (showtimeVM.ShowTimeId > 0)
                 {
-                    // Try to find existing showtime
                     existingShowtime = existingShowtimes.FirstOrDefault(s => s.Showtime_Id == showtimeVM.ShowTimeId);
                     if (existingShowtime != null)
                     {
                         existingShowtime.Cinema_Id = showtimeVM.CinemaId;
                         existingShowtime.Date = showtimeVM.Date;
 
-                        // If TimingId > 0, update existing timing
                         if (showtimeVM.TimingId > 0)
                         {
                             var existingTiming = existingShowtime.Timings.FirstOrDefault(t => t.Id == showtimeVM.TimingId);
@@ -333,7 +342,6 @@ namespace ticketer.Controllers
                         }
                         else
                         {
-                            // Add new timing to existing showtime
                             var newTiming = new Timing
                             {
                                 showtime_id = existingShowtime.Showtime_Id,
@@ -343,7 +351,6 @@ namespace ticketer.Controllers
                             _context.Timings.Add(newTiming);
                             await _context.SaveChangesAsync();
 
-                            // Add new tickets for this timing
                             for (int row = 1; row <= 10; row++)
                             {
                                 for (int seat = 1; seat <= 8; seat++)
@@ -363,7 +370,6 @@ namespace ticketer.Controllers
                 }
                 else
                 {
-                    // Add new showtime
                     var newShowtime = new Showtime
                     {
                         Movie_Id = id,
@@ -373,7 +379,6 @@ namespace ticketer.Controllers
                     _context.Showtimes.Add(newShowtime);
                     await _context.SaveChangesAsync();
 
-                    // Add new timing
                     var newTiming = new Timing
                     {
                         showtime_id = newShowtime.Showtime_Id,
@@ -383,7 +388,6 @@ namespace ticketer.Controllers
                     _context.Timings.Add(newTiming);
                     await _context.SaveChangesAsync();
 
-                    // Add tickets for this timing
                     for (int row = 1; row <= 10; row++)
                     {
                         for (int seat = 1; seat <= 8; seat++)
@@ -401,12 +405,9 @@ namespace ticketer.Controllers
                 }
             }
 
-
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction("ShowDetails", new { id = id });
         }
-
-
 
         private async Task<List<SelectListItem>> GetActors()
         {

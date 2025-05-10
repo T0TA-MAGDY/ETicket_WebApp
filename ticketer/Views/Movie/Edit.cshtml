@@ -227,7 +227,8 @@
                     $(this).find('select, input').each(function () {
                         var name = $(this).attr('name');
                         if (name) {
-                            name = name.replace(/Showtimes\[\d+\]/g, Showtimes[${ i }]);
+                            name = name.replace(/Showtimes\[\d+\]/g, `Showtimes[${i}]`);
+
                             $(this).attr('name', name);
                         }
                     });
