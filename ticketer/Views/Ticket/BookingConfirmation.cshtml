@@ -34,9 +34,10 @@
                         <td>@ticket.SeatNumber</td>
                         <td>@ticket.RowNumber</td>
                         <td>@ticket.SeatType</td>
-<td>
-    $@(ticket.SeatType == "Premium" ? ticket.timing.Price + 50 : ticket.timing.Price)
-</td>                    </tr>
+                        <td>
+                            $@(ticket.SeatType == "Premium" ? ticket.timing.Price + 50 : ticket.timing.Price)
+                        </td>
+                    </tr>
                 }
             </tbody>
         </table>
@@ -50,34 +51,94 @@
         <p><strong>Time:</strong> @Model.Tickets.FirstOrDefault()?.timing?.StartTime.ToString(@"hh\:mm")</p>
     </div>
 
-    <div style="text-align: center; margin-top: 30px;">
-        <a href="@Url.Action("Index", "Movie")" class="btn btn-primary">Back to Movie List</a>
-        <a href="@Url.Action("Payment", "Ticket", new { orderId = Model.Order_Id })" class="btn btn-success">Proceed to
-            Payment</a>
+    <!-- Button Section with Flexbox for Horizontal Layout -->
+    <div style="display: flex; justify-content: center; gap: 15px; margin-top: 30px;">
+        <a class="btn btn-primary" asp-controller="Movie" asp-action="Index">Back to Movie List</a>
+        
+        <button id="fake-paypal-button" style="
+            background-color: #009CDE;
+            border: 1px solid #0070ba;
+            border-radius: 30px;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0px 1px 6px rgba(0,0,0,0.2);
+            transition: background-color 0.3s ease, transform 0.1s ease;
+        ">
+            <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_111x69.jpg" alt="PayPal" style="height: 20px; margin-right: 10px;" />
+            Pay with PayPal
+        </button>
+    </div>
+ @if (Model.PaymentStatus == "Paid")
+    {
+        <h4>Payment Confirmation</h4>
+        <p>Thank you for your purchase. Your tickets have been successfully booked. 🎟️</p>
+
+       
+    }
+    <!-- Spinner (hidden by default) -->
+    <div id="loading-spinner" style="display:none; margin-top:15px; text-align: center;">
+        <img src="https://i.gifer.com/ZZ5H.gif" width="50" height="50" alt="Loading..." />
+        <p>Processing Payment...</p>
     </div>
 </div>
 
+@section Scripts {
+<script>
+    document.getElementById('fake-paypal-button').addEventListener('click', function () {
+        var button = this;
+        button.disabled = true;  // disable button
+        button.innerText = 'Processing...';  // change button text
+        button.style.backgroundColor = '#006AB6';  // darken the color for effect
+        button.style.transform = 'scale(0.98)';  // add click effect
+
+        // Display the loading spinner below the button
+        document.getElementById('loading-spinner').style.display = 'block';  
+
+        // Simulate a short payment processing delay
+        setTimeout(function () {
+            var orderId = '@Model.Order_Id';
+            var url = '@Url.Action("ConfirmPaymentAndBookSeats", "Ticket", new { orderId = "__orderId__" })';
+            url = url.replace("__orderId__", orderId);
+
+            window.location.href = url; // redirect
+        }, 2000); // wait 2 seconds
+    });
+</script>
+}
+
 <style>
+    #fake-paypal-button:hover {
+        background-color: #0070ba;  /* Lighten color on hover */
+        box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    #fake-paypal-button:active {
+        transform: scale(0.95);  /* Button shrink when clicked */
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Flexbox Layout for Button Section */
     .container {
         max-width: 800px;
         margin: 0 auto;
         padding: 20px;
     }
 
-    table {
-        width: 100%;
-        margin-top: 15px;
-    }
-
-    th,
-    td {
-        padding: 10px;
-        text-align: left;
-    }
-
     .btn {
         padding: 10px 25px;
         border-radius: 5px;
         margin: 5px;
+    }
+
+    /* Spinner Styles */
+    #loading-spinner {
+        margin-top: 15px;
+        text-align: center;
     }
 </style>

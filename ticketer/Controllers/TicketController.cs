@@ -99,7 +99,6 @@ namespace ticketer.Controllers
             foreach (var ticket in tickets)
             {
                 ticket.Order_Id = order.Order_Id;
-                ticket.IsBooked = true;
                 _context.Tickets.Update(ticket);
             }
             await _context.SaveChangesAsync();
@@ -129,6 +128,38 @@ namespace ticketer.Controllers
 
             return View(order);
         }
+
+public async Task<IActionResult> ConfirmPaymentAndBookSeats(int orderId)
+{
+    var order = await _context.TicketOrders
+        .Include(o => o.Tickets)
+        .FirstOrDefaultAsync(o => o.Order_Id == orderId);
+
+    if (order == null)
+    {
+                       return NotFound("Order not found.");
+
+    }
+
+    if (order.PaymentStatus != "Paid")
+    {
+        order.PaymentStatus = "Paid";  // Mark payment as confirmed
+
+        foreach (var ticket in order.Tickets)
+        {
+            ticket.IsBooked = true;  // Book each ticket
+            _context.Tickets.Update(ticket);  // Update ticket status
+        }
+
+        _context.TicketOrders.Update(order);  // Update order status
+        await _context.SaveChangesAsync();  // Save changes to the database
+
+    }
+
+return RedirectToAction("BookingConfirmation", new { orderId = orderId });
+}
+
+
 
 
     }
