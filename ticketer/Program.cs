@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ticketer.Data.Static;
+using ticketer.Data.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +29,9 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<AppDbContext>()
     .AddDefaultTokenProviders();
+builder.Services.AddScoped<IProducersService, ProducersService>();
+builder.Services.AddScoped<IActorsService, ActorsService>();
+builder.Services.AddScoped<ICinemasService, CinemasService>();
 
 var app = builder.Build();
 app.UseAuthentication(); 
@@ -35,8 +39,7 @@ app.UseAuthorization();
 AppDbInitializer.Seed(app); // for static data
 await AppDbInitializer.SeedUsersAndRolesAsync(app); // for users and roles
 
-app.UseAuthentication(); 
-app.UseAuthorization();
+
 // Configure the HTTP request pipeline
 if (!app.Environment.IsDevelopment())
 {
@@ -49,7 +52,8 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
