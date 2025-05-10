@@ -8,6 +8,7 @@ namespace ticketer.ViewModels
 
     public class MovieViewModel
     {
+        public int Id { get; set; }
         [Required(ErrorMessage = "The Name field is required.")]
         public string Name { get; set; }
 
@@ -39,9 +40,3 @@ namespace ticketer.ViewModels
         public MovieFormOptionsVM FormOptions { get; set; } = new();
     }
 }
-
-    
-    
-
-
-

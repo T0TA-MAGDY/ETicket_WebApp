@@ -19,27 +19,27 @@ namespace ticketer.Controllers
         {
             _context = context;
         }
-            public IActionResult Index(string searchString)
+        public IActionResult Index(string searchString)
+        {
+            var moviesQuery = _context.Movies
+                .Include(m => m.Producer)
+                .Include(m => m.MovieActors)
+                    .ThenInclude(ma => ma.Actor)
+                .Include(m => m.Showtimes)
+                    .ThenInclude(s => s.Cinema)
+                .AsQueryable();
+
+            if (!string.IsNullOrEmpty(searchString))
             {
-                var moviesQuery = _context.Movies
-                    .Include(m => m.Producer)
-                    .Include(m => m.MovieActors)
-                        .ThenInclude(ma => ma.Actor)
-                    .Include(m => m.Showtimes)
-                        .ThenInclude(s => s.Cinema)
-                    .AsQueryable();
-
-                if (!string.IsNullOrEmpty(searchString))
-                {
-                    moviesQuery = moviesQuery.Where(m =>
-                        m.Name.Contains(searchString) ||
-                        m.MovieCategory.ToString().Contains(searchString) ||
-                        m.Showtimes.Any(s => s.Cinema.Name.Contains(searchString)));
-                }
-
-                var movies = moviesQuery.ToList();
-                return View(movies);
+                moviesQuery = moviesQuery.Where(m =>
+                    m.Name.Contains(searchString) ||
+                    m.MovieCategory.ToString().Contains(searchString) ||
+                    m.Showtimes.Any(s => s.Cinema.Name.Contains(searchString)));
             }
+
+            var movies = moviesQuery.ToList();
+            return View(movies);
+        }
 
 
         public IActionResult Showdetails(int id)
@@ -196,7 +196,7 @@ namespace ticketer.Controllers
             {
                 await transaction.RollbackAsync();
 
-                var errorMessage = ex.InnerException?.Message ?? ex.Message; 
+                var errorMessage = ex.InnerException?.Message ?? ex.Message;
                 ModelState.AddModelError("", "Error saving movie: " + errorMessage);
 
                 model.FormOptions.Producers = await GetProducers();
@@ -218,6 +218,8 @@ namespace ticketer.Controllers
                     .ThenInclude(ma => ma.Actor)
                 .Include(m => m.Showtimes)
                     .ThenInclude(s => s.Cinema)
+                .Include(m => m.Showtimes)
+                    .ThenInclude(s => s.Timings)
                 .FirstOrDefaultAsync(m => m.Id == id);
 
             if (movie == null)
@@ -227,6 +229,7 @@ namespace ticketer.Controllers
 
             var viewModel = new MovieViewModel
             {
+                Id = movie.Id,
                 Name = movie.Name,
                 Description = movie.Description,
                 ImageURL = movie.ImageURL,
@@ -235,6 +238,15 @@ namespace ticketer.Controllers
                 MovieCategory = movie.MovieCategory,
                 ProducerId = movie.ProducerId,
                 ActorIds = movie.MovieActors.Select(ma => ma.ActorId).ToList(),
+                Showtimes = movie.Showtimes.SelectMany(s => s.Timings.Select(t => new ShowtimeInputVM
+                {
+                    ShowTimeId = s.Showtime_Id,
+                    TimingId = t.Id,
+                    CinemaId = s.Cinema_Id,
+                    Date = s.Date,
+                    StartTime = t.StartTime,
+                    Price = t.Price
+                })).ToList(),
                 FormOptions = new MovieFormOptionsVM
                 {
                     Actors = await GetActors(),
@@ -243,8 +255,9 @@ namespace ticketer.Controllers
                 }
             };
 
-            return View("Edit",viewModel);
+            return View("Edit", viewModel);
         }
+
         // POST: Movie/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -262,89 +275,138 @@ namespace ticketer.Controllers
                 return View(model);
             }
 
-            try
+
+            var movie = await _context.Movies.FindAsync(id);
+            if (movie == null)
             {
-                var movie = await _context.Movies.FindAsync(id);
-                if (movie == null)
-                {
-                    return NotFound();
-                }
+                return NotFound();
+            }
 
-                movie.Name = model.Name;
-                movie.Description = model.Description;
-                movie.ImageURL = model.ImageURL;
-                movie.TrailerURL = model.TrailerURL;
-                movie.ReleaseDate = model.ReleaseDate;
-                movie.MovieCategory = model.MovieCategory;
-                movie.ProducerId = model.ProducerId;
+            movie.Name = model.Name;
+            movie.Description = model.Description;
+            movie.ImageURL = model.ImageURL;
+            movie.TrailerURL = model.TrailerURL;
+            movie.ReleaseDate = model.ReleaseDate;
+            movie.MovieCategory = model.MovieCategory;
+            movie.ProducerId = model.ProducerId;
 
-                // Remove existing actors and add new ones
-                var existingActors = _context.MovieActors.Where(ma => ma.MovieId == id).ToList();
-                _context.MovieActors.RemoveRange(existingActors);
-                foreach (var actorId in model.ActorIds)
+            // Remove existing actors and add new ones
+            var existingActors = _context.MovieActors.Where(ma => ma.MovieId == id).ToList();
+            _context.MovieActors.RemoveRange(existingActors);
+            foreach (var actorId in model.ActorIds)
+            {
+                _context.MovieActors.Add(new MovieActor
                 {
-                    _context.MovieActors.Add(new MovieActor
+                    MovieId = id,
+                    ActorId = actorId
+                });
+            }
+
+            // Get existing showtimes with timings
+            var existingShowtimes = await _context.Showtimes
+                .Include(s => s.Timings)
+                .Where(s => s.Movie_Id == id)
+                .ToListAsync();
+
+            foreach (var showtimeVM in model.Showtimes.Where(s => s.CinemaId > 0))
+            {
+                Showtime existingShowtime = null;
+
+                if (showtimeVM.ShowTimeId > 0)
+                {
+                    // Try to find existing showtime
+                    existingShowtime = existingShowtimes.FirstOrDefault(s => s.Showtime_Id == showtimeVM.ShowTimeId);
+                    if (existingShowtime != null)
                     {
-                        MovieId = id,
-                        ActorId = actorId
-                    });
-                }
+                        existingShowtime.Cinema_Id = showtimeVM.CinemaId;
+                        existingShowtime.Date = showtimeVM.Date;
 
-                // Update showtimes
-                var existingShowtimes = _context.Showtimes.Where(s => s.Movie_Id == id).ToList();
-                _context.Showtimes.RemoveRange(existingShowtimes);
-                foreach (var showtime in model.Showtimes.Where(s => s.CinemaId > 0))
+                        // If TimingId > 0, update existing timing
+                        if (showtimeVM.TimingId > 0)
+                        {
+                            var existingTiming = existingShowtime.Timings.FirstOrDefault(t => t.Id == showtimeVM.TimingId);
+                            if (existingTiming != null)
+                            {
+                                existingTiming.StartTime = showtimeVM.StartTime;
+                                existingTiming.Price = showtimeVM.Price;
+                            }
+                        }
+                        else
+                        {
+                            // Add new timing to existing showtime
+                            var newTiming = new Timing
+                            {
+                                showtime_id = existingShowtime.Showtime_Id,
+                                StartTime = showtimeVM.StartTime,
+                                Price = showtimeVM.Price
+                            };
+                            _context.Timings.Add(newTiming);
+                            await _context.SaveChangesAsync();
+
+                            // Add new tickets for this timing
+                            for (int row = 1; row <= 10; row++)
+                            {
+                                for (int seat = 1; seat <= 8; seat++)
+                                {
+                                    _context.Tickets.Add(new Ticket
+                                    {
+                                        Timing_Id = newTiming.Id,
+                                        RowNumber = row,
+                                        SeatNumber = seat,
+                                        SeatType = (row <= 2) ? "Premium" : "Regular",
+                                        IsBooked = false
+                                    });
+                                }
+                            }
+                        }
+                    }
+                }
+                else
                 {
+                    // Add new showtime
                     var newShowtime = new Showtime
                     {
-                        Movie_Id = movie.Id,
-                        Cinema_Id = showtime.CinemaId,
-                        Date = showtime.Date
+                        Movie_Id = id,
+                        Cinema_Id = showtimeVM.CinemaId,
+                        Date = showtimeVM.Date
                     };
                     _context.Showtimes.Add(newShowtime);
-                    await _context.SaveChangesAsync(); // Get ID
+                    await _context.SaveChangesAsync();
 
+                    // Add new timing
                     var newTiming = new Timing
                     {
                         showtime_id = newShowtime.Showtime_Id,
-                        StartTime = showtime.StartTime,
-                        Price = showtime.Price
+                        StartTime = showtimeVM.StartTime,
+                        Price = showtimeVM.Price
                     };
                     _context.Timings.Add(newTiming);
                     await _context.SaveChangesAsync();
 
-                    // Add tickets for each showtime
-                    for (int row = 1; row <= 10; row++) // 10 rows
+                    // Add tickets for this timing
+                    for (int row = 1; row <= 10; row++)
                     {
-                        for (int seat = 1; seat <= 8; seat++) // 8 seats per row
+                        for (int seat = 1; seat <= 8; seat++)
                         {
-                            var ticket = new Ticket
+                            _context.Tickets.Add(new Ticket
                             {
                                 Timing_Id = newTiming.Id,
                                 RowNumber = row,
                                 SeatNumber = seat,
-                                SeatType = (row <= 2) ? "Premium" : "Regular", // First 2 rows Premium
+                                SeatType = (row <= 2) ? "Premium" : "Regular",
                                 IsBooked = false
-                            };
-                            _context.Tickets.Add(ticket);
+                            });
                         }
                     }
                 }
-
-                await _context.SaveChangesAsync();
-
-                return RedirectToAction("Index");
             }
-            catch (Exception ex)
-            {
-                var errorMessage = ex.InnerException?.Message ?? ex.Message;
-                ModelState.AddModelError("", "Error updating movie: " + errorMessage);
-                model.FormOptions.Producers = await GetProducers();
-                model.FormOptions.Actors = await GetActors();
-                model.FormOptions.Cinemas = await GetCinemas();
-                return View(model);
-            }
+
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
         }
+
+
 
         private async Task<List<SelectListItem>> GetActors()
         {

@@ -8,7 +8,8 @@ namespace ticketer.ViewModels
         [Required(ErrorMessage = "Cinema selection is required")]
         [Range(1, int.MaxValue, ErrorMessage = "Please select a cinema")]
         public int CinemaId { get; set; }
-
+        public int ShowTimeId { get; set; }
+        public int TimingId { get; set; }
         [Required(ErrorMessage = "Show date is required")]
         [DataType(DataType.Date)]
         public DateTime Date { get; set; } = DateTime.Today.AddDays(1); // Default to tomorrow
