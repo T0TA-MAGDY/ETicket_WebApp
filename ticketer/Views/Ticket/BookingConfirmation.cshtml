@@ -34,8 +34,9 @@
                         <td>@ticket.SeatNumber</td>
                         <td>@ticket.RowNumber</td>
                         <td>@ticket.SeatType</td>
-                        <td>$@ticket.timing.Price</td>
-                    </tr>
+<td>
+    $@(ticket.SeatType == "Premium" ? ticket.timing.Price + 50 : ticket.timing.Price)
+</td>                    </tr>
                 }
             </tbody>
         </table>
@@ -46,12 +47,13 @@
         <p><strong>Movie:</strong> @Model.Tickets.FirstOrDefault()?.timing?.Showtime?.Movie?.Name</p>
         <p><strong>Cinema:</strong> @Model.Tickets.FirstOrDefault()?.timing?.Showtime?.Cinema?.Name</p>
         <p><strong>Date:</strong> @Model.Tickets.FirstOrDefault()?.timing?.Showtime?.Date.ToString("yyyy-MM-dd")</p>
-        <p><strong>Time:</strong> @Model.Tickets.FirstOrDefault()?.timing?.StartTime.ToString("HH:mm")</p>
+        <p><strong>Time:</strong> @Model.Tickets.FirstOrDefault()?.timing?.StartTime.ToString(@"hh\:mm")</p>
     </div>
 
     <div style="text-align: center; margin-top: 30px;">
         <a href="@Url.Action("Index", "Movie")" class="btn btn-primary">Back to Movie List</a>
-        <a href="@Url.Action("Payment", "Ticket", new { orderId = Model.Order_Id })" class="btn btn-success">Proceed to Payment</a>
+        <a href="@Url.Action("Payment", "Ticket", new { orderId = Model.Order_Id })" class="btn btn-success">Proceed to
+            Payment</a>
     </div>
 </div>
 
@@ -61,14 +63,18 @@
         margin: 0 auto;
         padding: 20px;
     }
+
     table {
         width: 100%;
         margin-top: 15px;
     }
-    th, td {
+
+    th,
+    td {
         padding: 10px;
         text-align: left;
     }
+
     .btn {
         padding: 10px 25px;
         border-radius: 5px;

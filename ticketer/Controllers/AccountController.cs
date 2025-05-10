@@ -42,7 +42,7 @@ namespace ticketer.Controllers
                 var passwordCheck = await _userManager.CheckPasswordAsync(user, loginVM.Password);
                 if (passwordCheck)
                 {
-                    var result = await _signInManager.PasswordSignInAsync(user, loginVM.Password, false, false);
+                    var result = await _signInManager.PasswordSignInAsync(user, loginVM.Password, true, false);
                     if (result.Succeeded)
                     {
                         return RedirectToAction("Index", "Movie");
