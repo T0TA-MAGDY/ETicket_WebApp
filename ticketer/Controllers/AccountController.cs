@@ -76,11 +76,20 @@ namespace ticketer.Controllers
             };
             var newUserResponse = await _userManager.CreateAsync(newUser, registerVM.Password);
 
-            if (newUserResponse.Succeeded)
-                await _userManager.AddToRoleAsync(newUser, UserRoles.User);
+             if (newUserResponse.Succeeded)
+    {
+        await _userManager.AddToRoleAsync(newUser, UserRoles.User);
+        await _signInManager.SignInAsync(newUser, isPersistent: false);
+        return RedirectToAction("Index", "Movie");
+    }
 
-            return View("RegisterCompleted");
-        }
+    // ❗ If failed, add all errors to the page
+    foreach (var error in newUserResponse.Errors)
+    {
+        ModelState.AddModelError(string.Empty, error.Description);
+    }
+
+    return View(registerVM);}
 
         [HttpPost]
         public async Task<IActionResult> Logout()
