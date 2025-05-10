@@ -41,7 +41,7 @@ namespace ticketer.Controllers
         }
 
         // Book selected seats
-        
+
         [HttpPost]
         public async Task<IActionResult> BookSeats(int timingId, List<int> selectedTicketIds)
         {
@@ -67,7 +67,20 @@ namespace ticketer.Controllers
                 return Unauthorized("You must be logged in to book seats.");
 
             // Calculate the total price
-            var totalPrice = tickets.Count * timing.Price;
+            // Calculate total price depending on seat type
+            decimal totalPrice = 0;
+            foreach (var ticket in tickets)
+            {
+                decimal seatPrice = timing.Price;
+
+                if (ticket.SeatType == "Premium")
+                {
+                    seatPrice += 50;
+                }
+
+
+                totalPrice += seatPrice;
+            }
 
             // Create a new ticket order
             var order = new TicketOrder
@@ -87,7 +100,7 @@ namespace ticketer.Controllers
             {
                 ticket.Order_Id = order.Order_Id;
                 ticket.IsBooked = true;
-             _context.Tickets.Update(ticket);
+                _context.Tickets.Update(ticket);
             }
             await _context.SaveChangesAsync();
 
@@ -96,21 +109,26 @@ namespace ticketer.Controllers
 
         // Booking confirmation page
         public async Task<IActionResult> BookingConfirmation(int orderId)
-{
-    var order = await _context.TicketOrders
-        .Include(o => o.Tickets)
-        .ThenInclude(t => t.timing)
-        .ThenInclude(t => t.Showtime)
-        .ThenInclude(s => s.Cinema)
-        .FirstOrDefaultAsync(o => o.Order_Id == orderId);
+        {
+            var order = await _context.TicketOrders
+                .Include(o => o.Tickets)
+                .ThenInclude(t => t.timing)
+                .ThenInclude(t => t.Showtime)
+                .ThenInclude(s => s.Cinema)
+                .Include(o => o.Tickets)
+                .ThenInclude(t => t.timing)
+                    .ThenInclude(t => t.Showtime)
+                        .ThenInclude(s => s.Movie)
 
-    if (order == null)
-    {
-        return NotFound("Order not found.");
-    }
+                .FirstOrDefaultAsync(o => o.Order_Id == orderId);
 
-    return View(order);
-}
+            if (order == null)
+            {
+                return NotFound("Order not found.");
+            }
+
+            return View(order);
+        }
 
 
     }
