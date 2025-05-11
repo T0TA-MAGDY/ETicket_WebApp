@@ -124,10 +124,6 @@
           "SelectedChildIndex": 4,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
-            },
-            {
               "$type": "Document",
               "DocumentIndex": 16,
               "Title": "_ViewStart.cshtml",
@@ -154,6 +150,10 @@
               "IsPinned": true
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "appsettings.json",
@@ -174,7 +174,7 @@
               "RelativeDocumentMoniker": "ticketer\\Controllers\\MovieController.cs",
               "ToolTip": "D:\\Desktop\\Etickets\\ticketer\\Controllers\\MovieController.cs",
               "RelativeToolTip": "ticketer\\Controllers\\MovieController.cs",
-              "ViewState": "AgIAAIkBAAAAAAAAAAAAwJgBAABEAAAAAAAAAA==",
+              "ViewState": "AgIAAIkBAAAAAAAAAAAAwJMBAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-10T09:33:26.512Z",
               "EditorCaption": ""
