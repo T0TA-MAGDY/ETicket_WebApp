@@ -12,12 +12,13 @@ using System.Threading.Tasks;
 
 namespace ticketer.Controllers
 {
-    [Authorize(Roles = UserRoles.Admin)]
+[Authorize(Roles = UserRoles.Admin)]
     public class ActorsController : Controller
     {
         private readonly IActorsService _service;
 
-        public ActorsController(IActorsService service)
+
+    public ActorsController(IActorsService service)
         {
             _service = service;
         }
@@ -40,11 +41,22 @@ namespace ticketer.Controllers
         {
             if (!ModelState.IsValid)
             {
+                foreach (var key in ModelState.Keys)
+                {
+                    var state = ModelState[key];
+                    foreach (var error in state.Errors)
+                    {
+                        Console.WriteLine($"Model error in {key}: {error.ErrorMessage}");
+                    }
+                }
+
                 return View(actor);
             }
+
             await _service.AddAsync(actor);
             return RedirectToAction(nameof(Index));
         }
+
 
         //Get: Actors/Details/1
         [AllowAnonymous]
@@ -93,4 +105,7 @@ namespace ticketer.Controllers
             return RedirectToAction(nameof(Index));
         }
     }
+
+
 }
+

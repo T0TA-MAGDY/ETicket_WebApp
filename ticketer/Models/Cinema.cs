@@ -21,7 +21,7 @@ namespace ticketer.Models
         public string Name { get; set; }
 
         [Display(Name = "Address")]
-        [Required(ErrorMessage = "Cinema Address is required")]
+        [Required(ErrorMessage = "Cinema name is required")]
         public string Address { get; set; }
 
         // Initialize collections to avoid null references

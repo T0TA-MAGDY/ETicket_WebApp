@@ -26,6 +26,6 @@ namespace ticketer.Models
         public string Bio { get; set; }
 
         //Relationships
-    public ICollection<MovieActor> MovieActors { get; set; }
+        public ICollection<MovieActor> MovieActors { get; set; } = new List<MovieActor>();
     }
 }
