@@ -3,13 +3,7 @@
 @{
     ViewData["Title"] = "List of Movies";
 }
-<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4" style="padding: 0.5rem 1rem;">
-    <a class="navbar-brand" href="#" style="font-size: 1.2rem;">Movie Search</a>
-    <form asp-controller="Movie" asp-action="Index" method="get" class="form-inline my-2 my-lg-0 ml-auto" style="width: 100%; max-width: 600px;">
-        <input type="text" name="searchString" class="form-control mr-sm-2" placeholder="Search by name, cinema, or category..." value="@Context.Request.Query["searchString"]" style="font-size: 0.9rem; padding: 0.5rem;" />
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="font-size: 0.9rem; padding: 0.5rem 1rem;">Search</button>
-    </form>
-</nav>
+
 
 <div class="mb-3">
     <a asp-action="Add" class="btn btn-primary">➕ Add New Movie</a>

@@ -34,11 +34,16 @@
                                     <a class="dropdown-item" asp-controller="Producers" asp-action="Index"><i class="bi bi-headset"></i> Producers</a>
                                     <a class="dropdown-item" asp-controller="Actors" asp-action="Index"><i class="bi bi-person-square"></i> Actors</a>
                                 </div>
+                            
                             </li>
                         
 
                     </ul>
-
+                    <a class="navbar-brand" href="#" style="font-size: 1.2rem;">Movie Search</a>
+                    <form asp-controller="Movie" asp-action="Index" method="get" class="form-inline my-2 my-lg-0 ml-auto" style="width: 100%; max-width: 600px;">
+                        <input type="text" name="searchString" class="form-control mr-sm-2" placeholder="Search by name, cinema, or category..." value="@Context.Request.Query["searchString"]" style="font-size: 0.9rem; padding: 0.5rem;" />
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="font-size: 0.9rem; padding: 0.5rem 1rem;">Search</button>
+                    </form>
                    
 
                    
