@@ -1,8 +1,9 @@
 ﻿@model Movie
 
-
-<a href="@Url.Action("Edit", "Movie", new { id = Model.Id })" class="btn btn-warning">Edit</a>
-
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <a href="@Url.Action("Edit", "Movie", new { id = Model.Id })" class="btn btn-warning">Edit</a>
+}
 
 <h2>@Model.Name</h2>
 <p>@Model.Description</p>

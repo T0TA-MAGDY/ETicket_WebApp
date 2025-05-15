@@ -25,6 +25,6 @@ namespace ticketer.Models
         [Required(ErrorMessage = "Biography is required")]
         public string Bio { get; set; }
 
-    public ICollection<Movie> Movies { get; set; }
+    public ICollection<Movie>? Movies { get; set; }
     }
 }

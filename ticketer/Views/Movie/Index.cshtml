@@ -4,10 +4,12 @@
     ViewData["Title"] = "List of Movies";
 }
 
-
-<div class="mb-3">
-    <a asp-action="Add" class="btn btn-primary">➕ Add New Movie</a>
-</div>
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <div class="mb-3">
+        <a asp-action="Add" class="btn btn-primary">➕ Add New Movie</a>
+    </div>
+}
 <div class="row">
     @foreach (var item in Model)
     {
