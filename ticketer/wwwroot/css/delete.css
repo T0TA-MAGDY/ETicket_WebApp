@@ -1,0 +1,123 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    background: url('/img/BG1.png') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+}
+
+.page-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 100vh;
+    padding: 0 15px;
+}
+
+h1 {
+    text-align: left;
+    font-size: 30px;
+    margin: 30px 0;
+    font-weight: 600;
+}
+
+.delete {
+    padding: 0 30px;
+    width: 100%;
+    max-width: 750px;
+}
+
+.form-group {
+    margin-bottom: 35px;
+}
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+    }
+
+        .form-group label + input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #fff;
+            background-color: #3b1c1c;
+            color: #fff;
+            font-size: 14px;
+        }
+
+    .form-group span {
+        color: red;
+        font-size: 12px;
+    }
+
+    .form-group img {
+        display: block;
+        margin: 0 auto 15px;
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 3px solid #fff;
+    }
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+    .buttons a,
+    .buttons .sub {
+        padding: 8px 20px;
+        border-radius: 8px;
+        border: 2px solid #fff;
+        background-color: #000;
+        color: #fff;
+        text-decoration: none;
+        transition: 0.3s;
+        font-weight: 500;
+        text-align: center;
+    }
+
+        .buttons a:hover, .buttons .sub:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 24px;
+        text-align: center;
+    }
+
+    .delete {
+        padding: 0 15px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+        .buttons a,
+        .buttons .sub {
+            width: 100%;
+        }
+}
+
+@media (max-width: 480px) {
+    .form-group img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .form-group label + input {
+        font-size: 12px;
+        padding: 8px;
+    }
+}

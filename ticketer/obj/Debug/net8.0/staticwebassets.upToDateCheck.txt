@@ -1,5 +1,9 @@
+wwwroot\css\delete.css
+wwwroot\css\details.css
+wwwroot\css\edit.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
+wwwroot\img\BG1.png
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
 wwwroot\lib\bootstrap\dist\css\bootstrap.css.map

@@ -3,38 +3,40 @@
 @{
     ViewData["Title"] = "Delete cinema";
 }
+<link rel="stylesheet" href="~/css/delete.css" />
+<div class="page-wrapper">
+    <div class="delete">
+        <h1>Delete confirmation for @Model.Name</h1>
 
-<div class="row text">
-    <div class="col-md-8 offset-2">
-        <p>
-            <h1>Delete confirmation for @Model.Name</h1>
-        </p>
-        <div class="row">
-            <div class="col-md-8 offset-2">
-                <div class="form-group text-center">
-                    <img class="border-info rounded-circle" style="max-width: 150px" id="LogoPreview" />
-                </div>
-                <div class="form-group">
-                    <label asp-for="Logo" class="control-label"></label>
-                    <input asp-for="Logo" class="form-control" readonly />
-                    <span asp-validation-for="Logo" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Name" class="control-label"></label>
-                    <input asp-for="Name" class="form-control" readonly />
-                    <span asp-validation-for="Name" class="text-danger"></span>
-                </div>
-               
 
-                <div class="form-group">
-                    <form asp-action="Delete">
-                        <input type="hidden" asp-for="Id" />
-                        <input type="submit" value="Confirm" class="btn btn-danger float-right" />
-                    </form>
-                    <a class="btn btn-outline-secondary" asp-action="Index">Show All</a>
-                </div>
-            </div>
+        <div class="form-group">
+            <img id="LogoPreview" />
         </div>
+        <div class="form-group">
+            <label asp-for="Logo"></label>
+            <input asp-for="Logo" readonly />
+            <span asp-validation-for="Logo"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" readonly />
+            <span asp-validation-for="Name"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Address"></label>
+            <input asp-for="Address" readonly />
+            <span asp-validation-for="Address"></span>
+        </div>
+
+        <div class="form-group buttons">
+            <a asp-action="Index">back</a>
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="Id" />
+                <input type="submit" value="Confirm" class="sub" />
+            </form>
+
+        </div>
+
     </div>
 </div>
 
