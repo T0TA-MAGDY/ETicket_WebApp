@@ -2,46 +2,40 @@
 
 @{
     ViewData["Title"] = "Add a new producer";
+    ViewBag.Hidefooter = true;
 }
 
-<div class="row text">
-    <div class="col-md-8 offset-2">
-        <p>
-            <h1>Add a New Producer</h1>
-        </p>
-        <div class="row">
-            <div class="col-md-8 offset-2">
-                <form asp-action="Create">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add a New Producer</title>
+    <link rel="stylesheet" href="~/css/styles.css">
+</head>
+<body>
+    <div class="page-content">
+        <div class="container">
+            <h2>Add a New Producer</h2>
+            <form>
+                <label for="pf">Profile Picture</label>
+                <input type="text" id="pf" name="pf">
 
-                    <div class="form-group text-center">
-                        <img id="ProfilePicturePreview" class="border-info rounded-circle" style="max-width: 150px" />
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="ProfilePictureURL" class="control-label"></label>
-                        <input asp-for="ProfilePictureURL" class="form-control" />
-                        <span asp-validation-for="ProfilePictureURL" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="FullName" class="control-label"></label>
-                        <input asp-for="FullName" class="form-control" />
-                        <span asp-validation-for="FullName" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Bio" class="control-label"></label>
-                        <input asp-for="Bio" class="form-control" />
-                        <span asp-validation-for="Bio" class="text-danger"></span>
-                    </div>
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name">
 
-                    <div class="form-group">
-                        <input type="submit" value="Create" class="btn btn-outline-success float-right" />
-                        <a class="btn btn-outline-secondary" asp-action="Index">Show All</a>
-                    </div>
-                </form>
-            </div>
+                <label for="Bio">Biography</label>
+                <input type="text" id="Bio" name="Bio">
+
+                <div class="buttons">
+                    <button type="button" class="back">Back</button>
+                    <button type="submit" class="create">Create</button>
+                </div>
+            </form>
         </div>
     </div>
-</div>
+</body>
+</html>
+
 
 @section Scripts {
     <script>
