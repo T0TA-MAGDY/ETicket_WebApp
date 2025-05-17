@@ -1,3 +1,1 @@
-C:\Users\tec\ETicket_WebApp\ticketer\wwwroot\css\delete.cs
-C:\Users\tec\ETicket_WebApp\ticketer\wwwroot\css\details.cs
-C:\Users\tec\ETicket_WebApp\ticketer\wwwroot\css\edit.cs
+C:\Users\tec\ETicket_WebApp\ticketer\wwwroot\css\producer&actorIndex.css

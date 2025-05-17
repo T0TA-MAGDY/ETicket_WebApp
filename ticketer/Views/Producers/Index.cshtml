@@ -3,44 +3,41 @@
 @{
     ViewData["Title"] = "List of Producers";
 }
+<link rel="stylesheet" href="~/css/producer_actorIndex.css" />
+<div class="CAP-container">
 
-<div class="row">
-    <div class="col-md-8 offset-md-2">
-
-        <table class="table">
-            <thead>
-                <tr class="text-center">
-                    <th>@Html.DisplayNameFor(model => model.ProfilePictureURL)</th>
-                    <th>@Html.DisplayNameFor(model => model.FullName)</th>
-                    <th>@Html.DisplayNameFor(model => model.Bio)</th>
-                   
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
+    <table>
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.ProfilePictureURL)</th>
+                <th>@Html.DisplayNameFor(model => model.FullName)</th>
+                <th>@Html.DisplayNameFor(model => model.Bio)</th>
+                @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                 {
-                    <tr>
-                        <td class="align-middle">
-                            <img class="rounded-circle" src="@item.ProfilePictureURL" alt="@item.FullName" style="max-width: 150px" />
-                        </td>
-                        <td class="align-middle">
-                            @Html.DisplayFor(modelItem => item.FullName)
-                        </td>
-                        <td class="align-middle">
-                            @Html.DisplayFor(modelItem => item.Bio)
-                        </td>
-                        
-                            <td class="align-middle">
-                                <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i>Edit </a> |
-                                <a class="btn btn-outline-info" asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-eye"></i>Details </a> |
-                                <a class="btn btn-danger text-white" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash"></i>Delete </a>
-                            </td>
-                        
-                    </tr>
+                    <th>Actions</th>
                 }
-            </tbody>
-        </table>
-    </div>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><img src="@item.ProfilePictureURL" alt="@item.FullName" /></td>
+                    <td>@Html.DisplayFor(modelItem => item.FullName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Bio) </td>
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <td>
+                            <a class="btn btn-edit" asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-edit"></i> Edit </a>
+                            <a class="btn btn-details" asp-action="Details" asp-route-id="@item.Id"><i class="fa fa-eye"></i> Details </a>
+                            <a class="btn btn-delete" asp-action="Delete" asp-route-id="@item.Id"><i class="fa fa-trash"></i> Delete </a>
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
-@await Html.PartialAsync("_CreateItem", "Producers")
 
+
+@await Html.PartialAsync("_CreateItem", "Producers") 

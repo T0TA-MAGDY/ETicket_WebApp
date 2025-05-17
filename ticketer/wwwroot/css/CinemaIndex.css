@@ -1,0 +1,150 @@
+﻿body {
+    background: url('/img/cinema1.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+.CAP-container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+    table-layout: fixed;
+}
+
+th, td {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #aaa;
+    font-size: 1.1rem;
+    word-break: break-word;
+}
+
+th {
+    color: #fff;
+    font-weight: bold;
+    border-bottom: 3px solid #eee;
+    font-size: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+tr:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    transition: background-color 0.3s ease-in-out;
+}
+
+img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+}
+
+.btn {
+    padding: 8px 14px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    margin: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.btn-edit {
+    background-color: #5a5a5a;
+    color: white;
+}
+
+.btn-details {
+    background-color: #888;
+    color: white;
+}
+
+.btn-delete {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.profile-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    th, td {
+        font-size: 1rem;
+        padding: 12px;
+    }
+
+    img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 6px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .CAP-container {
+        padding: 1rem;
+    }
+
+    table, thead, tbody, th, td, tr {
+        display: block;
+        width: 100%;
+    }
+
+    thead {
+        display: none;
+    }
+
+    tr {
+        margin-bottom: 1rem;
+        border-bottom: 2px solid #ccc;
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 1rem;
+        border-radius: 10px;
+    }
+
+    td {
+        text-align: left;
+        position: relative;
+        padding-left: 50%;
+        font-size: 1rem;
+    }
+
+        td::before {
+            content: attr(data-label);
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-weight: bold;
+            white-space: nowrap;
+            color: #ddd;
+        }
+}

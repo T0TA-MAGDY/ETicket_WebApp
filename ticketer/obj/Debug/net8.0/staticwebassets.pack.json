@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\ticketer.8hzkqnh6mi.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\tec\\ETicket_WebApp\\ticketer\\wwwroot\\css\\CinemaIndex.css",
+      "PackagePath": "staticwebassets\\css\\CinemaIndex.css"
+    },
+    {
       "Id": "C:\\Users\\tec\\ETicket_WebApp\\ticketer\\wwwroot\\css\\delete.css",
       "PackagePath": "staticwebassets\\css\\delete.css"
     },
@@ -17,6 +21,10 @@
       "PackagePath": "staticwebassets\\css\\edit.css"
     },
     {
+      "Id": "C:\\Users\\tec\\ETicket_WebApp\\ticketer\\wwwroot\\css\\producer&actorIndex.css",
+      "PackagePath": "staticwebassets\\css\\producer&actorIndex.css"
+    },
+    {
       "Id": "C:\\Users\\tec\\ETicket_WebApp\\ticketer\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -27,6 +35,10 @@
     {
       "Id": "C:\\Users\\tec\\ETicket_WebApp\\ticketer\\wwwroot\\img\\BG1.png",
       "PackagePath": "staticwebassets\\img\\BG1.png"
+    },
+    {
+      "Id": "C:\\Users\\tec\\ETicket_WebApp\\ticketer\\wwwroot\\img\\cinema1.jpg",
+      "PackagePath": "staticwebassets\\img\\cinema1.jpg"
     },
     {
       "Id": "C:\\Users\\tec\\ETicket_WebApp\\ticketer\\wwwroot\\js\\site.js",
