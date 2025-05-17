@@ -2,51 +2,39 @@
 
 @{
     ViewData["Title"] = "Add a new cinema";
+    ViewBag.Hidefooter = true;
 }
 
-<div class="row text">
-    <div class="col-md-8 offset-2">
-        <p>
-            <h1>Add a New Cinema</h1>
-        </p>
-        <div class="row">
-            <div class="col-md-8 offset-2">
-                <form asp-action="Create">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add a New Cinema</title>
+    <link rel="stylesheet" href="~/css/styles.css">
+</head>
+<body> 
+    <div class="page-content">
+    <div class="container">
+        <h2>Add a New Cinema</h2>
+        <form>
+            <label for="logo"> Cinema Logo</label>
+            <input type="text" id="logo" name="logo">
 
-                    <div class="form-group text-center">
-                        <img id="CinemaLogoPreview" class="border-info rounded-circle" style="max-width: 150px" />
-                    </div>
+            <label for="name">Cinema Name</label>
+            <input type="text" id="name" name="name">
 
-                    <div class="form-group">
-                        <label asp-for="Logo" class="control-label"></label>
-                        <input asp-for="Logo" class="form-control" />
-                        <span asp-validation-for="Logo" class="text-danger"></span>
-                    </div>
+            <label for="description">Description</label>
+            <input type="text" id="description" name="description">
 
-                    <div class="form-group">
-                        <label asp-for="Name" class="control-label"></label>
-                        <input asp-for="Name" class="form-control" />
-                        <span asp-validation-for="Name" class="text-danger"></span>
-                    </div>
-
-                   
-                    <div class="form-group">
-                        <label asp-for="Address" class="control-label"></label>
-                        <input asp-for="Address" class="form-control" />
-                        <span asp-validation-for="Address" class="text-danger"></span>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="submit" value="Create" class="btn btn-outline-success float-right" />
-                        <a class="btn btn-outline-secondary" asp-action="Index">Show All</a>
-                    </div>
-                </form>
-
+            <div class="buttons">
+                <button type="button" class="back">Back</button>
+                <button type="submit" class="create">Create</button>
             </div>
-        </div>
+        </form>
     </div>
-</div>
+    </div>
+</body>
+</html>
 
 @section Scripts {
     <script>
