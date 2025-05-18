@@ -1,0 +1,124 @@
+﻿body {
+    background: url('/img/blackred.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.cinema-screen {
+    Margin: 20px auto;
+    Width: 60%;
+    Background: linear-gradient(to right, #aa0000, #cc0000, #aa0000);
+    Text-align: center;
+    Padding: 12px;
+    Border-radius: 10px;
+    Font-weight: bold;
+    Color: white;
+    Box-shadow: 0 0 10px red;
+}
+
+.seats-layout {
+    Display: flex;
+    Flex-direction: column;
+    Align-items: center;
+    Margin-top: 30px;
+}
+
+.seat-row {
+    Display: flex;
+    Justify-content: center;
+    Margin-bottom: 12px;
+    Align-items: center;
+}
+
+.row-label {
+    Margin-right: 15px;
+    Width: 20px;
+    Font-weight: bold;
+    Color: #ff4d4d;
+}
+
+.seat {
+    Width: 35px;
+    Height: 35px;
+    Margin: 0 5px;
+    Border-radius: 8px;
+    Display: flex;
+    Align-items: center;
+    Justify-content: center;
+    Font-size: 12px;
+    Cursor: pointer;
+    Border: 1px solid white;
+    Transition: 0.2s;
+    Color: white;
+}
+
+.seat-checkbox {
+    display: none;
+}
+
+.seat.available {
+    Background-color: #3d0e0e;
+}
+
+.seat.booked {
+    Background-color: #555;
+    Cursor: not-allowed;
+    Color: #aaa;
+}
+
+.seat.premium {
+    Background-color: #b8860b; /* darker gold */
+    Color: black;
+}
+
+.seat:hover {
+    Transform: scale(1.1);
+    Box-shadow: 0 0 6px #aa0000;
+}
+
+.seat.selected {
+    background-color: navy;
+    color: white;
+    font-weight: bold;
+}
+
+.aisle-space {
+    Width: 30px;
+}
+
+.legend {
+    Display: flex;
+    Justify-content: center;
+    Margin-top: 30px;
+    Gap: 20px;
+}
+
+.legend-item {
+    Display: flex;
+    Align-items: center;
+    Gap: 8px;
+    Color: white;
+}
+
+.legend .seat {
+    Border: none;
+}
+
+Button[type=”submit”] {
+    Padding: 10px 25px;
+    Background-color: transparent;
+    Color: white;
+    Border: 1px solid white;
+    Border-radius: 6px;
+    Font-size: 16px;
+    Cursor: pointer;
+    Transition: 0.3s;
+}
+
+    Button[type=”submit”]:hover {
+        Background-color: white;
+        Color: black;
+    }

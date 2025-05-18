@@ -1,43 +1,76 @@
 ﻿@model Movie
 
-@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-{
-    <a href="@Url.Action("Edit", "Movie", new { id = Model.Id })" class="btn btn-warning">Edit</a>
-}
+<link rel="stylesheet" href="~/css/ShowDetails.css" />
 
-<h2>@Model.Name</h2>
-<p>@Model.Description</p>
+<div class="ShowDetails-container">
+    <div class="title-edit">
+        <h1>@Model.Name</h1>
+        <a href="@Url.Action("Edit", "Movie", new { id = Model.Id })" class="edit-btn">✏ Edit</a>
+    </div>
+    <div class="media-section">
+        <div class="poster-section">
+            <img src="@Model.ImageURL" alt="@Model.Name" class="movie-poster" />
+        </div>
+        <div class="trailer-section">
+            <video controls poster="@Model.ImageURL">
+                <source src="@Model.TrailerURL" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+    <hr class="thin-line" />
 
-<hr />
+    <div class="info-description">
+        <div class="details">
+            <p><strong>Genre:</strong> @Model.MovieCategory</p>
+            <p><strong>Release Date:</strong> @Model.ReleaseDate.ToString("dd MMMM yyyy")</p>
+            <p><strong>Producer:</strong> @Model.Producer</p>
+            <p><strong>Starring:</strong> @Model.ِActor</p>
+        </div>
+        <div class="description">
+            <p class="movie-description">@Model.Description</p>
+        </div>
 
-<h3>Showtimes</h3>
+    </div>
 
-@if (Model.Showtimes.Any())
-{
-    @foreach (var showTimeGroup in Model.Showtimes.GroupBy(st => st.Cinema.Name))
-    {
-        <h4>Cinema: @showTimeGroup.Key</h4>
+    <hr class="thin-line" />
 
-        @foreach (var dateGroup in showTimeGroup.GroupBy(st => st.Date))
+    <div class="showtimes-section">
+        <h2>ShowTimes</h2>
+
+        @if (Model.Showtimes.Any())
         {
-            <strong>Date: @dateGroup.Key.ToShortDateString()</strong>
-            <ul>
-                @foreach (var showTime in dateGroup)
-                {
-                    foreach (var timing in showTime.Timings)
+            @foreach (var showTimeGroup in Model.Showtimes.GroupBy(st => st.Cinema.Name))
+            {
+                <div class="cinema-group">
+                    <h3>@showTimeGroup.Key</h3>
+
+                    @foreach (var dateGroup in showTimeGroup.GroupBy(st => st.Date))
                     {
-                       
-                         <a class="btn btn-outline-primary float-right" asp-controller="Ticket" asp-action="ChooseSeats" asp-route-id="@timing.Id">@timing.StartTime.ToString(@"hh\:mm") </a>
+                        <div class="showtime-date">
+                            <strong>@dateGroup.Key.ToString("dd-MM-yyyy")</strong>
+                            <div class="timings">
+                                @foreach (var showTime in dateGroup)
+                                {
+                                    foreach (var timing in showTime.Timings)
+                                    {
+                                        <a class="time-btn" asp-controller="Ticket" asp-action="ChooseSeats" asp-route-id="@timing.Id">
+                                            @timing.StartTime.ToString(@"hh\:mm")
 
-                        
+                                        </a>
+
+                                    }
+                                }
+                            </div>
+                        </div>
+                        <div class="thick-short-line"></div>
                     }
-                }
-            </ul>
+                </div>
+            }
         }
-    }
-}
-else
-{
-    <p>No showtimes available for this movie.</p>
-}
-
+        else
+        {
+            <p>No showtimes available for this movie.</p>
+        }
+    </div>
+</div>

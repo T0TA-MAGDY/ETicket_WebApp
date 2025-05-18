@@ -6,86 +6,7 @@
     var groupedSeats = Model.GroupBy(s => s.RowNumber).OrderBy(g => g.Key);
 }
 
-<style>
-    .cinema-screen {
-        margin: 20px auto;
-        width: 60%;
-        background: linear-gradient(to right, #ccc, #eee, #ccc);
-        text-align: center;
-        padding: 10px;
-        border-radius: 10px;
-        font-weight: bold;
-    }
-
-    .seats-layout {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 30px;
-    }
-
-    .seat-row {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 12px;
-        align-items: center;
-    }
-
-    .row-label {
-        margin-right: 15px;
-        width: 20px;
-        font-weight: bold;
-    }
-
-    .seat {
-        width: 35px;
-        height: 35px;
-        margin: 0 5px;
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 12px;
-        cursor: pointer;
-        border: 1px solid #aaa;
-        transition: 0.2s;
-    }
-
-    .seat.available {
-        background-color: #e0e0e0;
-    }
-
-    .seat.booked {
-        background-color: #888;
-        cursor: not-allowed;
-    }
-
-    .seat.premium {
-        background-color: gold;
-    }
-
-    .seat:hover {
-        transform: scale(1.1);
-    }
-
-    .aisle-space {
-        width: 30px;
-    }
-
-    .legend {
-        display: flex;
-        justify-content: center;
-        margin-top: 30px;
-        gap: 20px;
-    }
-
-    .legend-item {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-</style>
-
+<link rel="stylesheet" href="~/css/ChooseSeats.css" />
 <h2 style="text-align:center;">🎥 Choose Your Seats</h2>
 
 <form asp-action="BookSeats" method="post" style="text-align:center;">
@@ -95,38 +16,38 @@
 
     <div class="seats-layout">
         @foreach (var rowGroup in groupedSeats)
-{
-    <div class="seat-row">
-        <div class="row-label">@((char)(rowGroup.Key + 64))</div>  <!-- A, B, C, etc. -->
-        
-        @* Loop through seats *@
-        @{
-            int seatCounter = 0;
-            foreach (var seat in rowGroup.OrderBy(s => s.SeatNumber))
-            {
-                // Insert aisle gap after 5 seats
-                if (seatCounter == 5)
-                {
-                    <div class="aisle-space"></div>
-                }
+        {
+            <div class="seat-row">
+                <div class="row-label">@((char)(rowGroup.Key + 64))</div>  <!-- A, B, C, etc. -->
 
-                var seatClass = seat.IsBooked ? "booked" : (seat.SeatType == "Premium" ? "premium" : "available");
+                @* Loop through seats *@
+                @{
+                    int seatCounter = 0;
+                    foreach (var seat in rowGroup.OrderBy(s => s.SeatNumber))
+                    {
+                        // Insert aisle gap after 5 seats
+                        if (seatCounter == 5)
+                        {
+                            <div class="aisle-space"></div>
+                        }
 
-                if (seat.IsBooked)
-                {
-                    <div class="seat @seatClass">@seat.SeatNumber</div>
-                }
-                else
-                {
-                    <input type="checkbox" name="selectedTicketIds" value="@seat.Ticket_Id" id="seat_@seat.Ticket_Id" class="seat-checkbox" />
-                    <label for="seat_@seat.Ticket_Id" class="seat @seatClass">@seat.SeatNumber</label>
-                }
+                        var seatClass = seat.IsBooked ? "booked" : (seat.SeatType == "Premium" ? "premium" : "available");
 
-                seatCounter++;
-            }
+                        if (seat.IsBooked)
+                        {
+                            <div class="seat @seatClass">@seat.SeatNumber</div>
+                        }
+                        else
+                        {
+                            <input type="checkbox" name="selectedTicketIds" value="@seat.Ticket_Id" id="seat_@seat.Ticket_Id" class="seat-checkbox" />
+                            <label for="seat_@seat.Ticket_Id" class="seat @seatClass">@seat.SeatNumber</label>
+                        }
+
+                        seatCounter++;
+                    }
+                }
+            </div>
         }
-    </div>
-}
 
     </div>
 
@@ -143,7 +64,7 @@
     </div>
 
     <div style="margin-top: 40px;">
-        <button type="submit" style="padding: 10px 25px; background-color: #007bff; color: white; border: none; border-radius: 6px; font-size: 16px; cursor: pointer;">
+        <button type="submit" style="padding: 10px 25px; background-color:  #aa0000; color: white; border: none; border-radius: 6px; font-size: 16px; cursor: pointer;">
             Confirm Seats
         </button>
     </div>
@@ -155,4 +76,25 @@
         var checkbox = document.getElementById(seatId);
         checkbox.checked = !checkbox.checked;
     }
+     document.addEventListener("DOMContentLoaded", function () {
+        const checkboxes = document.querySelectorAll(".seat-checkbox");
+
+        checkboxes.forEach(checkbox => {
+            const label = document.querySelector(`label[for="${checkbox.id}"]`);
+
+
+            if (checkbox.checked) {
+                label.classList.add("selected");
+            }
+
+
+            checkbox.addEventListener("change", function () {
+                if (checkbox.checked) {
+                    label.classList.add("selected");
+                } else {
+                    label.classList.remove("selected");
+                }
+            });
+        });
+    });
 </script>
