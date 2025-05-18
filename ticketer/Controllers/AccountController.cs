@@ -27,8 +27,55 @@ namespace ticketer.Controllers
             var users = await _context.Users.ToListAsync();
             return View(users);
         }
+        [HttpGet]
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
 
+            var user = await _userManager.GetUserAsync(User);
+            var result = await _userManager.ChangePasswordAsync(user, model.OldPassword, model.NewPassword);
+
+            if (result.Succeeded)
+                return RedirectToAction("Login");
+
+            foreach (var error in result.Errors)
+                ModelState.AddModelError(string.Empty, error.Description);
+
+            return View(model);
+        }
+        [HttpGet]
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> ForgotPassword(ForgotPassword model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            var user = await _userManager.FindByEmailAsync(model.Email);
+            if (user == null || !(await _userManager.IsEmailConfirmedAsync(user)))
+            {
+                // Don't reveal that the user does not exist
+                return RedirectToAction("Login");
+            }
+
+            var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+            var resetLink = Url.Action("ResetPassword", "Account", new { token, email = model.Email }, Request.Scheme);
+
+            // TODO: send the resetLink via email to the user
+            Console.WriteLine(resetLink); // for testing
+
+            return RedirectToAction("Login");
+        }
         public IActionResult Login() => View(new LoginVM());
 
         [HttpPost]
@@ -77,11 +124,12 @@ namespace ticketer.Controllers
             var newUserResponse = await _userManager.CreateAsync(newUser, registerVM.Password);
 
              if (newUserResponse.Succeeded)
-    {
-        await _userManager.AddToRoleAsync(newUser, UserRoles.User);
-        await _signInManager.SignInAsync(newUser, isPersistent: false);
-        return RedirectToAction("Index", "Movie");
-    }
+             {
+                       await _userManager.AddToRoleAsync(newUser, UserRoles.User);
+                       await _signInManager.SignInAsync(newUser, isPersistent: false);
+                       return RedirectToAction("Index", "Movie");
+             }
+
 
     // ❗ If failed, add all errors to the page
     foreach (var error in newUserResponse.Errors)
@@ -99,4 +147,5 @@ namespace ticketer.Controllers
         }
 
     }
+
 }

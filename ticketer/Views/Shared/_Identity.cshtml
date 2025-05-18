@@ -27,6 +27,11 @@ else
                     <i class="bi bi-list"></i> Orders
                 </a>
             </li>
+            <li>
+                <a class="dropdown-item" asp-controller="Account" asp-action="ChangePassword">
+                    <i class="bi bi-list"></i> Change Password
+                </a>
+            </li>
 
             @if (User.IsInRole("Admin"))
             {
