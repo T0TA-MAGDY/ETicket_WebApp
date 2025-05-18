@@ -27,5 +27,5 @@ namespace ticketer.Models
     public ApplicationUser User { get; set; }
         public ICollection<Ticket> Tickets { get; set; }
 
-}
     }
+}

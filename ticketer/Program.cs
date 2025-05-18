@@ -32,6 +32,7 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
 builder.Services.AddScoped<IProducersService, ProducersService>();
 builder.Services.AddScoped<IActorsService, ActorsService>();
 builder.Services.AddScoped<ICinemasService, CinemasService>();
+builder.Services.AddScoped<IOrdersService, OrdersService>();
 
 var app = builder.Build();
 app.UseAuthentication(); 
