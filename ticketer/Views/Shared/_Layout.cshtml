@@ -67,11 +67,12 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - eTickets
-        </div>
-    </footer>
+    @if (ViewBag.HideFooter == null || ViewBag.HideFooter == false)
+    {
+        <footer class="footer">
+            © 2025 eTickets
+        </footer>
+    }
 
     <!-- jQuery (if needed for other scripts) -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
