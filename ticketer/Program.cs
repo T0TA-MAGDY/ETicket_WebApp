@@ -33,6 +33,7 @@ builder.Services.AddScoped<IProducersService, ProducersService>();
 builder.Services.AddScoped<IActorsService, ActorsService>();
 builder.Services.AddScoped<ICinemasService, CinemasService>();
 builder.Services.AddScoped<IOrdersService, OrdersService>();
+builder.Services.AddTransient<IEmailService, EmailService>();
 
 var app = builder.Build();
 app.UseAuthentication(); 

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages;
 using ticketer.Data;
 using ticketer.Data.Static;
 using ticketer.Models;
@@ -14,12 +15,14 @@ namespace ticketer.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly AppDbContext _context;
+        private readonly IEmailService _emailService;
 
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, AppDbContext context)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, AppDbContext context,IEmailService emailService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _context = context;
+            _emailService = emailService;  // <-- Assign here
         }
 
         public async Task<IActionResult>Users()
@@ -51,10 +54,39 @@ namespace ticketer.Controllers
             return View(model);
         }
         [HttpGet]
+        public IActionResult ResetPassword(string token, string email)
+        {
+            if (token == null || email == null) return RedirectToAction("Login");
+
+            var model = new ResetPasswordViewModel { Token = token, Email = email };
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ResetPassword(ResetPasswordViewModel model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            var user = await _userManager.FindByEmailAsync(model.Email);
+            if (user == null) return RedirectToAction("Login");
+
+            var result = await _userManager.ResetPasswordAsync(user, model.Token, model.NewPassword);
+            if (result.Succeeded)
+                return RedirectToAction("Login");
+
+            foreach (var error in result.Errors)
+                ModelState.AddModelError("", error.Description);
+
+            return View(model);
+        }
+
+
+        [HttpGet]
         public IActionResult ForgotPassword()
         {
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> ForgotPassword(ForgotPassword model)
         {
@@ -62,18 +94,20 @@ namespace ticketer.Controllers
                 return View(model);
 
             var user = await _userManager.FindByEmailAsync(model.Email);
-            if (user == null || !(await _userManager.IsEmailConfirmedAsync(user)))
+            if (user == null)
             {
-                // Don't reveal that the user does not exist
-                return RedirectToAction("Login");
+                TempData["Error"] = "No user found with this email.";
+                return RedirectToAction("ForgotPassword");
             }
 
             var token = await _userManager.GeneratePasswordResetTokenAsync(user);
-            var resetLink = Url.Action("ResetPassword", "Account", new { token, email = model.Email }, Request.Scheme);
+            var resetLink = Url.Action("ResetPassword", "Account",
+                new { token = token, email = user.Email }, Request.Scheme);
 
-            // TODO: send the resetLink via email to the user
-            Console.WriteLine(resetLink); // for testing
+            await _emailService.SendEmailAsync(user.Email, "Password Reset",
+                $"Click here to reset your password: <a href='{resetLink}'>Reset Password</a>");
 
+            TempData["Success"] = "Password reset link has been sent to your email.";
             return RedirectToAction("Login");
         }
         public IActionResult Login() => View(new LoginVM());
