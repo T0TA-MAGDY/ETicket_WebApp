@@ -1,4 +1,20 @@
 ﻿@model Movie
+@functions {
+    public string GetEmbeddedYouTubeURL(string url)
+    {
+        try
+        {
+            var uri = new Uri(url);
+            var query = System.Web.HttpUtility.ParseQueryString(uri.Query);
+            var videoId = query["v"];
+            return $"https://www.youtube.com/embed/{videoId}";
+        }
+        catch
+        {
+            return "";
+        }
+    }
+}
 
 <link rel="stylesheet" href="~/css/ShowDetails.css" />
 
@@ -25,10 +41,20 @@
             <img src="@Model.ImageURL" alt="@Model.Name" class="movie-poster" />
         </div>
         <div class="trailer-section">
-            <video controls poster="@Model.ImageURL">
-                <source src="@Model.TrailerURL" type="video/mp4" />
-                Your browser does not support the video tag.
-            </video>
+            @if (!string.IsNullOrEmpty(@Model.TrailerURL))
+            {
+                <div class="trailer-section">
+                    <iframe width="100%" height="100%"
+                            src="@GetEmbeddedYouTubeURL(@Model.TrailerURL)"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+            }
+
+
         </div>
     </div>
     <hr class="thin-line" />

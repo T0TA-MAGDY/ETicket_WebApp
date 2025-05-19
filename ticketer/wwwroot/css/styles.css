@@ -17,63 +17,63 @@ body {
     padding: 10px 20px;
 }
 
+ 
+
 .page-content {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 60px); 
-    margin-top: 60px; 
+    height: calc(100vh - 60px);
+    margin-top: 60px;
 }
 
 .container {
-    background-color: rgba(0, 0, 0, 0.7); 
+    background-color: rgba(0, 0, 0, 0.7);
     padding: 40px;
     border-radius: 10px;
     width: 700px;
     line-height: 40px;
 }
 
-h2 {
-    text-align: center;
-    margin-bottom: 45px;
-    font-size: 35px;
-}
-
-label {
-    display: block;
-    margin-top: 10px;
-    font-size: 20px;
-}
-
-input[type="text"] {
-    width: 100%;
-    padding: 5px;
-    margin-top: 5px;
-    background-color: #330000;
-    border: 1px solid white;
-    color: white;
-    border-radius: 4px;
-}
-
-.buttons {
-    display: flex;
-    justify-content: space-between;
-     
-}
-
-button {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #660000;
-    color: white;
-    font-weight: bold;
-    margin-bottom: 30px;
-    margin-top: 35px;
-}
-
-    button.back {
-        background-color: #660000;
-       
+    .container h2 {
+        text-align: center;
+        margin-bottom: 45px;
+        font-size: 35px;
     }
+
+    .container label {
+        display: block;
+        margin-top: 10px;
+        font-size: 20px;
+    }
+
+    .container input[type="text"] {
+        width: 100%;
+        padding: 5px;
+        margin-top: 5px;
+        background-color: #330000;
+        border: 1px solid white;
+        color: white;
+        border-radius: 4px;
+    }
+
+    .container .buttons {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .container button {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: #660000;
+        color: white;
+        font-weight: bold;
+        margin-bottom: 30px;
+        margin-top: 35px;
+    }
+
+        .container button.back {
+            background-color: #660000;
+        }

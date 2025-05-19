@@ -63,7 +63,7 @@
                     <!-- Search section -->
                     <div class="d-flex align-items-center ms-auto me-3 gap-2" style="max-width: 700px; width: 100%;">
                         <span class="navbar-text fw-semibold text-secondary" style="font-size: 1.1rem;">Movie Search</span>
-                        <form asp-controller="Movie" asp-action="Index" method="get" class="d-flex flex-grow-1" role="search">
+                        <form asp-controller="Movie" asp-action="Index" method="get" class="d-flex flex-grow-1" role="search" class="search-form">
                             <input type="text" name="searchString" class="form-control me-2"
                                    placeholder="Search by name, cinema, or category..."
                                    value="@Context.Request.Query["searchString"]"
