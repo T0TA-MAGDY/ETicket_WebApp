@@ -49,12 +49,17 @@ namespace ticketer.Controllers
            .ThenInclude(st => st.Cinema)
        .Include(m => m.Showtimes)
            .ThenInclude(st => st.Timings)
+           .Include(p=>p.Producer)
+           .Include(m=>m.MovieActors)
+           .ThenInclude(ma=>ma.Actor)
        .FirstOrDefault(m => m.Id == id);
 
             if (movie == null)
             {
                 return NotFound();
             }
+            var relatedmovie = _context.Movies.Where(m => m.Id != id && m.MovieCategory == movie.MovieCategory).ToList();
+            ViewBag.RelatedMovies = relatedmovie;
 
             return View(movie);
         }
