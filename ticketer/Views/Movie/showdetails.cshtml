@@ -22,8 +22,11 @@
 <div class="ShowDetails-container">
     <div class="title-edit">
         <h1>@Model.Name</h1>
-        <div style="display: flex; gap: 10px; align-items: center;">
+            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+        <div style="display: flex; gap: 10px; align-items: center;"> 
             <a href="@Url.Action("Edit", "Movie", new { id = Model.Id })" class="edit-btn">✏ Edit</a>
+
 
             <form id="deleteForm-@Model.Id" asp-action="Delete" asp-route-id="@Model.Id" method="post" style="display: inline; margin: 0;">
                 @Html.AntiForgeryToken()
@@ -34,6 +37,7 @@
                 </a>
             </form>
         </div>
+}
 
 
     </div>
