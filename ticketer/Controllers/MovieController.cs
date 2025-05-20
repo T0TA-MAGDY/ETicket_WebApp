@@ -49,12 +49,17 @@ namespace ticketer.Controllers
            .ThenInclude(st => st.Cinema)
        .Include(m => m.Showtimes)
            .ThenInclude(st => st.Timings)
+           .Include(p=>p.Producer)
+           .Include(m=>m.MovieActors)
+           .ThenInclude(ma=>ma.Actor)
        .FirstOrDefault(m => m.Id == id);
 
             if (movie == null)
             {
                 return NotFound();
             }
+            var relatedmovie = _context.Movies.Where(m => m.Id != id && m.MovieCategory == movie.MovieCategory).ToList();
+            ViewBag.RelatedMovies = relatedmovie;
 
             return View(movie);
         }
@@ -407,6 +412,58 @@ namespace ticketer.Controllers
 
             await _context.SaveChangesAsync();
             return RedirectToAction("ShowDetails", new { id = id });
+        }
+        // GET: Movie/Delete/5
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null) return NotFound();
+
+            var movie = await _context.Movies
+                .Include(m => m.Producer)
+                .FirstOrDefaultAsync(m => m.Id == id);
+
+            if (movie == null) return NotFound();
+
+            return View(movie); // Show confirmation view
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var movie = await _context.Movies
+                .Include(m => m.MovieActors)
+                .Include(m => m.Showtimes)
+                    .ThenInclude(s => s.Timings)
+                .FirstOrDefaultAsync(m => m.Id == id);
+
+            if (movie == null)
+                return NotFound();
+
+            // Delete related tickets
+            foreach (var showtime in movie.Showtimes)
+            {
+                var timingIds = showtime.Timings.Select(t => t.Id).ToList();
+                var tickets = _context.Tickets.Where(t => timingIds.Contains(t.Timing_Id));
+                _context.Tickets.RemoveRange(tickets);
+            }
+
+            // Delete timings and showtimes
+            foreach (var showtime in movie.Showtimes)
+            {
+                _context.Timings.RemoveRange(showtime.Timings);
+            }
+
+            _context.Showtimes.RemoveRange(movie.Showtimes);
+
+            // Delete movie-actor relationships
+            _context.MovieActors.RemoveRange(movie.MovieActors);
+
+            // Delete the movie
+            _context.Movies.Remove(movie);
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
 
         private async Task<List<SelectListItem>> GetActors()

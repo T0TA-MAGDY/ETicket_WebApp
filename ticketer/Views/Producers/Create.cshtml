@@ -16,21 +16,29 @@
     <div class="page-content">
         <div class="container">
             <h2>Add a New Producer</h2>
-            <form>
-                <label for="pf">Profile Picture</label>
-                <input type="text" id="pf" name="pf">
 
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name">
-
-                <label for="Bio">Biography</label>
-                <input type="text" id="Bio" name="Bio">
-
-                <div class="buttons">
-                    <button type="button" class="back">Back</button>
-                    <button type="submit" class="create">Create</button>
+            <form asp-action="Create" method="post">
+                <div>
+                    <label asp-for="ProfilePictureURL"></label>
+                    <input asp-for="ProfilePictureURL" />
+                    <span asp-validation-for="ProfilePictureURL" class="text-danger"></span>
                 </div>
+
+                <div>
+                    <label asp-for="FullName"></label>
+                    <input asp-for="FullName" />
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+                </div>
+
+                <div>
+                    <label asp-for="Bio"></label>
+                    <input asp-for="Bio" />
+                    <span asp-validation-for="Bio" class="text-danger"></span>
+                </div>
+
+                <button type="submit">Create</button>
             </form>
+
         </div>
     </div>
 </body>

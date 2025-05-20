@@ -16,6 +16,7 @@
 </head>
 <body>
     <header>
+<<<<<<< HEAD
         
      <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
                 <div class="container-fluid">
@@ -31,6 +32,48 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Movie" asp-action="Index">
                                     <i class="bi bi-film"></i> Movies
                                 </a>
+=======
+        <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-controller="Movie" asp-action="Index">Ticketer</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between align-items-center w-100">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item me-3">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Movie" asp-action="Index">
+                                <i class="bi bi-film"></i> Movies
+                            </a>
+                        </li>
+
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item dropdown me-3">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-gear"></i> Management
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="Cinemas" asp-action="Index">
+                                            <i class="bi bi-camera-reels"></i> Cinemas
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="Producers" asp-action="Index">
+                                            <i class="bi bi-headset"></i> Producers
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="Actors" asp-action="Index">
+                                            <i class="bi bi-person-square"></i> Actors
+                                        </a>
+                                    </li>
+                                </ul>
+>>>>>>> e51068b4490d267af29b560a4af0be6c08ca616f
                             </li>
 
                             @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
@@ -56,6 +99,19 @@
                             }
                         </ul>
 
+                    <!-- Search section -->
+                    <div class="d-flex align-items-center ms-auto me-3 gap-2" style="max-width: 700px; width: 100%;">
+                        <span class="navbar-text fw-semibold text-secondary" style="font-size: 1.1rem;">Movie Search</span>
+                        <form asp-controller="Movie" asp-action="Index" method="get" class="d-flex flex-grow-1" role="search" class="search-form">
+                            <input type="text" name="searchString" class="form-control me-2"
+                                   placeholder="Search by name, cinema, or category..."
+                                   value="@Context.Request.Query["searchString"]"
+                                   style="font-size: 0.9rem;" />
+                            <button class="btn btn-outline-success" type="submit" style="font-size: 0.9rem;">Search</button>
+                        </form>
+                    </div>
+
+                    <!-- Identity section -->
                     <partial name="_Identity.cshtml" />
                 </div>
             </div>
@@ -76,7 +132,7 @@
         </footer>
     }
 
-    <!-- jQuery (if needed for other scripts) -->
+    <!-- jQuery (optional) -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
 
     <!-- Bootstrap 5 JS bundle (includes Popper) -->

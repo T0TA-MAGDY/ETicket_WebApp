@@ -1,21 +1,65 @@
 ﻿@model Movie
+@functions {
+    public string GetEmbeddedYouTubeURL(string url)
+    {
+        try
+        {
+            var uri = new Uri(url);
+            var query = System.Web.HttpUtility.ParseQueryString(uri.Query);
+            var videoId = query["v"];
+            return $"https://www.youtube.com/embed/{videoId}";
+        }
+        catch
+        {
+            return "";
+        }
+    }
+}
 
 <link rel="stylesheet" href="~/css/ShowDetails.css" />
+<link rel="stylesheet" href="~/css/related_movie.css" />
 
 <div class="ShowDetails-container">
     <div class="title-edit">
         <h1>@Model.Name</h1>
-        <a href="@Url.Action("Edit", "Movie", new { id = Model.Id })" class="edit-btn">✏ Edit</a>
+            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+        <div style="display: flex; gap: 10px; align-items: center;"> 
+            <a href="@Url.Action("Edit", "Movie", new { id = Model.Id })" class="edit-btn">✏ Edit</a>
+
+
+            <form id="deleteForm-@Model.Id" asp-action="Delete" asp-route-id="@Model.Id" method="post" style="display: inline; margin: 0;">
+                @Html.AntiForgeryToken()
+                <a href="javascript:void(0);"
+                   onclick="if(confirm('Are you sure?')) document.getElementById('deleteForm-@Model.Id').submit();"
+                   class="edit-btn">
+                    🗑 Delete
+                </a>
+            </form>
+        </div>
+}
+
+
     </div>
     <div class="media-section">
         <div class="poster-section">
             <img src="@Model.ImageURL" alt="@Model.Name" class="movie-poster" />
         </div>
         <div class="trailer-section">
-            <video controls poster="@Model.ImageURL">
-                <source src="@Model.TrailerURL" type="video/mp4" />
-                Your browser does not support the video tag.
-            </video>
+            @if (!string.IsNullOrEmpty(@Model.TrailerURL))
+            {
+                <div class="trailer-section">
+                    <iframe width="100%" height="100%"
+                            src="@GetEmbeddedYouTubeURL(@Model.TrailerURL)"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+            }
+
+
         </div>
     </div>
     <hr class="thin-line" />
@@ -24,8 +68,13 @@
         <div class="details">
             <p><strong>Genre:</strong> @Model.MovieCategory</p>
             <p><strong>Release Date:</strong> @Model.ReleaseDate.ToString("dd MMMM yyyy")</p>
-            <p><strong>Producer:</strong> @Model.Producer</p>
-            <p><strong>Starring:</strong> @Model.ِActor</p>
+            <p><strong>Producer:</strong> <a asp-controller="Producers" asp-action="Details" asp-route-id="@Model.Producer.Id" style="text-decoration: none; color: inherit;">@Model.Producer.FullName</a> </p>
+            <p><strong>Starring:</strong> @foreach (var movieactor in Model.MovieActors)
+                {
+                <a asp-controller="Actors" asp-action="Details" asp-route-id="@movieactor.Actor.Id" style="text-decoration: none; color: inherit;"> @movieactor.Actor.FullName</a>
+               
+                }
+                </p>
         </div>
         <div class="description">
             <p class="movie-description">@Model.Description</p>
@@ -35,6 +84,22 @@
 
     <hr class="thin-line" />
 
+    @if (ViewBag.RelatedMovies != null && ((List<Movie>)ViewBag.RelatedMovies).Any())
+    {
+        <h3>Related Movies</h3>
+        <div class="related-movies-section">
+            @foreach (var relatedMovie in (List<Movie>)ViewBag.RelatedMovies)
+            {
+                <div class="related-movie-card">
+                    <a asp-action="Showdetails" asp-controller="Movie" asp-route-id="@relatedMovie.Id">
+                        <img src="@relatedMovie.ImageURL" alt="@relatedMovie.Name" class="related-movie-poster" />
+                       
+                    </a>
+                </div>
+            }
+        </div>
+    }
+
     <div class="showtimes-section">
         <h2>ShowTimes</h2>
 
@@ -43,7 +108,11 @@
             @foreach (var showTimeGroup in Model.Showtimes.GroupBy(st => st.Cinema.Name))
             {
                 <div class="cinema-group">
-                    <h3>@showTimeGroup.Key</h3>
+                    <h3>
+                        <a asp-action="Details" asp-controller="Cinemas" asp-route-id="@showTimeGroup.First().Cinema.Id" style="text-decoration: none; color: inherit;">
+                            @showTimeGroup.Key
+                        </a>
+                    </h3>
 
                     @foreach (var dateGroup in showTimeGroup.GroupBy(st => st.Date))
                     {
