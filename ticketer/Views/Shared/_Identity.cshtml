@@ -1,4 +1,6 @@
-﻿@using Microsoft.AspNetCore.Identity
+﻿
+
+@using Microsoft.AspNetCore.Identity
 @inject UserManager<ApplicationUser> UserManager;
 
 @if (!User.Identity.IsAuthenticated)
@@ -14,13 +16,15 @@
 }
 else
 {
+    var username = UserManager.GetUserName(User);
 
-    @*User profile section*@
     <div class="dropdown">
-        <button class="btn btn-outline-success dropdown-toggle" type="button" id="profile-btn" data-bs-toggle="dropdown" aria-expanded="false">
-
-            <i class="bi bi-person-badge"></i> Hello @UserManager.GetUserName(User)
+        <button class="btn border border-success text-success d-flex align-items-center rounded-pill px-3 py-1 dropdown-toggle"
+                type="button" id="profile-btn" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-person-vcard-fill me-2"></i>
+            Hello @username
         </button>
+
         <ul class="dropdown-menu" aria-labelledby="profile-btn">
             <li>
                 <a class="dropdown-item" asp-controller="Orders" asp-action="Index">
@@ -29,7 +33,7 @@ else
             </li>
             <li>
                 <a class="dropdown-item" asp-controller="Account" asp-action="ChangePassword">
-                    <i class="bi bi-list"></i> Change Password
+                    <i class="bi bi-lock"></i> Change Password
                 </a>
             </li>
 
@@ -43,11 +47,12 @@ else
             }
         </ul>
     </div>
+
     <span style="padding: 5px;"></span>
-    <form asp-controller="Account" asp-action="Logout">
+
+    <form asp-controller="Account" asp-action="Logout" class="d-inline">
         <button class="btn btn-outline-danger my-2 my-sm-0">
-            <i class="bi bi-box-arrow-in-right"></i> Log out
+            <i class="bi bi-box-arrow-right"></i> Log out
         </button>
     </form>
 }
-
