@@ -30,9 +30,9 @@
                     @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                     {
                         <td>
-                            <a class="btn btn-edit" asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-edit"></i> Edit</a>
-                            <a class="btn btn-details" asp-action="Details" asp-route-id="@item.Id"><i class="fa fa-eye"></i> Details</a>
-                            <a class="btn btn-delete" asp-action="Delete" asp-route-id="@item.Id"><i class="fa fa-trash"></i> Delete</a>
+                            <div> <a class="btn btn-edit" asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-edit"></i> Edit</a> </div>
+                            <div>  <a class="btn btn-details" asp-action="Details" asp-route-id="@item.Id"><i class="fa fa-eye"></i> Details</a> </div>
+                            <div>   <a class="btn btn-delete" asp-action="Delete" asp-route-id="@item.Id"><i class="fa fa-trash"></i> Delete</a> </div>
                         </td>
                     }
                 </tr>
