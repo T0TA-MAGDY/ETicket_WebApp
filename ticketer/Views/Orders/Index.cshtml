@@ -2,13 +2,29 @@
 
 @{
     ViewData["Title"] = "All orders";
+    ViewBag.Hidefooter = true;
 }
 
-<div class="row">
-    <div class="col-md-8 offset-2">
-        <h4>List of all your orders</h4>
-        
-        <table class="table">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order List</title>
+    <link rel="stylesheet" href="@Url.Content("~/css/orderList.css")"/>
+
+</head>
+<body> 
+    
+    <div class="page-content"> 
+        <div class="container-fluid mt-4" >
+            <style>
+                container{
+                    padding: 10px;
+                     
+                }
+                </style>
+        <h2 class="font-weight: bold;">List of all your orders</h2>
+        <hr />
+        <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>Order ID</th>
@@ -31,7 +47,6 @@
                                 {
                                     <li>
                                         <div class="alert alert-info" role="alert">
-                                            <!-- You can add amount if you track multiple tickets per timing here -->
                                             <strong>Timing:</strong> @ticket.timing.Showtime.Movie.Name <br />
                                             <strong>Price:</strong> @ticket.timing.Price.ToString("c")
                                         </div>
@@ -39,9 +54,7 @@
                                 }
                             </ul>
                         </td>
-                        <td class="align-middle">
-                            @order.TotalPrice.ToString("c")
-                        </td>
+                        <td class="align-middle">@order.TotalPrice.ToString("c")</td>
                         @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                         {
                             <td class="align-middle">@order.User.FullName</td>
@@ -50,6 +63,8 @@
                 }
             </tbody>
         </table>
-
+        </div>
     </div>
-</div>
+ 
+</body>
+</html>
