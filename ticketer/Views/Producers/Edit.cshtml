@@ -7,33 +7,33 @@
 <div class="page-wrapper">
     <div class="edit">
 
-        <h1>Update Producer</h1>
+        <h1 class="hover-zoom">Update Producer</h1>
 
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly"></div>
 
             <div class="form-group">
-                <img id="ProfilePicturePreview" />
+                <img class="zoom-img" id="ProfilePicturePreview" />
             </div>
-            <div class="form-group">
+            <div class="form-group hover-zoom">
                 <label asp-for="ProfilePictureURL"></label>
                 <input asp-for="ProfilePictureURL" />
                 <span asp-validation-for="ProfilePictureURL"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group hover-zoom">
                 <label asp-for="FullName"></label>
                 <input asp-for="FullName" />
                 <span asp-validation-for="FullName"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group hover-zoom">
                 <label asp-for="Bio"></label>
                 <input asp-for="Bio" />
                 <span asp-validation-for="Bio"></span>
             </div>
 
             <div class="form-group buttons">
-                <a asp-action="Index">back</a>
-                <input type="submit" value="Update" class="sub" />
+                <a class="move-btn" asp-action="Index">back</a>
+                <input type="submit" value="Update" class="sub move-btn" />
             </div>
         </form>
     </div>
@@ -52,4 +52,5 @@
             output.src = $(this).val();
         })
     </script>
+    <script src="~/js/main.js"></script>
 }

@@ -80,6 +80,7 @@ h1 {
         text-decoration: none;
         transition: 0.3s;
         font-weight: 500;
+        margin-top:40px;
     }
 
         .buttons a:hover, .buttons .sub:hover {
