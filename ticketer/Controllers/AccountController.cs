@@ -7,7 +7,7 @@ using ticketer.Data;
 using ticketer.Data.Static;
 using ticketer.Models;
 using ticketer.ViewModels;
-
+using RazorLight;
 namespace ticketer.Controllers
 {
     public class AccountController : Controller
@@ -16,19 +16,16 @@ namespace ticketer.Controllers
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly AppDbContext _context;
         private readonly IEmailService _emailService;
-        public AccountController( UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IEmailService emailService)
+        private readonly ILogger<AccountController> _logger;
+
+        public AccountController( UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IEmailService emailService, ILogger<AccountController> logger)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailService = emailService;
+            _logger = logger;
         }
 
-        public async Task<IActionResult> ForgotPassword(string email)
-        {
-            // Create reset link, email content, etc.
-            await _emailService.SendEmailAsync(email, "Reset your password", "<p>Click here to reset...</p>");
-            return View("EmailSent");
-        }
 
         public async Task<IActionResult>Users()
         {
@@ -106,11 +103,20 @@ namespace ticketer.Controllers
             }
 
             var token = await _userManager.GeneratePasswordResetTokenAsync(user);
-            var resetLink = Url.Action("ResetPassword", "Account",
-                new { token = token, email = user.Email }, Request.Scheme);
+            var resetLink = Url.Action("ResetPassword", "Account",new { token = token, email = user.Email }, Request.Scheme);
 
-            await _emailService.SendEmailAsync(user.Email, "Password Reset",
-                $"Click here to reset your password: <a href='{resetLink}'>Reset Password</a>");
+            var engine = new RazorLightEngineBuilder().UseFileSystemProject(Path.Combine(Directory.GetCurrentDirectory(), "EmailTemplates")).Build();
+
+            var emailModel = new PasswordResetEmailModel
+            {
+                Name = user.FullName,
+                ResetLink = resetLink
+            };
+
+            string emailHtml = await engine.CompileRenderAsync("ResetPasswordEmailTemplate.cshtml", emailModel);
+
+            await _emailService.SendEmailAsync(user.Email, "Reset Your Password", emailHtml);
+
 
             TempData["Success"] = "Password reset link has been sent to your email.";
             return RedirectToAction("Login");

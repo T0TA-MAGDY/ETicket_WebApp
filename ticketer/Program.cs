@@ -16,6 +16,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ticketer.Data.Static;
 using ticketer.Data.Services;
+using Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddTransient<IEmailService>(provider =>
@@ -23,9 +24,8 @@ builder.Services.AddTransient<IEmailService>(provider =>
     var config = provider.GetRequiredService<IConfiguration>();
     var logger = provider.GetRequiredService<ILogger<EmailService>>();
     var apiKey = config["SendGrid:ApiKey"];
-    return new EmailService(apiKey);
+    return new EmailService(apiKey,logger);
 });
-builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
@@ -38,6 +38,7 @@ builder.Services.AddScoped<IProducersService, ProducersService>();
 builder.Services.AddScoped<IActorsService, ActorsService>();
 builder.Services.AddScoped<ICinemasService, CinemasService>();
 builder.Services.AddScoped<IOrdersService, OrdersService>();
+builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
 
 var app = builder.Build();
