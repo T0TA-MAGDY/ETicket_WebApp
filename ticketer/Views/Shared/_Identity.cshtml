@@ -1,5 +1,4 @@
 ﻿
-
 @using Microsoft.AspNetCore.Identity
 @inject UserManager<ApplicationUser> UserManager;
 
@@ -50,9 +49,16 @@ else
 
     <span style="padding: 5px;"></span>
 
-    <form asp-controller="Account" asp-action="Logout" class="d-inline">
-        <button class="btn btn-outline-danger my-2 my-sm-0">
-            <i class="bi bi-box-arrow-right"></i> Log out
+    @* <form asp-controller="Account" asp-action="Logout" class="d-inline"> *@
+    @*     <button class="btn btn-outline-danger my-2 my-sm-0"> *@
+    @*         <i class="bi bi-box-arrow-right"></i> Log out *@
+    @*     </button> *@
+    @* </form> *@
+
+    <form id="logoutForm" asp-area="" asp-controller="Account" asp-action="Logout" method="post" class="d-inline">
+        <button type="submit" class="btn btn-outline-danger logout-btn">
+            <i class="bi bi-box-arrow-right me-2"></i> Log out
         </button>
     </form>
+
 }
