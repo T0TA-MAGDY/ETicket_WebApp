@@ -18,8 +18,13 @@ using ticketer.Data.Static;
 using ticketer.Data.Services;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container
+builder.Services.AddTransient<IEmailService>(provider =>
+{
+    var config = provider.GetRequiredService<IConfiguration>();
+    var logger = provider.GetRequiredService<ILogger<EmailService>>();
+    var apiKey = config["SendGrid:ApiKey"];
+    return new EmailService(apiKey);
+});
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
@@ -33,7 +38,7 @@ builder.Services.AddScoped<IProducersService, ProducersService>();
 builder.Services.AddScoped<IActorsService, ActorsService>();
 builder.Services.AddScoped<ICinemasService, CinemasService>();
 builder.Services.AddScoped<IOrdersService, OrdersService>();
-builder.Services.AddTransient<IEmailService, EmailService>();
+
 
 var app = builder.Build();
 app.UseAuthentication(); 

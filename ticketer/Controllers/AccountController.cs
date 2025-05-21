@@ -16,13 +16,18 @@ namespace ticketer.Controllers
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly AppDbContext _context;
         private readonly IEmailService _emailService;
-
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, AppDbContext context,IEmailService emailService)
+        public AccountController( UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IEmailService emailService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
-            _context = context;
-            _emailService = emailService;  // <-- Assign here
+            _emailService = emailService;
+        }
+
+        public async Task<IActionResult> ForgotPassword(string email)
+        {
+            // Create reset link, email content, etc.
+            await _emailService.SendEmailAsync(email, "Reset your password", "<p>Click here to reset...</p>");
+            return View("EmailSent");
         }
 
         public async Task<IActionResult>Users()

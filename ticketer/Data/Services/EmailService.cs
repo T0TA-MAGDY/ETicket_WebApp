@@ -1,29 +1,24 @@
-﻿using System.Threading.Tasks;
-using MailKit.Net.Smtp;
-using MailKit.Security;
-using Microsoft.Extensions.Configuration;
-using MimeKit;
+﻿using SendGrid;
+using SendGrid.Helpers.Mail;
+using System.Threading.Tasks;
+
 public class EmailService : IEmailService
 {
-    private readonly IConfiguration _config;
+    private readonly string _apiKey;
 
-    public EmailService(IConfiguration config)
+    public EmailService(string apiKey)
     {
-        _config = config;
+        _apiKey = apiKey;
+
     }
 
     public async Task SendEmailAsync(string toEmail, string subject, string body)
     {
-        var email = new MimeMessage();
-        email.From.Add(MailboxAddress.Parse(_config["EmailSettings:Username"]));
-        email.To.Add(MailboxAddress.Parse(toEmail));
-        email.Subject = subject;
-        email.Body = new TextPart(MimeKit.Text.TextFormat.Html) { Text = body };
-
-        using var smtp = new SmtpClient();
-        await smtp.ConnectAsync(_config["EmailSettings:Host"], int.Parse(_config["EmailSettings:Port"]), SecureSocketOptions.StartTls);
-        await smtp.AuthenticateAsync(_config["EmailSettings:Username"], _config["EmailSettings:Password"]);
-        await smtp.SendAsync(email);
-        await smtp.DisconnectAsync(true);
+        var client = new SendGridClient(_apiKey);
+        var from = new EmailAddress("toot.ma@gmail.com", "Ticketer");
+        var to = new EmailAddress(toEmail);
+        var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent: body, htmlContent: body);
+        var response = await client.SendEmailAsync(msg);
+        // Optional: Check response.StatusCode for success/failure
     }
 }
