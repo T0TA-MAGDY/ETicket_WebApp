@@ -8,3 +8,6 @@ obj/
 *.suo
 *.user
 *.nuget.*
+appsettings.Development.json
+secrets.json
+.env
