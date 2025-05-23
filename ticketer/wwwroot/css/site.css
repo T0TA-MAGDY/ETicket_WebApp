@@ -1,25 +1,26 @@
+
+
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
     margin-bottom: 60px;
-   
 }
 
 .logout-btn {
@@ -35,4 +36,78 @@ body {
     .logout-btn:hover {
         background-color: #dc3545;
         color: white;
+        transition: linear;
     }
+
+.search-form-custom {
+    transition: all 0.3s ease;
+    box-shadow: none;
+}
+
+    .search-form-custom:hover {
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+        transform: scale(1.02);
+    }
+
+    .search-form-custom:focus-within {
+        box-shadow: 0 0 10px rgba(0, 128, 0, 0.4);
+        transform: scale(1.03);
+    }
+
+.search-icon-rotate {
+    display: inline-block;
+    transition: transform 0.5s ease;
+}
+
+    .search-icon-rotate.clicked {
+        transform: rotate(360deg);
+        color: red;
+        font-size: 1.4rem;
+    }
+
+.search-form-custom input {
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+    .search-form-custom input:focus {
+        padding-right: 10px;
+        padding-left: 10px;
+        background-color: #fff;
+        font-size: 1rem;
+    }
+
+.navbar .dropdown-toggle::after {
+    display: none !important;
+}
+
+.mgmt-text {
+    display: inline-block;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.mgmt-animated i,
+.mgmt-animated .mgmt-text {
+    display: inline-block;
+    transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.mgmt-animated:hover i,
+.mgmt-animated:hover .mgmt-text {
+    transform: scale(1.1);
+    color: rgba(250, 249, 249, 1);
+    text-shadow: 0 0 4px rgba(245, 245, 220, 0.7);
+}
+
+.hello-admin-animated i,
+.hello-admin-animated span {
+    display: inline-block;
+    transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.hello-admin-animated:hover i,
+.hello-admin-animated:hover span {
+    transform: scale(1.1);
+    color: rgba(40, 167, 69, 1);
+    text-shadow: 0 0 4px rgba(144, 238, 144, 0.6);
+}
