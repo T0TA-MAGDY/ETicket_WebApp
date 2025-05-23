@@ -18,13 +18,20 @@ namespace ticketer.Controllers
         private readonly IEmailService _emailService;
         private readonly ILogger<AccountController> _logger;
 
-        public AccountController( UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IEmailService emailService, ILogger<AccountController> logger)
+        public AccountController(
+           UserManager<ApplicationUser> userManager,
+           SignInManager<ApplicationUser> signInManager,
+           AppDbContext context,
+           IEmailService emailService,
+           ILogger<AccountController> logger)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _context = context; 
             _emailService = emailService;
             _logger = logger;
         }
+
 
 
         public async Task<IActionResult>Users()
