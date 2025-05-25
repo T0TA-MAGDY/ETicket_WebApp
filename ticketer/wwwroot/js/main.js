@@ -6,7 +6,7 @@ style.textContent = `
             .hover-zoom:hover {
                 transform: scale(1.1);
             }
-
+           
             .zoom-img {
                 transition: transform 0.4s ease;
                 display: block;

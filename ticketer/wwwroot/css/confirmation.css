@@ -1,0 +1,115 @@
+﻿body {
+    background: url('/img/backg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.confirmation-container {
+    max-width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#fake-paypal-button {
+    background-color: #009CDE;
+    border: 1px solid #0070ba;
+    border-radius: 30px;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 1px 6px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+    #fake-paypal-button:hover {
+        background-color: #0070ba;
+        box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    #fake-paypal-button:active {
+        transform: scale(0.95);
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    #fake-paypal-button img {
+        height: 20px;
+        margin-right: 10px;
+    }
+
+.button-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+    .back-btn,
+    .button-section .btn.btn-primary {
+        background-color: #000 !important;
+        color: white;
+        padding: 12px 30px;
+        border-radius: 30px;
+        font-weight: bold;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+        border: 1px solid white;
+    }
+
+        .back-btn:hover,
+        .button-section .btn.btn-primary:hover {
+            background-color: #222 !important;
+        }
+
+#loading-spinner {
+    display: none;
+    margin-top: 15px;
+    text-align: center;
+}
+
+/* Table Styling */
+table.table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #000 !important;
+    color: white !important;
+}
+
+    table.table th,
+    table.table td {
+        border: 1px solid #fff !important;
+        padding: 10px;
+        text-align: center;
+        background-color: #000 !important;
+    }
+
+    table.table thead th {
+        background-color: #111 !important;
+        color: white !important;
+        border: 1px solid #fff !important;
+    }
+
+    table.table * {
+        background-color: transparent !important;
+        border-color: white !important;
+        color: white !important;
+    }
+@media (max-width: 600px) {
+    .button-section {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .back-btn,
+    #fake-paypal-button {
+        width: 100%;
+        justify-content: center;
+    }
+}
