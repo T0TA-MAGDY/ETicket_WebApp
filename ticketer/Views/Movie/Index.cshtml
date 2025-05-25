@@ -3,54 +3,73 @@
 @{
     ViewData["Title"] = "List of Movies";
 }
-
+<link rel="stylesheet" href="~/css/movie.css" />
 @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
 {
-    <div class="mb-3">
-        <a asp-action="Add" class="btn btn-primary">➕ Add New Movie</a>
+    <div class="add-movie-fixed">
+        <a asp-action="Add" class="btn btn-black">➕ Add New Movie</a>
     </div>
 }
-<div class="row">
+<div class="intro-section">
+    <div class="intro-text">
+        <h1 class="hover-zoom">Welcome to Ticketer</h1>
+        <p class="hover-zoom">
+            your go-to platform for booking movie tickets across different cinemas.
+            Explore the latest releases, watch trailers, and choose your seat — all in one place. Fast, easy,
+            and always up to date with the newest films.
+            Skip the lines and enjoy the big screen hassle-free!
+        </p>
+    </div>
+    <div class="intro-image hover-zoom">
+        <img src="/img/ahmedhelmy.png" alt="actor" />
+    </div>
+</div>
+
+@{
+    var secondItem = Model.Skip(1).FirstOrDefault();
+}
+
+@if (secondItem != null)
+{
+    <h2 class="now-showing-title hover-zoom">Now Showing</h2>
+
+    <div class="featured-movie hover-zoom">
+        <a href="@Url.Action("showdetails", new { id = secondItem.Id })">
+            <img src="@secondItem.ImageURL" alt="@secondItem.Name" />
+            <div class="movie-name-overlay">@secondItem.Name</div>
+        </a>
+    </div>
+}
+
+
+<div class="movies-container">
     @foreach (var item in Model)
     {
-        <div class="col-md-4 col-xs-6 border-primary mb-3">
-            <div class="card mb-3" style="max-width: 540px;">
-                <div class="row g-0">
-                    <div class="col-md-12">
-                        <div class="card-header text-white bg-info">
-                           
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <img src="@item.ImageURL" width="100%" alt="@item.Name">
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card-body">
-                           
-                            
-                              <p class="card-text"><b>Name: </b>@item.Name</p>
-                           
-                            
-
-                            @*
-                        <p class="card-text"><b>Category: </b>@item.MovieCategory</p>
-                              <p class="card-text"><b>release data </b>@item.ReleaseDate.ToString("dd MMM yy")</p>
-                        *@
-                           
-                        </div>
-                    </div>
-                    
-                     <div class="col-md-12">
-                         <div class="card-footer ">
-                             <p class="card-text">
-                                 <a class="btn btn-outline-primary float-right" asp-action="showdetails" asp-route-id="@item.Id">
-                                     <i class="bi bi-eye-fill"></i> Show Details
-                                </a>   
-                            </p>
-                        </div>
-                    </div>
-                </div>
+        <a href="@Url.Action("showdetails", new { id = item.Id })" class="movie-item hover-zoom">
+            <img src="@item.ImageURL" alt="@item.Name" />
+            <div class="movie-info">
+                <p><strong>@item.Name</strong></p>
             </div>
-        </div>
+        </a>
     }
 </div>
+
+
+@section Scripts {
+    <script>
+               document.addEventListener("DOMContentLoaded", function() {
+            const container = document.querySelector('.movies-container');
+            if (!container) return; 
+
+            const itemsCount = container.children.length;
+
+            if (itemsCount === 5) {
+                container.classList.add('centered');
+            } else {
+                container.classList.remove('centered');
+            }
+        });
+
+    </script>
+    <script src="~/js/main.js"></script>
+}
