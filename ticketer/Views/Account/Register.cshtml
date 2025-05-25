@@ -4,52 +4,46 @@
 @{
     ViewData["Title"] = "Sign up for a new account";
 }
+<link rel="stylesheet" href="~/css/register.css" />
 
-<div class="row">
-    <div class="col-md-6 offset-3">
-        <p>
-            <h4>Sign up for a new account</h4>
-        </p>
+<div class="background-overlay"></div>
+<div class="dark-layer"></div>
 
-        @if (TempData["Error"] != null)
-        {
-            <div class="col-md-12 alert alert-danger">
-                <span><b>Sorry!</b> - @TempData["Error"] </span>
-            </div>
-        }
+<div class="form-container">
+    <h4 class="hover-zoom">Create New Account</h4>
 
-        <div class="row">
-            <div class="col-md-8 offset-2">
-                <form asp-action="Register">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-                    <div class="form-group">
-                        <label asp-for="Name" class="control-label"></label>
-                        <input asp-for="Name" class="form-control" />
-                        <span asp-validation-for="Name" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Email" class="control-label"></label>
-                        <input asp-for="Email" class="form-control" />
-                        <span asp-validation-for="Email" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Password" class="control-label"></label>
-                        <input asp-for="Password" class="form-control" />
-                        <span asp-validation-for="Password" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="ConfirmPassword" class="control-label"></label>
-                        <input asp-for="ConfirmPassword" class="form-control" />
-                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-                    </div>
-
-                    <div class="form-group">
-                        <input class="btn btn-outline-success float-right" type="submit" value="Sign up" />
-                        <a class="btn btn-outline-secondary" asp-controller="Movie" asp-action="Index">Cancel</a>
-                    </div>
-                </form>
-            </div>
+    @if (TempData["Error"] != null)
+    {
+        <div>
+            <span><strong>Sorry!</strong> - @TempData["Error"]</span>
         </div>
-    </div>
+    }
+
+    <form asp-action="Register">
+        <div asp-validation-summary="ModelOnly" ></div>
+
+        <label asp-for="Name"></label>
+        <input asp-for="Name" type="text" class="hover-zoom" />
+        <span asp-validation-for="Name"></span>
+
+        <label asp-for="Email"></label>
+        <input asp-for="Email" type="email" class="hover-zoom" />
+        <span asp-validation-for="Email"></span>
+
+        <label asp-for="Password"></label>
+        <input asp-for="Password" type="password" class="hover-zoom" />
+        <span asp-validation-for="Password"></span>
+
+        <label asp-for="ConfirmPassword"></label>
+        <input asp-for="ConfirmPassword" type="password" class="hover-zoom" />
+        <span asp-validation-for="ConfirmPassword" ></span>
+
+        <div class="form-actions">
+            <a asp-controller="Movie" asp-action="Index" class="hover-zoom">Back</a>
+            <input type="submit" value="Submit" class="hover-zoom" />
+        </div>
+    </form>
 </div>
+@section Scripts {
+    <script src="~/js/main.js"></script>
+}
