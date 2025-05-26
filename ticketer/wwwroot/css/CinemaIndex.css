@@ -1,11 +1,8 @@
 ﻿
 body {
-    /*    background: url('/img/cinema1.jpg') no-repeat center center fixed !important;
-    background-size: cover;*/
- 
+   
     background-image: url('/img/cinema1.jpg') !important;
     background-repeat: no-repeat !important;
-/*    background-position: center center !important;*/
     background-attachment: fixed !important;
     background-size: cover !important;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;

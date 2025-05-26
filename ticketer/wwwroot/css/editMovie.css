@@ -1,0 +1,151 @@
+﻿
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: radial-gradient(circle at center, rgba(0, 0, 0, 0.9) 40%, rgba(150, 0, 0, 0.7) 100%), linear-gradient(135deg, rgba(200, 0, 0, 0.5), rgba(0, 0, 0, 0.95));
+    background-blend-mode: multiply;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1, h3 {
+    color: white;
+    animation: fadeSlideDown 1s ease forwards;
+    transition: transform 0.3s ease, color 0.3s ease;
+    display: inline-block;
+}
+
+    h1:hover {
+        transform: scale(1.05) rotate(-1deg);
+        color: #ffdddd;
+    }
+
+form#movieForm label {
+    color: #FBF5DF;
+    font-weight: 500;
+}
+
+form#movieForm input,
+form#movieForm textarea,
+form#movieForm select {
+    background-color: #4B1F1F !important;
+    color: white !important;
+    border: 2px solid #F08080;
+    border-radius: 5px !important;
+    transition: all 0.3s ease;
+}
+
+    form#movieForm input:focus,
+    form#movieForm textarea:focus,
+    form#movieForm select:focus {
+        background-color: #1C0808 !important;
+        box-shadow: 0 0 5px #b30000 !important;
+        outline: none !important;
+    }
+
+    form#movieForm input:hover,
+    form#movieForm textarea:hover,
+    form#movieForm select:hover {
+        transform: scale(1.02);
+        box-shadow: 0 0 8px rgba(255, 80, 80, 0.7);
+    }
+
+form#movieForm button {
+    transition: all 0.3s ease;
+}
+
+    form#movieForm button:hover,
+    form#movieForm button:focus {
+        transform: scale(1.05);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+/* Primary & Success Buttons */
+form#movieForm .btn-primary,
+form#movieForm .btn-success {
+    border: none;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+form#movieForm .btn-primary {
+    background-color: #8B0000;
+}
+
+    form#movieForm .btn-primary:hover {
+        background-color: #a30000;
+    }
+
+form#movieForm .btn-success {
+    background-color: #28a745 !important;
+}
+
+    form#movieForm .btn-success:hover {
+        background-color: #218838 !important;
+    }
+
+form#movieForm #add-showtime {
+    background-color: #445566 !important;
+    border: none;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+    form#movieForm #add-showtime:hover {
+        background-color: #005bb5 !important;
+    }
+
+
+form#movieForm .btn-danger {
+    background-color: #a30000 !important;
+    border: none;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+    form#movieForm .btn-danger:hover {
+        background-color: #cc0000 !important;
+    }
+
+
+.actor-container,
+.showtime-group {
+    border: 2px solid #a94442 !important;
+    border-radius: 5px;
+    animation: fadeInZoom 0.8s ease-out;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .actor-container:hover,
+    .showtime-group:hover {
+        transform: scale(1.02);
+        box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+    }
+
+
+@keyframes fadeSlideDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInZoom {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

@@ -3,6 +3,8 @@
     ViewData["Title"] = "Add New Movie";
 }
 
+<link rel="stylesheet" href="~/css/AddNewMovie.css" />
+
 <div class="container mt-4">
     <h1>@ViewData["Title"]</h1>
 
@@ -131,6 +133,8 @@
                             </div>
                             
                             <div class="col-md-2 d-flex align-items-end">
+                                <br />
+                                <br />
                                 <button type="button" class="btn btn-danger remove-showtime">Remove</button>
                             </div>
                         </div>
@@ -143,6 +147,10 @@
         </div>
 
         <div class="form-group mt-4">
+            <br />
+            <br />
+
+
             <button type="submit" class="btn btn-success btn-lg">
                 <i class="fas fa-save"></i> Save Movie
             </button>
@@ -192,8 +200,8 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
-    <div class="form-group">
-        <label>Price</label>
+                                     <div class="form-group">
+                                          <label>Price</label>
         <input type="number" step="0.01" name="Showtimes[${index}].Price" class="form-control" value="100.00" />
     </div>
 </div>
