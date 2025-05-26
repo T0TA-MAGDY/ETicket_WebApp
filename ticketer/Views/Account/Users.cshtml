@@ -1,41 +1,37 @@
-﻿@model IEnumerable<ApplicationUser>
+﻿
+@model IEnumerable<ApplicationUser>
 
 @{
     ViewData["Title"] = "List of all users";
+    ViewBag.Hidefooter = true;
 }
 
-<div class="row">
-    <div class="col-md-6 offset-3">
-        <p>
-            <h4>List of all users</h4>
-        </p>
+<link rel="stylesheet" href="~/css/users.css" />
 
-        <table class="table">
-            <thead>
-                <tr class="text-center">
-                    <th>@Html.DisplayNameFor(model => model.FullName)</th>
-                    <th>@Html.DisplayNameFor(model => model.UserName)</th>
-                    <th>@Html.DisplayNameFor(model => model.Email)</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
+<div class="page-content">
+    <div class="container-center">
+        <h2 class="orders-title animate-fade-in">List of all users</h2>
+
+        <div class="table-wrapper animate-fade-in animate-delay">
+            <table class="styled-table">
+                <thead>
                     <tr>
-                        <td class="align-middle">
-                            @Html.DisplayFor(modelItem => item.FullName)
-                        </td>
-                        <td class="align-middle">
-                            @Html.DisplayFor(modelItem => item.UserName)
-                        </td>
-                        <td class="align-middle">
-                            @Html.DisplayFor(modelItem => item.Email)
-                        </td>
+                        <th>@Html.DisplayNameFor(model => model.FullName)</th>
+                        <th>@Html.DisplayNameFor(model => model.UserName)</th>
+                        <th>@Html.DisplayNameFor(model => model.Email)</th>
                     </tr>
-                }
-            </tbody>
-
-        </table>
-
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.FullName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.UserName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>

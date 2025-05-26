@@ -1,5 +1,6 @@
-﻿@model List<ticketer.Models.TicketOrder>
+﻿
 
+ @model List<ticketer.Models.TicketOrder>
 @{
     ViewData["Title"] = "All orders";
     ViewBag.Hidefooter = true;
@@ -9,62 +10,36 @@
 <html>
 <head>
     <title>Order List</title>
-    <link rel="stylesheet" href="@Url.Content("~/css/orderList.css")"/>
-
+    <link rel="stylesheet" href="@Url.Content("~/css/orderList.css")" />
 </head>
-<body> 
-    
-    <div class="page-content"> 
-        <div class="container-fluid mt-4" >
-            <style>
-                container{
-                    padding: 10px;
-                     
-                }
-                </style>
-        <h2 class="font-weight: bold;">List of all your orders</h2>
-        <hr />
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Order ID</th>
-                    <th>Items</th>
-                    <th>Total</th>
-                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-                    {
-                        <th>User</th>
-                    }
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var order in Model)
-                {
-                    <tr>
-                        <td class="align-middle">@order.Order_Id</td>
-                        <td class="align-middle">
-                            <ul style="list-style-type:none; padding-left:0;">
-                                @foreach (var ticket in order.Tickets)
-                                {
-                                    <li>
-                                        <div class="alert alert-info" role="alert">
-                                            <strong>Timing:</strong> @ticket.timing.Showtime.Movie.Name <br />
-                                            <strong>Price:</strong> @ticket.timing.Price.ToString("c")
-                                        </div>
-                                    </li>
-                                }
-                            </ul>
-                        </td>
-                        <td class="align-middle">@order.TotalPrice.ToString("c")</td>
-                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-                        {
-                            <td class="align-middle">@order.User.FullName</td>
-                        }
-                    </tr>
-                }
-            </tbody>
-        </table>
+<body>
+    <div class="page-content">
+        <div class="container-fluid mt-4">
+            <br />
+            <br />
+
+            <h2 class="orders-title animate-fade-in">List of all your orders</h2>
+           
+            <div class="table-wrapper animate-fade-in animate-delay">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Items</th>
+                            <th>Total</th>
+                            @if (User?.Identity?.IsAuthenticated == true && User.IsInRole("Admin"))
+                            {
+                                <th>User</th>
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
+                       
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
- 
 </body>
 </html>
+
