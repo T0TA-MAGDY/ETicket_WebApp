@@ -2,39 +2,42 @@
 
 @{
     ViewData["Title"] = "Add a new cinema";
-    ViewBag.Hidefooter = true;
 }
+<link rel="stylesheet" href="~/css/create.css" />
+<div class="page-wrapper">
+    <div class="create">
+        <h1 class="hover-zoom">Add a New Cinema</h1>
+        
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" ></div>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Add a New Cinema</title>
-    <link rel="stylesheet" href="~/css/styles.css">
-</head>
-<body> 
-    <div class="page-content">
-    <div class="container">
-        <h2>Add a New Cinema</h2>
-            <form>
-            <label for="logo"> Cinema Logo</label>
-            <input type="text" id="logo" name="logo">
+                    @* <div class="form-group text-center"> *@
+                    @*     <img id="CinemaLogoPreview" class="border-info rounded-circle" style="max-width: 150px" /> *@
+                    @* </div> *@
+                    <div class="form-group hover-zoom">
+                        <label asp-for="Logo" ></label>
+                        <input asp-for="Logo" />
+                        <span asp-validation-for="Logo"></span>
+                    </div>
+                    <div class="form-group hover-zoom">
+                        <label asp-for="Name" ></label>
+                        <input asp-for="Name" />
+                        <span asp-validation-for="Name"></span>
+                    </div>
+                    <div class="form-group hover-zoom">
+                        <label asp-for="Address"></label>
+                        <input asp-for="Address" />
+                        <span asp-validation-for="Address"></span>
+                    </div>
 
-            <label for="name">Cinema Name</label>
-            <input type="text" id="name" name="name">
+                    <div class="form-group buttons">
+                        <a class="move-btn" asp-action="Index">back</a>
+                        <input type="submit" value="Create" class="sub move-btn" />
 
-            <label for="description">Description</label>
-            <input type="text" id="description" name="description">
-
-            <div class="buttons">
-                <button type="button" class="back">Back</button>
-                <button type="submit" class="create">Create</button>
-            </div>
-        </form>
+                    </div>
+               </form>
     </div>
-    </div>
-</body>
-</html>
+</div>
 
 @section Scripts {
     <script>
@@ -49,4 +52,5 @@
             output.src = $(this).val();
         })
     </script>
+    <script src="~/js/main.js"></script>
 }

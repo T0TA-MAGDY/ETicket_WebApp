@@ -2,48 +2,44 @@
 
 @{
     ViewData["Title"] = "Add a new producer";
-    ViewBag.Hidefooter = true;
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Add a New Producer</title>
-    <link rel="stylesheet" href="~/css/styles.css">
-</head>
-<body>
-    <div class="page-content">
-        <div class="container">
-            <h2>Add a New Producer</h2>
+<link rel="stylesheet" href="~/css/create.css" />
+<div class="page-wrapper">
+    <div class="create">
+        <h1 class="hover-zoom">Add a New Producer</h1>
+       
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly"></div>
 
-            <form asp-action="Create" method="post">
-                <div>
-                    <label asp-for="ProfilePictureURL"></label>
-                    <input asp-for="ProfilePictureURL" />
-                    <span asp-validation-for="ProfilePictureURL" class="text-danger"></span>
-                </div>
+                    @* <div class="form-group"> *@
+                    @*     <img id="ProfilePicturePreview" class="" /> *@
+                    @* </div> *@
+                    <div class="form-group hover-zoom">
+                        <label asp-for="ProfilePictureURL" ></label>
+                        <input asp-for="ProfilePictureURL" />
+                        <span asp-validation-for="ProfilePictureURL"></span>
+                    </div>
+                    <div class="form-group hover-zoom">
+                        <label asp-for="FullName"></label>
+                        <input asp-for="FullName" />
+                        <span asp-validation-for="FullName"></span>
+                    </div>
+                    <div class="form-group hover-zoom">
+                        <label asp-for="Bio" ></label>
+                        <input asp-for="Bio"/>
+                        <span asp-validation-for="Bio"></span>
+                    </div>
 
-                <div>
-                    <label asp-for="FullName"></label>
-                    <input asp-for="FullName" />
-                    <span asp-validation-for="FullName" class="text-danger"></span>
-                </div>
-
-                <div>
-                    <label asp-for="Bio"></label>
-                    <input asp-for="Bio" />
-                    <span asp-validation-for="Bio" class="text-danger"></span>
-                </div>
-
-                <button type="submit">Create</button>
-            </form>
-
-        </div>
+                    <div class="form-group buttons">
+                        <a class="move-btn" asp-action="Index">back</a>
+                        <input type="submit" value="Create" class="sub move-btn" />
+                       
+                    </div>
+                </form>
+          
     </div>
-</body>
-</html>
-
+</div>
 
 @section Scripts {
     <script>
@@ -58,4 +54,5 @@
             output.src = $(this).val();
         })
     </script>
+    <script src="~/js/main.js"></script>
 }
