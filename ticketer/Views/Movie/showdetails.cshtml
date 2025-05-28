@@ -25,14 +25,14 @@
             @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
 {
         <div style="display: flex; gap: 10px; align-items: center;"> 
-            <a href="@Url.Action("Edit", "Movie", new { id = Model.Id })" class="edit-btn">✏ Edit</a>
+                <a href="@Url.Action("Edit", "Movie", new { id = Model.Id })" class="edit-btn hover-zoom">✏ Edit</a>
 
 
             <form id="deleteForm-@Model.Id" asp-action="Delete" asp-route-id="@Model.Id" method="post" style="display: inline; margin: 0;">
                 @Html.AntiForgeryToken()
                 <a href="javascript:void(0);"
                    onclick="if(confirm('Are you sure?')) document.getElementById('deleteForm-@Model.Id').submit();"
-                   class="edit-btn">
+                       class="edit-btn hover-zoom">
                     🗑 Delete
                 </a>
             </form>
@@ -42,10 +42,10 @@
 
     </div>
     <div class="media-section">
-        <div class="poster-section">
+        <div class="poster-section hover-zoom">
             <img src="@Model.ImageURL" alt="@Model.Name" class="movie-poster" />
         </div>
-        <div class="trailer-section">
+        <div class="trailer-section hover-zoom">
             @if (!string.IsNullOrEmpty(@Model.TrailerURL))
             {
                 <div class="trailer-section">
@@ -62,31 +62,32 @@
 
         </div>
     </div>
-    <hr class="thin-line" />
+    <hr class="thin-line" style="margin: 50px 0;" />
 
     <div class="info-description">
         <div class="details">
             <p><strong>Genre:</strong> @Model.MovieCategory</p>
-            <p><strong>Release Date:</strong> @Model.ReleaseDate.ToString("dd MMMM yyyy")</p>
+            <p> <strong>Release Date:</strong> @Model.ReleaseDate.ToString("dd MMMM yyyy")</p>
             <p><strong>Producer:</strong> <a asp-controller="Producers" asp-action="Details" asp-route-id="@Model.Producer.Id" style="text-decoration: none; color: inherit;">@Model.Producer.FullName</a> </p>
-            <p><strong>Starring:</strong> @foreach (var movieactor in Model.MovieActors)
+            <p>
+                <strong>Starring:</strong> @foreach (var movieactor in Model.MovieActors)
                 {
                 <a asp-controller="Actors" asp-action="Details" asp-route-id="@movieactor.Actor.Id" style="text-decoration: none; color: inherit;"> @movieactor.Actor.FullName</a>
                
                 }
                 </p>
         </div>
-        <div class="description">
+        <div class="description hover-zoom">
             <p class="movie-description">@Model.Description</p>
         </div>
 
     </div>
 
-    <hr class="thin-line" />
+    <hr class="thin-line" style="margin: 50px 0;" />
 
     @if (ViewBag.RelatedMovies != null && ((List<Movie>)ViewBag.RelatedMovies).Any())
     {
-        <h3>Related Movies</h3>
+        <h3 >Related Movies</h3>
         <div class="related-movies-section">
             @foreach (var relatedMovie in (List<Movie>)ViewBag.RelatedMovies)
             {
@@ -101,7 +102,7 @@
     }
 
     <div class="showtimes-section">
-        <h2>ShowTimes</h2>
+        <h2 >ShowTimes</h2>
 
         @if (Model.Showtimes.Any())
         {
@@ -143,3 +144,6 @@
         }
     </div>
 </div>
+@section Scripts {
+    <script src="~/js/main.js"></script>
+}

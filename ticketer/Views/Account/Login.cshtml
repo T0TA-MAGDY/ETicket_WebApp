@@ -7,11 +7,12 @@
     ViewData["Title"] = "Log in to your account";
     Layout = null;
 }
+<script src="~/js/main.js"></script>
 <link rel="stylesheet" href="~/css/login.css" />
 <div class="container">
     <div class="login-section">
         <div class="login-box">
-            <h2>Welcome back!</h2>
+            <h1 class="hover-zoom">Welcome back!</h1>
 
 
             @if (TempData["Error"] != null)
@@ -25,26 +26,31 @@
             <form asp-action="Login">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-                <div class="form-group">
+                <div class="form-group hover-zoom">
                     <label asp-for="EmailAdress" class="control-label"></label>
                     <input asp-for="EmailAdress" class="form-control" />
                     <span asp-validation-for="EmailAdress" class="text-danger"></span>
                 </div>
-                <div class="form-group">
+                <div class="form-group hover-zoom">
                     <label asp-for="Password" class="control-label"></label>
                     <input asp-for="Password" class="form-control" />
                     <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
 
+                <div class="form-group forgot-password hover-zoom">
+                    <a asp-controller="Account" asp-action="ForgotPassword" 
+                    style="color: white; font-size: 16px; text-decoration: none;">
+                        Forgot Password?!
+                    </a>
+                </div>
+
 
                 <div class="buttons">
 
-                    <button asp-controller="Movie" asp-action="Index">back</button>
-                    <button type="submit">submit</button>
+                    <button asp-controller="Movie" asp-action="Index" class="move-btn">back</button>
+                    <button type="submit" class="move-btn">submit</button>
                 </div>
-                <div class="form-group mt-3">
-                    <a asp-controller="Account" asp-action="ForgotPassword">Forgot Password ?!</a>
-                </div>
+                
             </form>
 
         </div>
