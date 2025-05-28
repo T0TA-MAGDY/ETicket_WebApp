@@ -1,7 +1,7 @@
 ﻿
 body {
    
-    background-image: url('/img/cinema1.jpg') !important;
+    background-image: url('/img/darkHangins.png') !important;
     background-repeat: no-repeat !important;
     background-attachment: fixed !important;
     background-size: cover !important;
@@ -192,3 +192,56 @@ img {
         background-color: #dc3545;
         color: white;
     }
+
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+tbody tr {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+   
+    tbody tr:nth-child(1) {
+        animation-delay: 0.1s;
+    }
+
+    tbody tr:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+
+    tbody tr:nth-child(3) {
+        animation-delay: 0.3s;
+    }
+
+    tbody tr:nth-child(4) {
+        animation-delay: 0.4s;
+    }
+
+    tbody tr:nth-child(5) {
+        animation-delay: 0.5s;
+    }
+
+    tbody tr:nth-child(6) {
+        animation-delay: 0.6s;
+    }
+
+    tbody tr:nth-child(7) {
+        animation-delay: 0.7s;
+    }
+
+    tbody tr:nth-child(8) {
+        animation-delay: 0.8s;
+    }
+
