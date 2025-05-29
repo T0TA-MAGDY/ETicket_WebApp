@@ -21,7 +21,34 @@
 
 <div class="ShowDetails-container">
     <div class="title-edit">
-        <h1>@Model.Name</h1>
+        <h1>
+    @Model.Name
+    @if (ViewBag.AverageRating != null)
+{
+    var fullStars = (int)Math.Floor((double)ViewBag.AverageRating);
+    var hasHalfStar = ((double)ViewBag.AverageRating - fullStars) >= 0.5;
+    var emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+
+    <div class="average-rating" style="font-size: 24px; color: gold;">
+        @for (int i = 0; i < fullStars; i++)
+        {
+            @:★
+        }
+        @if (hasHalfStar)
+        {
+            @:☆ <!-- You can use a half-star icon if you have one -->
+        }
+        @for (int i = 0; i < emptyStars; i++)
+        {
+            @:☆
+        }
+        <span style="font-size: 16px; color: #666;">(@ViewBag.AverageRating out of 5)</span>
+    </div>
+}
+
+
+</h1>
+
             @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
 {
         <div style="display: flex; gap: 10px; align-items: center;"> 
@@ -143,7 +170,72 @@
             <p>No showtimes available for this movie.</p>
         }
     </div>
+    @if (User.Identity.IsAuthenticated)
+{
+    <hr class="thin-line" style="margin: 40px 0;" />
+    <h3>Leave a Review</h3>
+
+    <form asp-action="Create" asp-controller="Review" method="post">
+        @Html.AntiForgeryToken()
+
+        <input type="hidden" name="MovieId" value="@Model.Id" />
+
+  <label>Rating:</label>
+<div class="rating" id="star-rating">
+  <input type="radio" name="Rating" id="star5" value="5" />
+  <label for="star5">★</label>
+
+  <input type="radio" name="Rating" id="star4" value="4" />
+  <label for="star4">★</label>
+
+  <input type="radio" name="Rating" id="star3" value="3" />
+  <label for="star3">★</label>
+
+  <input type="radio" name="Rating" id="star2" value="2" />
+  <label for="star2">★</label>
+
+  <input type="radio" name="Rating" id="star1" value="1" />
+  <label for="star1">★</label>
 </div>
+
+
+        <label>Comment:</label><br />
+        <textarea name="Comment" rows="4" cols="50" ></textarea><br /><br />
+
+        <button type="submit">Submit Review</button>
+    </form>
+}
+else
+{
+    <p><a href="/Identity/Account/Login">Log in</a> to leave a review.</p>
+}
+    <h3 style="margin-top: 40px;">User Reviews</h3>
+@foreach (var review in Model.Reviews.OrderByDescending(r => r.CreatedAt))
+{
+    <div class="review">
+        <strong>@review.User.FullName</strong> -
+        <span class="review-stars">
+    @for (int i = 1; i <= 5; i++)
+    {
+        if (i <= review.Rating)
+        {
+            <span class="star filled">★</span>
+        }
+        else
+        {
+            <span class="star">★</span>
+        }
+    }
+</span><br />
+        <p>@review.Comment</p>
+        <small>@review.CreatedAt.ToShortDateString()</small>
+    </div>
+}
+
+</div>
+
+
 @section Scripts {
     <script src="~/js/main.js"></script>
+    
 }

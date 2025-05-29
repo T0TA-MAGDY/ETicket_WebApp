@@ -172,3 +172,102 @@
     margin: 10px 0;
     border-radius: 2px;
 }
+.rating {
+    direction: rtl;             /* Force left-to-right layout */
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  
+  /* Hide radio inputs */
+  .rating input {
+    display: none;
+  }
+  
+  /* Base style for stars */
+  .rating label {
+    color: lightgray;
+    transition: transform 0.2s ease, color 0.2s;
+  }
+  
+  /* Hover preview */
+  .rating label:hover,
+  .rating label:hover ~ label {
+    color: gold;
+  }
+  
+  /* Checked style – highlight selected and all previous stars */
+  .rating input:checked ~ label {
+    color: gold;
+  }
+  
+  /* Pop animation */
+  .rating label.animate {
+    animation: pop 0.3s ease;
+  }
+  
+  @keyframes pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.4); }
+    100% { transform: scale(1); }
+  }
+  
+  #rating-value {
+    font-size: 1.2rem;
+    margin-left: 10px;
+    vertical-align: middle;
+  }
+  .review {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border-left: 4px solid gold;
+}
+
+.review strong {
+    color: gold;
+}
+
+.review-stars {
+    color: gold;
+    font-size: 18px;
+}
+
+.review .star {
+    color: lightgray;
+}
+
+.review .star.filled {
+    color: gold;
+}
+
+textarea[name="Comment"] {
+    width: 100%;
+    max-width: 600px;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #340909;
+    font-family: inherit;
+    font-size: 14px;
+    resize: vertical;
+    background-color: #340505;
+    color: white;
+}
+
+button[type="submit"] {
+    background-color: gold;
+    color: black;
+    padding: 8px 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+    background-color: #ffd700;
+}

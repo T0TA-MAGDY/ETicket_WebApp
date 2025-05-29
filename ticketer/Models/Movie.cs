@@ -20,7 +20,7 @@ namespace ticketer.Models
         [Required] // Mark as required
         public string Description { get; set; }
 
-        
+
 
         [Required] // Mark as required
         public string ImageURL { get; set; }
@@ -49,5 +49,7 @@ namespace ticketer.Models
 
         // Many-to-one relationship with Showtime
         public ICollection<Showtime> Showtimes { get; set; } = new List<Showtime>();
+        public virtual ICollection<Review> Reviews { get; set; }
+
     }
 }

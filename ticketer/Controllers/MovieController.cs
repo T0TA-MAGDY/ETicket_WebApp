@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Security.Claims;
 using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ticketer.Data;
+using ticketer.Data.Enums;
 using ticketer.Models;
 using ticketer.ViewModels;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+
 
 namespace ticketer.Controllers
 {
@@ -25,7 +28,7 @@ namespace ticketer.Controllers
             _emailService = emailService;
             _logger = logger;
         }
-        public IActionResult Index(string searchString)
+        public async Task<IActionResult> IndexAsync(string searchString, string filter, string category)
         {
             var moviesQuery = _context.Movies
                 .Include(m => m.Producer)
@@ -35,6 +38,21 @@ namespace ticketer.Controllers
                     .ThenInclude(s => s.Cinema)
                 .AsQueryable();
 
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            List<int> userFavorites = new();
+
+            if (User.Identity.IsAuthenticated)
+            {
+                userFavorites = await _context.Favorites
+                    .Where(f => f.UserId == userId)
+                    .Select(f => f.MovieId)
+                    .ToListAsync();
+            }
+
+            ViewBag.UserFavorites = userFavorites;
+            ViewBag.CurrentFilter = filter;
+
+            // Apply search
             if (!string.IsNullOrEmpty(searchString))
             {
                 moviesQuery = moviesQuery.Where(m =>
@@ -43,22 +61,50 @@ namespace ticketer.Controllers
                     m.Showtimes.Any(s => s.Cinema.Name.Contains(searchString)));
             }
 
-            var movies = moviesQuery.ToList();
+            // Apply filter
+            if (!string.IsNullOrEmpty(filter))
+            {
+                switch (filter.ToLower())
+                {
+                    case "favorites":
+                        moviesQuery = moviesQuery.Where(m => userFavorites.Contains(m.Id));
+                        break;
+                    case "newest":
+                        moviesQuery = moviesQuery.OrderByDescending(m => m.ReleaseDate); // make sure ReleaseDate exists
+                        break;
+                }
+            }
+            if (!string.IsNullOrEmpty(category))
+            {
+                if (Enum.TryParse<MovieCategory>(category, out var selectedCategory))
+                {
+                    moviesQuery = moviesQuery.Where(m => m.MovieCategory == selectedCategory);
+                }
+            }
+
+
+            // Pass available categories to the view
+            ViewBag.Categories = Enum.GetValues(typeof(MovieCategory)).Cast<MovieCategory>();
+
+            var movies = await moviesQuery.ToListAsync();
             return View(movies);
         }
+
 
 
         public IActionResult Showdetails(int id)
         {
             var movie = _context.Movies
+            .Include(m => m.Reviews)
        .Include(m => m.Showtimes)
            .ThenInclude(st => st.Cinema)
        .Include(m => m.Showtimes.Where(s => s.Date >= DateTime.Today))
            .ThenInclude(st => st.Timings)
-           .Include(p=>p.Producer)
-           .Include(m=>m.MovieActors)
-           .ThenInclude(ma=>ma.Actor)
+           .Include(p => p.Producer)
+           .Include(m => m.MovieActors)
+           .ThenInclude(ma => ma.Actor)
        .FirstOrDefault(m => m.Id == id);
+
 
             if (movie == null)
             {
@@ -66,10 +112,16 @@ namespace ticketer.Controllers
             }
             var relatedmovie = _context.Movies.Where(m => m.Id != id && m.MovieCategory == movie.MovieCategory).ToList();
             ViewBag.RelatedMovies = relatedmovie;
-
+            ViewBag.Reviews = _context.Reviews
+    .Where(r => r.MovieId == id)
+    .Include(r => r.User)
+    .OrderByDescending(r => r.CreatedAt)
+    .ToList();
+            ViewBag.AverageRating = movie.Reviews?.Any() == true
+                ? Math.Round(movie.Reviews.Average(r => r.Rating), 1)
+                : (double?)null;
             return View(movie);
         }
-
 
         // GET: Movie/Add
         [HttpGet]
@@ -119,7 +171,7 @@ namespace ticketer.Controllers
             using var transaction = await _context.Database.BeginTransactionAsync();
             try
             {
-                
+
                 var movie = new Movie
                 {
                     Name = model.Name,
@@ -424,7 +476,7 @@ namespace ticketer.Controllers
 
             if (movie == null) return NotFound();
 
-            return View(movie); 
+            return View(movie);
         }
 
         [HttpPost]

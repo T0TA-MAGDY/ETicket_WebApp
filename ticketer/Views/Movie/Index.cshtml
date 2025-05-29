@@ -1,9 +1,11 @@
-﻿@model IEnumerable<Movie>
-
+﻿@using System.Security.Claims
+@using ticketer.Data.Enums
+@model IEnumerable<Movie>
 @{
     ViewData["Title"] = "List of Movies";
     var isSearching = !string.IsNullOrEmpty(Context?.Request?.Query["searchString"]);
     var movieList = Model?.ToList() ?? new List<Movie>();
+    var userFavorites = ViewBag.UserFavorites as List<int> ?? new List<int>();
 }
 
 <link rel="stylesheet" href="~/css/movie.css" />
@@ -47,32 +49,85 @@
     }
 }
 
+
+
 <div class="movies-container">
     @foreach (var item in movieList)
     {
-        <a href="@Url.Action("showdetails", new { id = item.Id })" class="movie-item hover-zoom">
-            <img src="@item.ImageURL" alt="@item.Name" />
-            <div class="movie-info">
-                <p><strong>@item.Name</strong></p>
-            </div>
-        </a>
+        <div class="movie-item-wrapper">
+            <a href="@Url.Action("showdetails", new { id = item.Id })" class="movie-item hover-zoom">
+                <img src="@item.ImageURL" alt="@item.Name" />
+                <div class="movie-info">
+                    <p><strong>@item.Name</strong></p>
+                </div>
+            </a>
+            <button class="heart-button @(userFavorites.Contains(item.Id) ? "active" : "")"
+                    data-movie-id="@item.Id"
+                    aria-label="Like"
+                    onclick="toggleHeart(this)">
+                <i class="fa-@(userFavorites.Contains(item.Id) ? "solid" : "regular") fa-heart"></i>
+            </button>
+
+
+
+        </div>
     }
 </div>
 
+
 @section Scripts {
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        // Toggle heart button on click and call backend
+        async function toggleHeart(button) {
+            const movieId = button.getAttribute("data-movie-id");
+            const icon = button.querySelector('i');
+
+            const response = await fetch("/Favorite/Toggle", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "RequestVerificationToken": document.querySelector('input[name="__RequestVerificationToken"]').value
+                },
+                body: JSON.stringify({ movieId: movieId })
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                if (data.favorited) {
+                    button.classList.add("active");
+                    icon.classList.remove("fa-regular");
+                    icon.classList.add("fa-solid");
+                } else {
+                    button.classList.remove("active");
+                    icon.classList.remove("fa-solid");
+                    icon.classList.add("fa-regular");
+                }
+            }
+        }
+
+        // Initialize hearts on page load based on user favorites (if any)
+        window.addEventListener('DOMContentLoaded', () => {
+            // Assuming you pass user favorites IDs from server as JS array:
+            const favorites = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(userFavorites));
+
+            favorites.forEach(id => {
+                const button = document.querySelector(`.heart-button[data-movie-id="${id}"]`);
+                if (button) {
+                    button.classList.add("active");
+                    const icon = button.querySelector('i');
+                    icon.classList.remove("fa-regular");
+                    icon.classList.add("fa-solid");
+                }
+            });
+
             const container = document.querySelector('.movies-container');
-            if (!container) return;
-
-            const itemsCount = container.children.length;
-
-            if (itemsCount === 5) {
+            if (container && container.children.length === 5) {
                 container.classList.add('centered');
             } else {
-                container.classList.remove('centered');
+                container?.classList.remove('centered');
             }
         });
     </script>
     <script src="~/js/main.js"></script>
 }
+

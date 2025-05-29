@@ -1,0 +1,147 @@
+﻿body {
+    margin: 0;
+    font-family: 'Cairo', sans-serif;
+    background: url('/img/backg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+.page-wrapper {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 80px);
+}
+
+.card-wrapper {
+    perspective: 1200px;
+    width: 430px;
+    height: 550px;
+}
+
+.flip-card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 16px;
+    box-shadow: 0 12px 25px rgba(255, 0, 0, 0.4);
+}
+
+.flip-card-front {
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-img-full {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+}
+
+.flip-card-back {
+    background-color: #3b1c1c;
+    color: white;
+    transform: rotateY(180deg);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch; /* بدّل من center إلى stretch */
+}
+
+.form-group {
+    margin-bottom: 20px;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+    .form-group label {
+        font-size: 14px !important;
+        font-weight: bold;
+        margin-bottom: 8px;
+        margin-left: 20px;
+        text-align: left;
+        width: 100%;
+    }
+
+        .form-group label + input {
+            width: 95% !important;
+            padding: 12px 10px !important;
+            height: 40px !important;
+            border-radius: 10px !important;
+            border: 1px solid white !important;
+            background-color: #3b1c1c !important;
+            color: white !important;
+            box-sizing: border-box !important;
+            font-size: 12px !important;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+            .form-group label + input :focus {
+                border: 3px solid white !important;
+            }
+
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 95%;
+    justify-content: space-between;
+    margin: 0 5px;
+    margin-top: 30px;
+}
+
+.move-btn {
+    flex: 1;
+    background-color: #3b1c1c;
+    padding: 10px 20px;
+    color: white;
+    border: 1px solid white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    max-width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px; /* تأكد من وجود ارتفاع للزر */
+    line-height: normal;
+}
+
+
+
+    .move-btn:hover {
+        background-color: black;
+    }

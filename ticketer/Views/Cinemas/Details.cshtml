@@ -3,52 +3,64 @@
 @{
     ViewData["Title"] = "Details of the cinema";
 }
-<link rel="stylesheet" href="~/css/details.css" />
+<link rel="stylesheet" href="~/css/flipCard.css" />
 
 <div class="page-wrapper">
-    <div class="details">
+    <!-- Flip Card Container -->
+    <div class="card-wrapper">
+        <div class="flip-card">
+            <div class="flip-card-inner">
 
-        <h1 class="hover-zoom">Details for @Model.Name</h1>
+                <!-- Front Side -->
+                <div class="flip-card-front">
+                    <img src="@Model.Logo" alt="Cinema Logo" class="profile-img-full" id="LogoPreview" />
+                </div>
 
-        <div class="form-group">
-            <img class="zoom-img" id="LogoPreview" />
+                <!-- Back Side -->
+                <div class="flip-card-back">
+                    
+
+                    <div class="form-group hover-zoom">
+                        <label asp-for="Logo"></label>
+                        <input asp-for="Logo" readonly />
+                        <span asp-validation-for="Logo"></span>
+                    </div>
+
+                    <div class="form-group hover-zoom">
+                        <label asp-for="Name"></label>
+                        <input asp-for="Name" readonly />
+                        <span asp-validation-for="Name"></span>
+                    </div>
+
+                    <div class="form-group hover-zoom">
+                        <label asp-for="Address"></label>
+                        <input asp-for="Address" readonly />
+                        <span asp-validation-for="Address"></span>
+                    </div>
+
+                    <div class="form-group buttons">
+                        <a class="move-btn" asp-action="Index">Back</a>
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <a class="move-btn" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+                        }
+                    </div>
+                </div>
+
+            </div>
         </div>
-
-        <div class="form-group hover-zoom">
-            <label asp-for="Logo"></label>
-            <input asp-for="Logo" readonly />
-            <span asp-validation-for="Logo"></span>
-        </div>
-
-        <div class="form-group hover-zoom">
-            <label asp-for="Name"></label>
-            <input asp-for="Name" readonly />
-            <span asp-validation-for="Name"></span>
-        </div>
-        <div class="form-group hover-zoom">
-            <label asp-for="Address"></label>
-            <input asp-for="Address" readonly />
-            <span asp-validation-for="Address"></span>
-        </div>
-
-        <div class="form-group buttons">
-            <a class="move-btn" asp-action="Index">back</a>
-            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-            {
-                <a class="move-btn" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
-            }
-
-        </div>
-
     </div>
+    <!-- End Flip Card -->
 </div>
 
 @section Scripts {
     <script>
         $(document).ready(function () {
             var output = document.getElementById('LogoPreview');
-            output.src = $("#Logo").val();
-        })
+            if (output) {
+                output.src = $("#Logo").val();
+            }
+        });
     </script>
     <script src="~/js/main.js"></script>
 }

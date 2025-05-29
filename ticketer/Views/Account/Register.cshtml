@@ -24,19 +24,25 @@
 
         <label asp-for="Name"></label>
         <input asp-for="Name" type="text" class="hover-zoom" />
+        <div class="validation-message-container">
         <span asp-validation-for="Name"></span>
-
+        </div>
         <label asp-for="Email"></label>
         <input asp-for="Email" type="email" class="hover-zoom" />
+        <div class="validation-message-container">
         <span asp-validation-for="Email"></span>
-
+        </div>
         <label asp-for="Password"></label>
         <input asp-for="Password" type="password" class="hover-zoom" />
+        <div class="validation-message-container">
         <span asp-validation-for="Password"></span>
+        </div>
 
         <label asp-for="ConfirmPassword"></label>
         <input asp-for="ConfirmPassword" type="password" class="hover-zoom" />
+        <div class="validation-message-container">
         <span asp-validation-for="ConfirmPassword" ></span>
+        </div>
 
         <div class="form-actions">
             <a asp-controller="Movie" asp-action="Index" class="hover-zoom">Back</a>

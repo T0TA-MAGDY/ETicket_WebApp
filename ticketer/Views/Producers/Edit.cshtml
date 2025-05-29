@@ -3,54 +3,67 @@
 @{
     ViewData["Title"] = "Update producer";
 }
-<link rel="stylesheet" href="~/css/edit.css" />
+<link rel="stylesheet" href="~/css/flipCard.css" />
 <div class="page-wrapper">
-    <div class="edit">
+    <!-- Flip Card Container -->
+    <div class="card-wrapper">
+        <div class="flip-card">
+            <div class="flip-card-inner">
 
-        <h1 class="hover-zoom">Update Producer</h1>
+                <!-- Front Side -->
+                <div class="flip-card-front">
+                    <img src="@Model.ProfilePictureURL" alt="Profile Picture" class="profile-img-full" id="ProfilePicturePreview" />
+                </div>
 
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly"></div>
+                <!-- Back Side -->
+                <div class="flip-card-back">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly"></div>
 
-            <div class="form-group">
-                <img class="zoom-img" id="ProfilePicturePreview" />
-            </div>
-            <div class="form-group hover-zoom">
-                <label asp-for="ProfilePictureURL"></label>
-                <input asp-for="ProfilePictureURL" />
-                <span asp-validation-for="ProfilePictureURL"></span>
-            </div>
-            <div class="form-group hover-zoom">
-                <label asp-for="FullName"></label>
-                <input asp-for="FullName" />
-                <span asp-validation-for="FullName"></span>
-            </div>
-            <div class="form-group hover-zoom">
-                <label asp-for="Bio"></label>
-                <input asp-for="Bio" />
-                <span asp-validation-for="Bio"></span>
-            </div>
+                        <div class="form-group hover-zoom">
+                            <label asp-for="ProfilePictureURL"></label>
+                            <input asp-for="ProfilePictureURL" id="ProfilePictureURL" />
+                            <span asp-validation-for="ProfilePictureURL"></span>
+                        </div>
+                        <div class="form-group hover-zoom">
+                            <label asp-for="FullName"></label>
+                            <input asp-for="FullName" />
+                            <span asp-validation-for="FullName"></span>
+                        </div>
+                        <div class="form-group hover-zoom">
+                            <label asp-for="Bio"></label>
+                            <input asp-for="Bio" />
+                            <span asp-validation-for="Bio"></span>
+                        </div>
 
-            <div class="form-group buttons">
-                <a class="move-btn" asp-action="Index">back</a>
-                <input type="submit" value="Update" class="sub move-btn" />
+                        <div class="form-group buttons">
+                            <a class="move-btn" asp-action="Index">Back</a>
+                            <input type="submit" value="Update" class="sub move-btn" />
+                        </div>
+                    </form>
+                </div>
+
             </div>
-        </form>
+        </div>
     </div>
+    <!-- End Flip Card -->
 </div>
 
 @section Scripts {
     <script>
-
         $(document).ready(function () {
             var output = document.getElementById('ProfilePicturePreview');
-            output.src = $("#ProfilePictureURL").val();
-        })
+            if (output) {
+                output.src = $("#ProfilePictureURL").val();
+            }
+        });
 
         $("#ProfilePictureURL").on("change", function () {
             var output = document.getElementById('ProfilePicturePreview');
-            output.src = $(this).val();
-        })
+            if (output) {
+                output.src = $(this).val();
+            }
+        });
     </script>
     <script src="~/js/main.js"></script>
 }
