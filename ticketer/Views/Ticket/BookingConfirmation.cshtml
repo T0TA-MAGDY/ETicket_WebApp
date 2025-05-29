@@ -114,3 +114,11 @@ var url = '@Url.Action("ConfirmPaymentAndBookSeats", "Ticket", new { orderId = M
         }, '#paypal-btn')
     </script>
 }
+@if (Model.PaymentStatus == "Paid"){
+
+<div class="text-center mt-3">
+        <a asp-controller="Ticket" asp-action="GenerateQr" asp-route-bookingId="@Model.Order_Id" class="btn btn-primary">
+        Download QR Code
+    </a>
+</div>
+}

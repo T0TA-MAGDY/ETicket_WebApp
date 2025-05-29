@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -6,6 +6,11 @@ using Microsoft.EntityFrameworkCore;
 using ticketer.Data;
 using ticketer.Models;
 using Microsoft.AspNetCore.Identity;
+using System.Reflection.Metadata.Ecma335;
+using SendGrid.Helpers.Errors.Model;
+using static QRCoder.PayloadGenerator;
+using QRCoder;
+using System.Drawing;
 
 namespace ticketer.Controllers
 {
@@ -129,7 +134,101 @@ namespace ticketer.Controllers
             return View(order);
         }
 
-public async Task<IActionResult> ConfirmPaymentAndBookSeats(int orderId)
+        public IActionResult GenerateQr(int bookingId)
+        {
+            var booking = _context.TicketOrders
+                .Include(o => o.Tickets)
+                    .ThenInclude(t => t.timing)
+                    .ThenInclude(t => t.Showtime)
+                    .ThenInclude(s => s.Cinema)
+                .Include(o => o.Tickets)
+                    .ThenInclude(t => t.timing)
+                    .ThenInclude(t => t.Showtime)
+                    .ThenInclude(s => s.Movie)
+                .FirstOrDefault(b => b.Order_Id == bookingId);
+
+            if (booking == null)
+                return NotFound();
+
+            string bookingUrl = $"{Request.Scheme}://{Request.Host}/Booking/ConfirmBooking/{bookingId}";
+            QRCodeGenerator qrGenerator = new QRCodeGenerator();
+            QRCodeData qrCodeData = qrGenerator.CreateQrCode(bookingUrl, QRCodeGenerator.ECCLevel.Q);
+            BitmapByteQRCode qrCode = new BitmapByteQRCode(qrCodeData);
+            byte[] qrCodeBytes = qrCode.GetGraphic(20);
+            using var qrStream = new MemoryStream(qrCodeBytes);
+            Bitmap qrBitmap = new Bitmap(qrStream);
+
+            var movieName = booking.Tickets.FirstOrDefault()?.timing?.Showtime?.Movie?.Name ?? "N/A";
+            var cinemaName = booking.Tickets.FirstOrDefault()?.timing?.Showtime?.Cinema?.Name ?? "N/A";
+            var date = booking.Tickets.FirstOrDefault()?.timing?.Showtime?.Date.ToString("yyyy-MM-dd") ?? "N/A";
+            var time = booking.Tickets.FirstOrDefault()?.timing?.StartTime.ToString(@"hh\:mm") ?? "N/A";
+
+            var seatDetails = booking.Tickets
+                .Select(t => $"Seat {t.SeatNumber}, Row {t.RowNumber}")
+                .ToList();
+
+            int seatCount = seatDetails.Count;
+            int dynamicHeight = 300 + (seatCount * 30);
+
+            int width = 750;
+            using Bitmap ticket = new Bitmap(width, dynamicHeight);
+            using Graphics g = Graphics.FromImage(ticket);
+            g.Clear(Color.WhiteSmoke);
+
+            using Pen borderPen = new Pen(Color.Gray, 4);
+            g.DrawRectangle(borderPen, 10, 10, width - 20, dynamicHeight - 20);
+
+            using Font titleFont = new Font("Arial", 26, FontStyle.Bold);
+            using Font font = new Font("Arial", 18);
+            using SolidBrush brush = new SolidBrush(Color.Black);
+
+            // Cinema Logo
+            string logoPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", "cinema_logo.png");
+            if (System.IO.File.Exists(logoPath))
+            {
+                using var logoImage = new Bitmap(logoPath);
+                g.DrawImage(logoImage, new Rectangle(width - 160, 20, 130, 60));
+            }
+
+            g.DrawString("Movie Ticket", titleFont, brush, new PointF(30, 20));
+
+            float yPos = 100;
+            g.DrawString($"Movie: {movieName}", font, brush, new PointF(30, yPos));
+            yPos += 40;
+            g.DrawString($"Cinema: {cinemaName}", font, brush, new PointF(30, yPos));
+            yPos += 40;
+            g.DrawString($"Date: {date}", font, brush, new PointF(30, yPos));
+            yPos += 40;
+            g.DrawString($"Time: {time}", font, brush, new PointF(30, yPos));
+
+            yPos += 40;
+            g.DrawString("Seats:", font, brush, new PointF(30, yPos));
+
+            foreach (var seat in seatDetails)
+            {
+                yPos += 30;
+                g.DrawString($"- {seat}", font, brush, new PointF(50, yPos));
+            }
+
+            // QR Code
+            g.DrawImage(qrBitmap, new Rectangle(width - 180, (dynamicHeight / 2) - 80, 150, 150));
+
+            // Footer Line
+            g.DrawLine(new Pen(Color.DarkGray, 2), 30, dynamicHeight - 60, width - 30, dynamicHeight - 60);
+
+            using Font footerFont = new Font("Arial", 12, FontStyle.Italic);
+            g.DrawString($"Order ID: {bookingId}", footerFont, Brushes.Gray, new PointF(30, dynamicHeight - 50));
+            g.DrawString("Thank you for booking with us!", footerFont, Brushes.Gray, new PointF(width - 300, dynamicHeight - 50));
+
+            using var ms = new MemoryStream();
+            ticket.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+            byte[] ticketBytes = ms.ToArray();
+
+            return File(ticketBytes, "image/png", "BookingTicket.png");
+        }
+
+
+        public async Task<IActionResult> ConfirmPaymentAndBookSeats(int orderId)
 {
     var order = await _context.TicketOrders
         .Include(o => o.Tickets)
