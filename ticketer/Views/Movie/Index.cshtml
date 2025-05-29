@@ -3,7 +3,11 @@
 @model IEnumerable<Movie>
 @{
     ViewData["Title"] = "List of Movies";
-    var isSearching = !string.IsNullOrEmpty(Context?.Request?.Query["searchString"]);
+    var hasSearchOrFilter =
+      Context?.Request?.Query.ContainsKey("searchString") == true ||
+      Context?.Request?.Query.ContainsKey("filter") == true ||
+        Context?.Request?.Query.ContainsKey("Category") == true;
+
     var movieList = Model?.ToList() ?? new List<Movie>();
     var userFavorites = ViewBag.UserFavorites as List<int> ?? new List<int>();
 }
@@ -16,8 +20,8 @@
         <a asp-action="Add" class="btn btn-black">➕ Add New Movie</a>
     </div>
 }
+@if (!hasSearchOrFilter)
 
-@if (!isSearching)
 {
     <div class="intro-section">
         <div class="intro-text">
