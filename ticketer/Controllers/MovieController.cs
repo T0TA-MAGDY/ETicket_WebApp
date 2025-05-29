@@ -47,7 +47,7 @@ namespace ticketer.Controllers
             var movie = _context.Movies
        .Include(m => m.Showtimes)
            .ThenInclude(st => st.Cinema)
-       .Include(m => m.Showtimes)
+       .Include(m => m.Showtimes.Where(s => s.Date >= DateTime.Today))
            .ThenInclude(st => st.Timings)
            .Include(p=>p.Producer)
            .Include(m=>m.MovieActors)
@@ -87,20 +87,6 @@ namespace ticketer.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> SaveAdd(MovieViewModel model)
         {
-            // Initialize collections if null
-            Console.WriteLine($"ActorIds type: {model.ActorIds?.GetType()}");
-            Console.WriteLine($"First actor type: {model.ActorIds?.FirstOrDefault().GetType()}");
-
-            // Custom validation
-            if (model.ProducerId <= 0)
-                ModelState.AddModelError("ProducerId", "Please select a producer");
-
-            if (!model.ActorIds.Any())
-                ModelState.AddModelError("ActorIds", "Please select at least one actor");
-
-            if (!model.Showtimes.Any(s => s.CinemaId > 0))
-                ModelState.AddModelError("", "Please add at least one valid showtime");
-
             if (!ModelState.IsValid)
             {
                 foreach (var modelState in ModelState.Values)
@@ -127,7 +113,7 @@ namespace ticketer.Controllers
             using var transaction = await _context.Database.BeginTransactionAsync();
             try
             {
-                // Save Movie
+                
                 var movie = new Movie
                 {
                     Name = model.Name,
@@ -263,7 +249,7 @@ namespace ticketer.Controllers
             return View("Edit", viewModel);
         }
 
-        // POST: Movie/Edit/5
+        // POST: Movie/Edit/id
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, MovieViewModel model)
@@ -413,7 +399,7 @@ namespace ticketer.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction("ShowDetails", new { id = id });
         }
-        // GET: Movie/Delete/5
+        // GET: Movie/Delete/id
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null) return NotFound();
@@ -424,7 +410,7 @@ namespace ticketer.Controllers
 
             if (movie == null) return NotFound();
 
-            return View(movie); // Show confirmation view
+            return View(movie); 
         }
 
         [HttpPost]

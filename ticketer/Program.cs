@@ -39,6 +39,7 @@ builder.Services.AddScoped<IActorsService, ActorsService>();
 builder.Services.AddScoped<ICinemasService, CinemasService>();
 builder.Services.AddScoped<IOrdersService, OrdersService>();
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+builder.Services.AddHostedService<ShowtimesCleanupService>();
 
 
 var app = builder.Build();
