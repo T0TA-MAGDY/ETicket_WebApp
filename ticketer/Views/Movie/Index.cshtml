@@ -2,48 +2,53 @@
 
 @{
     ViewData["Title"] = "List of Movies";
+    var isSearching = !string.IsNullOrEmpty(Context?.Request?.Query["searchString"]);
+    var movieList = Model?.ToList() ?? new List<Movie>();
 }
+
 <link rel="stylesheet" href="~/css/movie.css" />
+
 @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
 {
     <div class="add-movie-fixed">
         <a asp-action="Add" class="btn btn-black">➕ Add New Movie</a>
     </div>
 }
-<div class="intro-section">
-    <div class="intro-text">
-        <h1 class="hover-zoom">Welcome to Ticketer</h1>
-        <p class="hover-zoom">
-            your go-to platform for booking movie tickets across different cinemas.
-            Explore the latest releases, watch trailers, and choose your seat — all in one place. Fast, easy,
-            and always up to date with the newest films.
-            Skip the lines and enjoy the big screen hassle-free!
-        </p>
-    </div>
-    <div class="intro-image hover-zoom">
-        <img src="/img/ahmedhelmy.png" alt="actor" />
-    </div>
-</div>
 
-@{
-    var secondItem = Model.Skip(1).FirstOrDefault();
-}
-
-@if (secondItem != null)
+@if (!isSearching)
 {
-    <h2 class="now-showing-title hover-zoom">Now Showing</h2>
-
-    <div class="featured-movie hover-zoom">
-        <a href="@Url.Action("showdetails", new { id = secondItem.Id })">
-            <img src="@secondItem.ImageURL" alt="@secondItem.Name" />
-            <div class="movie-name-overlay">@secondItem.Name</div>
-        </a>
+    <div class="intro-section">
+        <div class="intro-text">
+            <h1 class="hover-zoom">Welcome to Ticketer</h1>
+            <p class="hover-zoom">
+                your go-to platform for booking movie tickets across different cinemas.
+                Explore the latest releases, watch trailers, and choose your seat — all in one place. Fast, easy,
+                and always up to date with the newest films.
+                Skip the lines and enjoy the big screen hassle-free!
+            </p>
+        </div>
+        <div class="intro-image hover-zoom">
+            <img src="/img/ahmedhelmy.png" alt="actor" />
+        </div>
     </div>
-}
 
+    @if (movieList.Count > 1)
+    {
+        var secondItem = movieList[1];
+
+        <h2 class="now-showing-title hover-zoom">Now Showing</h2>
+
+        <div class="featured-movie hover-zoom">
+            <a href="@Url.Action("showdetails", new { id = secondItem.Id })">
+                <img src="@secondItem.ImageURL" alt="@secondItem.Name" />
+                <div class="movie-name-overlay">@secondItem.Name</div>
+            </a>
+        </div>
+    }
+}
 
 <div class="movies-container">
-    @foreach (var item in Model)
+    @foreach (var item in movieList)
     {
         <a href="@Url.Action("showdetails", new { id = item.Id })" class="movie-item hover-zoom">
             <img src="@item.ImageURL" alt="@item.Name" />
@@ -54,12 +59,11 @@
     }
 </div>
 
-
 @section Scripts {
     <script>
-               document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             const container = document.querySelector('.movies-container');
-            if (!container) return; 
+            if (!container) return;
 
             const itemsCount = container.children.length;
 
@@ -69,7 +73,6 @@
                 container.classList.remove('centered');
             }
         });
-
     </script>
     <script src="~/js/main.js"></script>
 }

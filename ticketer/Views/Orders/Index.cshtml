@@ -34,7 +34,42 @@
                         </tr>
                     </thead>
                     <tbody>
-                       
+                    <tbody>
+                            @if (Model != null && Model.Any())
+                            {
+                                foreach (var order in Model)
+                                {
+                                <tr>
+                                    <td>@order.Order_Id</td>
+                                    <td>
+                                        <ul style="list-style-type:none; padding-left:0;">
+                                                @foreach (var ticket in order.Tickets)
+                                                {
+                                                <li>
+                                                    <div class="alert alert-info" role="alert">
+                                                        <strong>Movie:</strong> @ticket.timing.Showtime.Movie.Name <br />
+                                                        <strong>Price:</strong> @ticket.timing.Price.ToString("c")
+                                                    </div>
+                                                </li>
+                                                }
+                                        </ul>
+                                    </td>
+                                    <td>@order.TotalPrice.ToString("c")</td>
+                                        @if (User?.Identity?.IsAuthenticated == true && User.IsInRole("Admin"))
+                                        {
+                                        <td>@order.User.FullName</td>
+                                        }
+                                </tr>
+                                }
+                            }
+                            else
+                            {
+                            <tr>
+                                <td colspan="4" class="text-center">No orders found.</td>
+                            </tr>
+                            }
+                    </tbody>
+
                     </tbody>
                 </table>
             </div>

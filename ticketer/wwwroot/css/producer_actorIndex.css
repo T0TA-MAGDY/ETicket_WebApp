@@ -1,5 +1,5 @@
 ﻿body {
-    background: url('/img/cinema1.jpg') no-repeat center center fixed;
+    background: url('/css/img/cinema1.jpg') no-repeat center center fixed;
     background-size: cover;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #fff;
@@ -52,9 +52,8 @@ img {
     border: 2px solid white;
 }
 
-/* Action buttons styling */
+
 td:last-child {
-/*    display: flex;*/
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -100,7 +99,7 @@ td:last-child {
         background-color: #c82333;
     }
 
-/* Column Width Customization */
+
 th:nth-child(1),
 td:nth-child(1) {
     width: 120px;
@@ -121,7 +120,7 @@ td:nth-child(4) {
     width: 150px;
 }
 
-/* Responsive */
+
 @media (max-width: 768px) {
     th, td {
         font-size: 1rem;
@@ -175,3 +174,11 @@ td:nth-child(4) {
             white-space: nowrap;
         }
 }
+
+@media (max-width: 768px) {
+    th:nth-child(3),
+    td:nth-child(3) {
+        display: none;
+    }
+}
+

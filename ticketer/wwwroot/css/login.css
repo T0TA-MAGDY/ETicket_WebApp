@@ -30,12 +30,15 @@
     border-radius: 10px;
     max-width: 420px;
     width: 100%;
+    margin-bottom: 100px;
 }
 
-    .login-box h2 {
+    .login-box h1 {
         text-align: center;
-        margin-bottom: 60px;
-        font-size: 28px;
+        margin: 100px 0;
+        font-size: 40px;
+        letter-spacing: 3px;
+        word-spacing: 7px;
         color: white;
     }
 
@@ -50,10 +53,11 @@
 
     .login-box input {
         width: 100%;
+        height: 45px;
         padding: 12px;
-        margin-bottom: 30px;
-        border: 1px solid white;
-        border-radius: 4px;
+        margin-bottom: 35px;
+        border: 2px solid white;
+        border-radius: 10px;
         background-color: #3d0e0e;
         color: white;
         font-size: 18px;
@@ -62,19 +66,26 @@
 .buttons {
     display: flex;
     justify-content: space-between;
-    margin-top: 50px;
+    margin-top: 80px;
     gap: 20px;
 }
 
     .buttons button {
         padding: 10px 24px;
         background-color: black;
-        border: 1px solid white;
+        border: 2px solid white;
+        border-radius: 10px;
+        height: 45px;
         color: white;
         cursor: pointer;
-        border-radius: 4px;
-        font-size: 16px;
+        font-size: 20px;
+        text-align: center;
     }
+
+        .buttons button:hover {
+            background-color: white;
+            color: black;
+        }
 
 .poster-section {
     flex: 1;
@@ -85,4 +96,55 @@
     background-size: 100% 100%;
     margin: 0;
     padding: 0;
+}
+
+
+@media (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+        overflow: auto;
+    }
+
+    .poster-section {
+        display: none;
+    }
+
+    .login-section {
+        height: auto;
+        padding: 60px 30px;
+        justify-content: flex-start;
+    }
+
+    .login-box {
+        max-width: 100%;
+        padding: 0;
+        margin: 0 auto 80px;
+    }
+}
+
+@media (max-width: 600px) {
+    .login-box h1 {
+        font-size: 28px;
+        margin: 60px 0;
+    }
+
+    .login-box label,
+    .login-box input,
+    .buttons button,
+    .forgot-password a {
+        font-size: 16px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+        .buttons button {
+            width: 100%;
+        }
+
+    .login-box {
+        padding: 0 15px;
+    }
 }
