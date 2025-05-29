@@ -69,7 +69,7 @@ namespace ticketer.Controllers
 
             var userId = _userManager.GetUserId(User);
             if (userId == null)
-                return Unauthorized("You must be logged in to book seats.");
+                return View("NotAuthorized");
 
             // Calculate the total price
             // Calculate total price depending on seat type

@@ -80,7 +80,7 @@
 }
 
 .seat.selected {
-    background-color: navy;
+    background-color: #ffdddd;
     color: white;
     font-weight: bold;
 }

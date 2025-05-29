@@ -1,0 +1,30 @@
+ @{
+    ViewData["Title"] = "Unauthorized";
+}
+
+<div class="unauthorized-message">
+    <h2>You must be logged in to book seats. 🫵🏻 </h2>
+    <p><a asp-controller="Account" asp-action="Login" class="login-link">Log in</a> to continue.</p>
+</div>
+
+<style>
+    .unauthorized-message {
+        background-color: #ffdddd;
+        border: 1px solid #ff5c5c;
+        color: #b30000;
+        padding: 20px;
+        border-radius: 8px;
+        max-width: 400px;
+        margin: 40px auto;
+        text-align: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .login-link {
+        color: #b30000;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+    .login-link:hover {
+        color: #ff0000;
+    }
+</style>
