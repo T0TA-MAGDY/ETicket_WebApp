@@ -19,13 +19,8 @@ using ticketer.Data.Services;
 using Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddTransient<IEmailService>(provider =>
-{
-    var config = provider.GetRequiredService<IConfiguration>();
-    var logger = provider.GetRequiredService<ILogger<EmailService>>();
-    var apiKey = config["SendGrid:ApiKey"];
-    return new EmailService(apiKey,logger);
-});
+builder.Services.AddTransient<IEmailService, EmailService>();
+
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));

@@ -1,48 +1,43 @@
-﻿using SendGrid;
-using SendGrid.Helpers.Mail;
-using System.Threading.Tasks;
+﻿using MailKit.Net.Smtp;
+using MimeKit;
 using Microsoft.Extensions.Logging;
-using Microsoft.CodeAnalysis.Elfie.Diagnostics;
-using RazorLight;
-using ticketer.ViewModels;
-using System.IO;
-using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 
-public class EmailService : IEmailService
+public class EmailService : IEmailService 
 {
-    private readonly string _apiKey;
     private readonly ILogger<EmailService> _logger;
+    private readonly IConfiguration _config;
 
-    public EmailService(string apiKey , ILogger<EmailService> logger)
+    public EmailService(ILogger<EmailService> logger, IConfiguration config)
     {
-        _apiKey = apiKey;
         _logger = logger;
-
+        _config = config;
     }
 
-    public async Task SendEmailAsync(string toEmail, string subject, string body)
+    public async Task SendEmailAsync(string toEmail, string subject, string htmlMessage)
     {
-        var client = new SendGridClient(_apiKey);
-        var from = new EmailAddress("toot.ma.2022@gmail.com", "Ticketer");
-        var to = new EmailAddress(toEmail);
-        var msg = MailHelper.CreateSingleEmail(from, to, subject, body, body);
-        var response = await client.SendEmailAsync(msg);
+        var email = new MimeMessage();
+        email.From.Add(MailboxAddress.Parse(_config["Email:From"]));
+        email.To.Add(MailboxAddress.Parse(toEmail));
+        email.Subject = subject;
+        email.Body = new TextPart(MimeKit.Text.TextFormat.Html) { Text = htmlMessage };
 
-        // ✅ Log to server console
-        _logger.LogInformation("SendGrid sent to {Email} with status {Status}", toEmail, response.StatusCode);
-        string responseBody = await response.Body.ReadAsStringAsync();
-        _logger.LogInformation("SendGrid response body: {Body}", responseBody);
+        using var smtp = new SmtpClient();
+
+        try
+        {
+            await smtp.ConnectAsync("smtp.gmail.com", 587, MailKit.Security.SecureSocketOptions.StartTls);
+            await smtp.AuthenticateAsync(_config["Email:Username"], _config["Email:Password"]);
+            await smtp.SendAsync(email);
+            _logger.LogInformation("Email sent to {Email}", toEmail);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Failed to send email to {Email}", toEmail);
+        }
+        finally
+        {
+            await smtp.DisconnectAsync(true);
+        }
     }
- 
-
-public async Task<string> RenderPasswordResetEmailAsync(PasswordResetEmailModel model)
-{
-    var engine = new RazorLightEngineBuilder()
-        .UseFileSystemProject(Path.Combine(Directory.GetCurrentDirectory(), "EmailTemplates")).Build();
-
-    string templateName = "ResetPasswordEmailTemplate.cshtml";
-
-    string emailBody = await engine.CompileRenderAsync(templateName, model);
-    return emailBody;
-}
 }

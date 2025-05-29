@@ -99,6 +99,7 @@ namespace ticketer.Controllers
         [HttpPost]
         public async Task<IActionResult> ForgotPassword(ForgotPassword model)
         {
+            _logger.LogInformation("POST /ForgotPassword hit with model: {@Model}", model);
             if (!ModelState.IsValid)
                 return View(model);
 
@@ -112,7 +113,9 @@ namespace ticketer.Controllers
             var token = await _userManager.GeneratePasswordResetTokenAsync(user);
             var resetLink = Url.Action("ResetPassword", "Account",new { token = token, email = user.Email }, Request.Scheme);
 
-            var engine = new RazorLightEngineBuilder().UseFileSystemProject(Path.Combine(Directory.GetCurrentDirectory(), "EmailTemplates")).Build();
+            var engine = new RazorLightEngineBuilder()
+             .UseFileSystemProject(Path.Combine(Directory.GetCurrentDirectory(), "EmailTemplates"))
+              .Build();
 
             var emailModel = new PasswordResetEmailModel
             {
@@ -120,7 +123,18 @@ namespace ticketer.Controllers
                 ResetLink = resetLink
             };
 
-            string emailHtml = await engine.CompileRenderAsync("ResetPasswordEmailTemplate.cshtml", emailModel);
+            string emailHtml;
+            try
+            {
+                emailHtml = await engine.CompileRenderAsync("ResetPasswordEmailTemplate.cshtml", emailModel);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Failed to render ResetPasswordEmailTemplate.cshtml");
+                // Fallback to a simple string so email still sends:
+                emailHtml = $"Hello {emailModel.Name},\nReset your password here: {emailModel.ResetLink}";
+            }
+
 
             await _emailService.SendEmailAsync(user.Email, "Reset Your Password", emailHtml);
 
