@@ -23,7 +23,7 @@ namespace ticketer.Data
         public DbSet<TicketOrder> TicketOrders { get; set; }
         public DbSet<Timing> Timings { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
-
+        public DbSet<Review> Reviews { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -118,6 +118,18 @@ namespace ticketer.Data
             modelBuilder.Entity<Timing>()
         .Property(t => t.Price)
         .HasPrecision(18, 2);
+        //review
+         modelBuilder.Entity<Review>()
+        .HasOne(r => r.Movie)
+        .WithMany(m => m.Reviews)
+        .HasForeignKey(r => r.MovieId)
+        .OnDelete(DeleteBehavior.Cascade); 
+
+    modelBuilder.Entity<Review>()
+        .HasOne(r => r.User)
+        .WithMany(u => u.Reviews)
+        .HasForeignKey(r => r.UserId)
+        .OnDelete(DeleteBehavior.Cascade);
         }
 
     }

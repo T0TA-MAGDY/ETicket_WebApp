@@ -1,4 +1,5 @@
-﻿const style = document.createElement('style');
+﻿
+const style = document.createElement('style');
 style.textContent = `
             .hover-zoom {
                 transition: transform 0.3s ease;

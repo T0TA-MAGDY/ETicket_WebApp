@@ -42,17 +42,19 @@ namespace ticketer.Controllers
         }
 
 
-        public IActionResult Showdetails(int id)
+       public IActionResult Showdetails(int id)
         {
             var movie = _context.Movies
+            .Include(m => m.Reviews)
        .Include(m => m.Showtimes)
            .ThenInclude(st => st.Cinema)
        .Include(m => m.Showtimes.Where(s => s.Date >= DateTime.Today))
            .ThenInclude(st => st.Timings)
-           .Include(p=>p.Producer)
-           .Include(m=>m.MovieActors)
-           .ThenInclude(ma=>ma.Actor)
+           .Include(p => p.Producer)
+           .Include(m => m.MovieActors)
+           .ThenInclude(ma => ma.Actor)
        .FirstOrDefault(m => m.Id == id);
+
 
             if (movie == null)
             {
@@ -60,10 +62,16 @@ namespace ticketer.Controllers
             }
             var relatedmovie = _context.Movies.Where(m => m.Id != id && m.MovieCategory == movie.MovieCategory).ToList();
             ViewBag.RelatedMovies = relatedmovie;
-
+            ViewBag.Reviews = _context.Reviews
+    .Where(r => r.MovieId == id)
+    .Include(r => r.User)
+    .OrderByDescending(r => r.CreatedAt)
+    .ToList();
+ViewBag.AverageRating = movie.Reviews?.Any() == true 
+    ? Math.Round(movie.Reviews.Average(r => r.Rating), 1) 
+    : (double?)null;
             return View(movie);
         }
-
 
         // GET: Movie/Add
         [HttpGet]
