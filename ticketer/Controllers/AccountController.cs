@@ -193,12 +193,13 @@ namespace ticketer.Controllers
              {
                        await _userManager.AddToRoleAsync(newUser, UserRoles.User);
                        await _signInManager.SignInAsync(newUser, isPersistent: false);
-                       return RedirectToAction("Index", "Movie");
-             }
+                        return RedirectToAction("Index", "Movie");
+
+            }
 
 
-    // ❗ If failed, add all errors to the page
-    foreach (var error in newUserResponse.Errors)
+            // ❗ If failed, add all errors to the page
+            foreach (var error in newUserResponse.Errors)
     {
         ModelState.AddModelError(string.Empty, error.Description);
     }

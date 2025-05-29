@@ -14,10 +14,16 @@ namespace ticketer.Controllers
     public class MovieController : Controller
     {
         private readonly AppDbContext _context;
+        private readonly IEmailService _emailService;
+        private readonly ILogger<MovieController> _logger;
 
-        public MovieController(AppDbContext context)
+
+
+        public MovieController(AppDbContext context, IEmailService emailService, ILogger<MovieController> logger)
         {
             _context = context;
+            _emailService = emailService;
+            _logger = logger;
         }
         public IActionResult Index(string searchString)
         {
@@ -180,6 +186,14 @@ namespace ticketer.Controllers
                 }
                 await _context.SaveChangesAsync();
                 await transaction.CommitAsync();
+                _logger.LogInformation("Starting to send new film notification emails for movie: {MovieTitle}", movie.Name);
+
+                var users = await _context.Users.ToListAsync();
+                _logger.LogInformation("Sending new film email to {UserCount} users.", users.Count);
+
+                await _emailService.SendNewFilmAnnouncementAsync(users, movie);
+                _logger.LogInformation("Finished sending new film emails for movie: {MovieTitle}", movie.Name);
+
 
                 return RedirectToAction("Index");
             }

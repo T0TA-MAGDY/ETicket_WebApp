@@ -1,0 +1,20 @@
+﻿@model NewFilmEmailVM
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Movie Release</title>
+</head>
+<body style="background-color:#000; background-image: url('https://yourdomain.com/img/cinema1.jpg'); background-size: cover; background-position: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #fff; margin: 0; padding: 0;">
+    <div style="max-width:600px; margin: 0 auto; padding: 40px 20px; background-color: rgba(0,0,0,0.7); border-radius: 15px; box-shadow: 0 8px 16px rgba(0,0,0,0.5);">
+        <h2 style="text-align:center; color:#fff;">Hello @Model.Name,</h2>
+        <p style="font-size: 1.1rem; line-height: 1.5;">We're excited to announce a new movie now showing at Ticketer!</p>
+        <h3 style="color: #dc3545; text-align:center; margin: 20px 0;">🎬 @Model.MovieTitle 🎬</h3>
+        <p style="font-size: 1rem; line-height: 1.5; text-align: center;">@Model.Description</p>
+        <p style="font-size: 1rem; color: #ddd;">Don't miss out on this cinematic experience. Reserve your seats today!</p>
+        <p style="font-size: 1rem; color: #bbb; margin-top: 40px;">– The Ticketer Team</p>
+    </div>
+</body>
+</html>
+
