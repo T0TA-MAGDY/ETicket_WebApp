@@ -271,3 +271,12 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background-color: #ffd700;
 }
+.login-link {
+    color: gold;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.login-link:hover {
+    color: #ffd700;
+}

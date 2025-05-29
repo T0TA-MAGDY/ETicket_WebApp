@@ -207,7 +207,11 @@
 }
 else
 {
-    <p><a href="/Identity/Account/Login">Log in</a> to leave a review.</p>
+<p>
+  <a asp-controller="Account" asp-action="Login" style="color: gold; font-weight: bold; text-decoration: underline;">
+    Log in
+  </a> to leave a review.
+</p>
 }
     <h3 style="margin-top: 40px;">User Reviews</h3>
 @foreach (var review in Model.Reviews.OrderByDescending(r => r.CreatedAt))
