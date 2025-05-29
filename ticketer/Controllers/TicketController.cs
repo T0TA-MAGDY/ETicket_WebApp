@@ -167,8 +167,32 @@ namespace ticketer.Controllers
                 .Select(t => $"Seat {t.SeatNumber}, Row {t.RowNumber}")
                 .ToList();
 
-            int seatCount = seatDetails.Count;
-            int dynamicHeight = 300 + (seatCount * 30);
+            // --- Define Drawing Parameters ---
+            int qrCodeSize = 180; // Fixed size for QR code (pixels)
+            int footerHeight = 70; // Dedicated space for the footer area
+            int padding = 30; // Padding/margins from ticket edges
+
+            // 4. Calculate Dynamic Ticket Height (to solve overlap/spacing issues)
+            // Base height for static content (Title, Movie, Cinema, Date, Time, "Seats:" header)
+            // Estimated based on font sizes and line spacing. Adjust if your visual needs change.
+            float baseContentHeight = 20 + 26 + (4 * 40) + 40; // Title Y + Title Height + (4 lines * line_height) + "Seats:" header height
+
+            // Height required for the dynamic list of seats
+            float seatListHeight = seatDetails.Count * 30; // 30 pixels per seat detail line
+
+            // Minimum height for the ticket (to ensure it doesn't become too small)
+            int minHeight = 300;
+
+            // Total height required for all text content (including seats)
+            float requiredContentHeight = baseContentHeight + seatListHeight;
+
+            // Total height required to accommodate the QR code with its padding
+            float requiredSpaceForQr = qrCodeSize + (padding * 2);
+
+           
+            int dynamicHeight = (int)Math.Max(minHeight, Math.Max(requiredContentHeight, requiredSpaceForQr) + footerHeight + (padding * 2));
+
+            
 
             int width = 750;
             using Bitmap ticket = new Bitmap(width, dynamicHeight);
