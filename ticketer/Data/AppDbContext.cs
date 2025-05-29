@@ -24,6 +24,7 @@ namespace ticketer.Data
         public DbSet<Timing> Timings { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
         public DbSet<Review> Reviews { get; set; }
+        public DbSet<Favorite> Favorites { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
