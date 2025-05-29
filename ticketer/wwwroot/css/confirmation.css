@@ -113,3 +113,10 @@ table.table {
         justify-content: center;
     }
 }
+.payment-confirmation {
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}

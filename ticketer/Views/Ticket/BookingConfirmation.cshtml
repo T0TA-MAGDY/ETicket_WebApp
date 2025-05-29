@@ -5,7 +5,13 @@
 }
 <link rel="stylesheet" href="~/css/confirmation.css" />
 <h2 style="text-align: center; margin-bottom: 30px;" class="hover-zoom">🎟️ Booking Confirmation</h2>
-
+ @if (Model.PaymentStatus == "Paid")
+{
+    <div class="payment-confirmation">
+        <h4>Payment Confirmation</h4>
+        <p>Thank you for your purchase. Your tickets have been successfully booked. 🎟️</p>
+    </div>
+}
 <div class="confirmation-container">
     <h4 style="margin-bottom: 15px;" class="zoom">Booking Details</h4>
     <div style="margin-bottom: 25px;">
@@ -53,47 +59,58 @@
 
     <div class="button-section">
         <a class="btn back-btn hover-zoom" asp-controller="Movie" asp-action="Index">Back to Movie List</a>
-        <button id="fake-paypal-button" class="hover-zoom">
-            <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_111x69.jpg" alt="PayPal" />
-            Pay with PayPal
-        </button>
+        <div id="paypal-btn" class="hover-zoom"></div>
     </div>
 
-    @if (Model.PaymentStatus == "Paid")
-    {
-        <div style="margin-top: 100px; text-align: center;" class="hover-zoom">
-            <h4>Payment Confirmation</h4>
-            <p>Thank you for your purchase. Your tickets have been successfully booked. 🎟️</p>
-        </div>
-    }
-
-    <div id="loading-spinner" class="hover-zoom">
-        <img src="https://i.gifer.com/ZZ5H.gif" alt="Loading..." />
-        <p>Processing Payment...</p>
-    </div>
+    
 </div>
 
 
 
-@section Scripts {
+@section Scripts{
+
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+
     <script>
-        document.getElementById('fake-paypal-button').addEventListener('click', function () {
-            var button = this;
-            button.disabled = true;
-            button.innerText = 'Processing...';
-            button.style.backgroundColor = '#006AB6';
-            button.style.transform = 'scale(0.98)';
 
-            document.getElementById('loading-spinner').style.display = 'block';
+let _total = @Model.TotalPrice.ToString("F2", System.Globalization.CultureInfo.InvariantCulture);
 
-            setTimeout(function () {
-                var orderId = '@Model.Order_Id';
-                var url = '@Url.Action("ConfirmPaymentAndBookSeats", "Ticket", new { orderId = "__orderId__" })';
-                url = url.replace("__orderId__", orderId);
+        paypal.Button.render({
+            //Configure environment
+            env: 'sandbox',
+            client: {
+                sandbox: 'AcKRtgL4i68EZ2ZYuYUx3ilihAg2YhL5dtF_m19A8MjBWVOn6ewNS4M_uV8gA3xi98zTcUq38gUHbVFx'
+            },
 
-                window.location.href = url;
-            }, 2000);
-        });
+            //Customize button
+            locale: 'en_US',
+            style: {
+                size: 'small',
+                color: 'gold',
+                shape: 'pill'
+            },
+            commit: true,
+
+            //Set up a payment
+            payment: function (data, actions) {
+                return actions.payment.create({
+                    transactions: [{
+                        amount: {
+                            total: _total,
+                            currency: 'USD'
+                        }
+                    }]
+                });
+            },
+
+            //Execute the payment
+            onAuthorize: function (data, actions) {
+                return actions.payment.execute().then(function () {
+var url = '@Url.Action("ConfirmPaymentAndBookSeats", "Ticket", new { orderId = Model.Order_Id })';
+                    window.location.href = url;
+                });
+            }
+
+        }, '#paypal-btn')
     </script>
-    <script src="~/js/main.js"></script>
 }
