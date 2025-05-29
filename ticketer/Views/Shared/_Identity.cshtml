@@ -9,16 +9,17 @@
     </a>
     <span style="padding: 5px;"></span>
 
-    <a class="btn btn-outline-primary my-2 my-sm-0" asp-controller="Account" asp-action="Register">
+
+    <a class="btn btn-register-custom my-2 my-sm-0" asp-controller="Account" asp-action="Register">
         <i class="bi bi-person-plus"></i> Register
     </a>
+
 }
 else
 {
     var username = UserManager.GetUserName(User);
 
     <div class="dropdown">
-
 
 
         <button class="btn border border-success text-success d-flex align-items-center rounded-pill px-3 py-1 dropdown-toggle hello-admin-animated"

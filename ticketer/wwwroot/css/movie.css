@@ -249,3 +249,11 @@
         padding: 8px 16px;
     }
 }
+
+@media (max-width: 768px) {
+    .add-movie-fixed {
+        position: static;
+        margin: 20px auto;
+        text-align: center;
+    }
+}
