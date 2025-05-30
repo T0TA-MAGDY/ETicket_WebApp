@@ -29,7 +29,7 @@ body {
     border: 1px solid #dc3545;
     color: #dc3545;
     border-radius: 8px;
-    font-weight: bold; 
+    font-weight: bold;
     transition: 0.3s ease-in-out;
     font-family: 'Poppins', sans-serif;
 }
@@ -48,6 +48,7 @@ body {
 .search-form-custom {
     transition: all 0.3s ease;
     box-shadow: none;
+    margin-left:12px;
 }
 
     .search-form-custom:hover {

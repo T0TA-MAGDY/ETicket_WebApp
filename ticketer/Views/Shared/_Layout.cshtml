@@ -1,4 +1,5 @@
-﻿﻿@using ticketer.Data.Enums
+﻿
+@using ticketer.Data.Enums
 @{
     var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
     var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
@@ -14,7 +15,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Ticketer</title>
 
-    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -23,7 +23,6 @@
 </head>
 <body>
     <header>
-
         <nav class="navbar navbar-expand-sm navbar-dark box-shadow mb-3" style="background-color: #400000; border-bottom: 2px solid #400000;">
             <div class="container-fluid">
                 <a class="navbar-brand text-light" asp-area="" asp-controller="Movie" asp-action="Index">Ticketer</a>
@@ -70,10 +69,11 @@
                             </li>
                         }
                     </ul>
+
                     @if (currentController == "Movie" && currentAction == "Index")
                     {
                         <form asp-area="" asp-controller="Movie" asp-action="Index" method="get"
-                              class="d-flex align-items-center justify-content-end gap-3 flex-wrap">
+                              class="d-flex align-items-center justify-content-end gap-3 flex-wrap me-4">
 
                             <!-- Filter + Category -->
                             <div class="d-flex align-items-center gap-3">
@@ -128,33 +128,16 @@
                                 </button>
                             </div>
 
-
                             <input type="hidden" name="filter" value="@currentFilter" />
                             <input type="hidden" name="category" value="@currentCategory" />
                         </form>
-
-                        <!-- JS Animation -->
-                        <script>
-                            function rotateAndSubmit(button) {
-                                const icon = button.querySelector('.search-icon-rotate');
-                                const form = button.closest('form');
-
-                                if (icon && form) {
-                                    icon.classList.add('clicked');
-                                    setTimeout(() => {
-                                        icon.classList.remove('clicked');
-                                        form.submit();
-                                    }, 600);
-                                }
-                            }
-                        </script>
                     }
+
                     <!-- Identity -->
                     <div class="d-flex align-items-center">
                         <partial name="_Identity.cshtml" />
                     </div>
                 </div>
-            </div>
             </div>
         </nav>
     </header>
@@ -172,14 +155,9 @@
         </footer>
     }
 
-    <!-- jQuery (optional) -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-
-    <!-- Bootstrap 5 JS bundle (includes Popper) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
     <script src="~/js/site.js" asp-append-version="true"></script>
-
 
     <script>
         function rotateAndSubmit(button) {
@@ -195,7 +173,6 @@
             }
         }
     </script>
-
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
