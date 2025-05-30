@@ -1,4 +1,12 @@
-﻿@using ticketer.Data.Enums 
+﻿﻿@using ticketer.Data.Enums
+@{
+    var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+    var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+    var currentSearch = Context.Request.Query["searchString"];
+    var currentFilter = Context.Request.Query["filter"];
+    var currentCategory = Context.Request.Query["category"];
+}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,68 +70,91 @@
                             </li>
                         }
                     </ul>
+                    @if (currentController == "Movie" && currentAction == "Index")
+                    {
+                        <form asp-area="" asp-controller="Movie" asp-action="Index" method="get"
+                              class="d-flex align-items-center justify-content-end gap-3 flex-wrap">
 
-                   <form asp-area="" asp-controller="Movie" asp-action="Index" method="get"
-      class="d-flex align-items-center justify-content-end gap-3 flex-wrap">
+                            <!-- Filter + Category -->
+                            <div class="d-flex align-items-center gap-3">
 
-    <!-- Filter + Category -->
-    <div class="d-flex align-items-center gap-2">
-        <label for="filter" class="form-label mb-0 small">Filter:</label>
-        <select id="filter" name="filter" class="form-select form-select-sm" style="width: auto;">
-            <option value="">-- All --</option>
-            <option value="favorites" >Favorites</option>
-            <option value="newest" >Newest</option>
-        </select>
+                                <!-- Filter -->
+                                <div class="dropdown">
+                                    <button class="btn btn-sm dropdown-toggle d-flex align-items-center"
+                                            type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false"
+                                            style="background-color: transparent; border: none; color: white;">
+                                        <i class="bi bi-funnel-fill"></i>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="filterDropdown">
+                                        <li><a class="dropdown-item" href="?searchString=@currentSearch&category=@currentCategory">-- All --</a></li>
+                                        <li><a class="dropdown-item" href="?searchString=@currentSearch&category=@currentCategory&filter=favorites">Favorites</a></li>
+                                        <li><a class="dropdown-item" href="?searchString=@currentSearch&category=@currentCategory&filter=newest">Newest</a></li>
+                                    </ul>
+                                </div>
 
-                            <label for="category" class="form-label mb-0 small ms-2">Category:</label>
-                            <select id="category" name="category" class="form-select form-select-sm" style="width: auto;">
-                                <option value="">-- All --</option>
-                                <vc:category-dropdown />
+                                <!-- Category -->
+                                <div class="dropdown">
+                                    <button class="btn btn-sm dropdown-toggle d-flex align-items-center"
+                                            type="button" id="categoryDropdown" data-bs-toggle="dropdown" aria-expanded="false"
+                                            style="background-color: transparent; border: none; color: white;">
+                                        <i class="bi bi-tags-fill"></i>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="categoryDropdown">
+                                        <li><a class="dropdown-item" href="?searchString=@currentSearch&filter=@currentFilter">-- All --</a></li>
+                                        @if (ViewBag.Categories != null)
+                                        {
+                                            foreach (var cat in (IEnumerable<MovieCategory>)ViewBag.Categories)
+                                            {
+                                                <li><a class="dropdown-item" href="?searchString=@currentSearch&filter=@currentFilter&category=@cat">@cat</a></li>
+                                            }
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
 
-                            </select>
+                            <!-- Search -->
+                            <div class="position-relative d-flex align-items-center"
+                                 style="background-color: lightgray; border-radius: 50px; padding-right: 40px; padding-left: 15px; height: 40px; transition: all 0.3s ease;">
+                                <input type="text" name="searchString"
+                                       value="@currentSearch"
+                                       class="form-control border-0 bg-transparent shadow-none h-100"
+                                       placeholder="search for movie..."
+                                       style="font-size: 0.9rem; border-radius: 50px;" />
 
-    </div>
+                                <button type="submit"
+                                        class="position-absolute top-50 end-0 translate-middle-y me-2 border-0 bg-transparent"
+                                        style="width: 30px; height: 30px;">
+                                    <i class="bi bi-search search-icon-rotate" style="font-size: 1.2rem; color: black;"></i>
+                                </button>
+                            </div>
 
-    <!-- Search -->
-    <div class="position-relative d-flex align-items-center"
-         style="background-color: lightgray; border-radius: 50px; padding-right: 40px; padding-left: 15px; height: 40px; transition: all 0.3s ease;">
-        <input type="text" name="searchString"
-               value="@Context.Request.Query["searchString"]"
-               class="form-control border-0 bg-transparent shadow-none h-100"
-               placeholder="search for movie..."
-               style="font-size: 0.9rem; border-radius: 50px;" />
 
-        <button type="button"
-                class="position-absolute top-50 end-0 translate-middle-y me-2 border-0 bg-transparent"
-                style="width: 30px; height: 30px;"
-                onclick="rotateAndSubmit(this)">
-            <i class="bi bi-search search-icon-rotate" style="font-size: 1.2rem; color: black;"></i>
-        </button>
-    </div>
-</form>
+                            <input type="hidden" name="filter" value="@currentFilter" />
+                            <input type="hidden" name="category" value="@currentCategory" />
+                        </form>
 
-<!-- JS Animation -->
-<script>
-    function rotateAndSubmit(button) {
-        const icon = button.querySelector('.search-icon-rotate');
-        const form = button.closest('form');
+                        <!-- JS Animation -->
+                        <script>
+                            function rotateAndSubmit(button) {
+                                const icon = button.querySelector('.search-icon-rotate');
+                                const form = button.closest('form');
 
-        if (icon && form) {
-            icon.classList.add('clicked');
-            setTimeout(() => {
-                icon.classList.remove('clicked');
-                form.submit();
-            }, 600);
-        }
-    }
-</script>
-
-                        <!-- Identity -->
-                        <div class="d-flex align-items-center">
-                            <partial name="_Identity.cshtml" />
-                        </div>
+                                if (icon && form) {
+                                    icon.classList.add('clicked');
+                                    setTimeout(() => {
+                                        icon.classList.remove('clicked');
+                                        form.submit();
+                                    }, 600);
+                                }
+                            }
+                        </script>
+                    }
+                    <!-- Identity -->
+                    <div class="d-flex align-items-center">
+                        <partial name="_Identity.cshtml" />
                     </div>
                 </div>
+            </div>
             </div>
         </nav>
     </header>

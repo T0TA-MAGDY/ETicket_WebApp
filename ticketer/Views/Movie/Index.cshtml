@@ -13,6 +13,9 @@
 }
 
 <link rel="stylesheet" href="~/css/movie.css" />
+<div class="curtain curtain-left" id="curtainLeft"></div>
+<div class="curtain curtain-right" id="curtainRight"></div>
+
 
 @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
 {
@@ -79,7 +82,8 @@
 </div>
 
 
-@section Scripts {
+
+    @section Scripts {
     <script>
         // Toggle heart button on click and call backend
         async function toggleHeart(button) {
@@ -111,7 +115,6 @@
 
         // Initialize hearts on page load based on user favorites (if any)
         window.addEventListener('DOMContentLoaded', () => {
-            // Assuming you pass user favorites IDs from server as JS array:
             const favorites = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(userFavorites));
 
             favorites.forEach(id => {
@@ -131,7 +134,17 @@
                 container?.classList.remove('centered');
             }
         });
+
+        // ✅ كود الستارة – يشتغل بعد التصحيح
+        window.addEventListener("load", () => {
+            setTimeout(() => {
+                document.getElementById('curtainLeft')?.classList.add('open');
+                document.getElementById('curtainRight')?.classList.add('open');
+            }, 1000);
+        });
     </script>
+
     <script src="~/js/main.js"></script>
 }
 
+ 
