@@ -59,8 +59,11 @@
 
     <div class="button-section">
         <a class="btn back-btn hover-zoom" asp-controller="Movie" asp-action="Index">Back to Movie List</a>
+<div class="paypal-wrapper">
         <div id="paypal-btn" class="hover-zoom"></div>
-    </div>
+    </div>  
+</div>
+  </div>
 
     
 </div>
@@ -85,7 +88,7 @@ let _total = @Model.TotalPrice.ToString("F2", System.Globalization.CultureInfo.I
             //Customize button
             locale: 'en_US',
             style: {
-                size: 'small',
+                size: 'large',
                 color: 'gold',
                 shape: 'pill'
             },
@@ -105,6 +108,7 @@ let _total = @Model.TotalPrice.ToString("F2", System.Globalization.CultureInfo.I
 
             //Execute the payment
             onAuthorize: function (data, actions) {
+
                 return actions.payment.execute().then(function () {
 var url = '@Url.Action("ConfirmPaymentAndBookSeats", "Ticket", new { orderId = Model.Order_Id })';
                     window.location.href = url;
@@ -114,10 +118,11 @@ var url = '@Url.Action("ConfirmPaymentAndBookSeats", "Ticket", new { orderId = M
         }, '#paypal-btn')
     </script>
 }
+
 @if (Model.PaymentStatus == "Paid"){
 
 <div class="text-center mt-3">
-        <a asp-controller="Ticket" asp-action="GenerateQr" asp-route-bookingId="@Model.Order_Id" class="btn btn-primary">
+        <a asp-controller="Ticket" asp-action="GenerateQr" asp-route-bookingId="@Model.Order_Id" class="qr-download-btn">
         Download QR Code
     </a>
 </div>
