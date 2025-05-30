@@ -78,13 +78,7 @@
                             <label for="category" class="form-label mb-0 small ms-2">Category:</label>
                             <select id="category" name="category" class="form-select form-select-sm" style="width: auto;">
                                 <option value="">-- All --</option>
-                                @if (ViewBag.Categories != null)
-                                {
-                                    @foreach (var cat in (IEnumerable<MovieCategory>)ViewBag.Categories)
-                                    {
-                                        <option value="@cat">@cat</option>
-                                    }
-                                }
+                                <vc:category-dropdown />
 
                             </select>
 

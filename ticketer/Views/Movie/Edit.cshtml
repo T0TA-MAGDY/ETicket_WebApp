@@ -5,9 +5,8 @@
 }
 <link rel="stylesheet" href="~/css/editMovie.css" />
 <style>
-    /* Scrollable actor list container with fixed height */
     .actor-container {
-        max-height: 200px; /* adjust height as needed */
+        max-height: 200px; 
         overflow-y: auto;
         border: 1px solid #ccc;
         padding: 10px;
@@ -20,7 +19,7 @@
     <form method="post" asp-action="Edit" id="movieForm">
         <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
 
-        <!-- Basic Movie Info -->
+       
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
