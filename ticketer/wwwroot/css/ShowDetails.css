@@ -1,282 +1,291 @@
-﻿body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: url('/img/blackred.jpg') no-repeat center center fixed;
+﻿/* تصميم داكن - خلفيات سوداء شفافة، نص أبيض وظلال مارون */
+
+body {
+    background: url('/img/backg.jpg') no-repeat center center fixed;
     background-size: cover;
-    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    color: #eee;
 }
 
-.ShowDetails-container {
-    max-width: 80vw;
-    margin: 10px auto;
-    padding: 20px;
-}
-.title-edit {
+/* الحاويات الأساسية */
+.main-content-container {
     display: flex;
-    align-items: center;
-    justify-content: space-between; 
-    margin-bottom: 10px;
-    flex-wrap: wrap;
-}
-
-    .title-edit h1 {
-        color: white;
-        font-size: 28px;
-        margin: 0;
-    }
-
-.edit-btn {
-    background-color: white;
-    color: black;
-    padding: 6px 12px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-}
-.media-section {
-    display: flex;
-    gap: 130px;
-    justify-content: center;
-    align-items: flex-start;
-    flex-wrap: wrap;
-}
-
-
-.poster-section {
-    
-    width: 300px;
-    height: 400px;
-    flex-shrink: 0;
-}
-
-.movie-poster {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-
-.trailer-section {
-    flex: 1;
-    max-width: 700px;
-    height: 400px;
-    border: 1px solid black;
-    border-radius: 10px;
-}
-
-    .trailer-section video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 20px;
-    }
-.movie-info {
-    margin-top: 20px;
-}
-
-
-.info-description {
-    display: flex;
-    gap: 5px;
-    align-items: flex-start;
-    margin-top: 10px;
-    flex-wrap: wrap;
-}
-
-.details {
-    flex: 1;
-    color: white;
-}
-
-.description {
-    flex: 1;
-    color: white;
- 
-}
-.movie-description {
-    margin-top: 10px;
-    color: white;
-}
-
-
-
- 
-
-.showtimes-section {
+    gap: 40px;
     margin-top: 30px;
+    padding: 0 40px;
 }
 
-    .showtimes-section h2 {
-        font-size: 22px;
-        margin-bottom: 15px;
-        color: white;
-        text-decoration:underline;
+.left-column {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.right-column {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* صناديق المحتوى - خلفية سوداء شفافة */
+.details,
+.description,
+.showtimes-section,
+.reviews-section {
+    background-color: rgba(0, 0, 0, 0.7); /* خلفية سوداء شفافة */
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #4a1c1c; /* ظل مارون */
+    box-shadow: 0 0 12px rgba(128, 0, 0, 0.35);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #eee;
+}
+
+    /* نص التفاصيل */
+    .details strong {
+        color: #fff;
     }
 
-.cinema-group {
+    .details p {
+        margin: 10px;
+    }
+
+    .details .link,
+    .link {
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+        .link:hover {
+            color: #a23333;
+            text-decoration: underline;
+        }
+
+/* الخطوط */
+
+.thick-short-line {
+    height: 3px;
+    background: #5b1f1f;
+    border-radius: 3px;
+    margin: 20px 0;
+}
+
+/* عناوين مواعيد العرض */
+.showtimes-section h2 {
+    color: #fff;
+    font-size: 2rem;
     margin-bottom: 20px;
 }
 
-.showtime-date {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 8px 0;
+.cinema-group h3 {
+    color: #fff;
+    margin-bottom: 10px;
 }
 
-    .showtime-date strong {
-        font-size: 14px;
-        color: gray;
-        font-weight: normal;
-    }
-
-.cinema-group h3 {
-    color: white;
-    font-size: 18px;
-    display: inline;
-    margin-right: 10px;
+/* مواعيد العرض */
+.showtime-date {
+    margin: 10px 0 5px 15px;
+    font-weight: 600;
+    color: #ccc;
 }
 
 .timings {
-    margin-top: 5px;
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 12px;
 }
 
 .time-btn {
-    padding: 6px 10px;
-    background-color: white;
-    color: black;
-    border-radius: 5px;
-    font-size: 13px;
+    background: #333;
+    color: #800000;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
     text-decoration: none;
-    font-weight: bold;
+    transition: 0.3s ease;
+    box-shadow: 0 0 5px rgba(128, 0, 0, 0.3);
 }
 
     .time-btn:hover {
-        background-color: #eee;
+        background: #800000;
+        color: #f0f0f0;
+        box-shadow: 0 0 12px rgba(128, 0, 0, 0.6);
     }
-.thin-line {
-    border:none;
-    height: 4px;
-    background-color: white;
-    margin: 5px 0;
+
+/* الأفلام المشابهة */
+.related-movies-section {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid #4a1c1c;
+    box-shadow: 0 0 15px rgba(128, 0, 0, 0.3);
+    max-height: 360px;
+    overflow-x: auto;
+    display: flex;
+    gap: 15px;
 }
-.thick-short-line {
-    width: 60px;
-    height: 4px;
-    background-color: white;
-    margin: 10px 0;
-    border-radius: 2px;
-}
-.rating {
-    direction: rtl;             /* Force left-to-right layout */
-  display: flex;
-  flex-direction: row;
-  justify-content: left;
-    font-size: 1.2rem;
+
+.related-movie-card {
+    min-width: 140px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(128, 0, 0, 0.35);
+    transition: transform 0.3s ease;
     cursor: pointer;
-  }
-  
-  /* Hide radio inputs */
-  .rating input {
-    display: none;
-  }
-  
-  /* Base style for stars */
-  .rating label {
-    color: lightgray;
-    transition: transform 0.2s ease, color 0.2s;
-  }
-  
-  /* Hover preview */
-  .rating label:hover,
-  .rating label:hover ~ label {
-    color: gold;
-  }
-  
-  /* Checked style – highlight selected and all previous stars */
-  .rating input:checked ~ label {
-    color: gold;
-  }
-  
-  /* Pop animation */
-  .rating label.animate {
-    animation: pop 0.3s ease;
-  }
-  
-  @keyframes pop {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.4); }
-    100% { transform: scale(1); }
-  }
-  
-  #rating-value {
-    font-size: 1.2rem;
-    margin-left: 10px;
-    vertical-align: middle;
-  }
-  .review {
-    background-color: rgba(255, 255, 255, 0.05);
-    padding: 10px 15px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    border-left: 4px solid gold;
 }
 
+    .related-movie-card:hover {
+        transform: scale(1.05);
+    }
+
+.related-movie-poster {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+}
+
+/* المراجعات */
+.reviews-section h3 {
+    color: white;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+/* اسم المراجع باللون الذهبي مع ظل مارون */
 .review strong {
-    color: gold;
+    color: #ffd700;
+    text-shadow: 0 0 6px #800000;
 }
 
+/* نجوم التقييم باللون الذهبي */
 .review-stars {
-    color: gold;
-    font-size: 18px;
+    color: #ffd700;
+    font-size: 1.2rem;
 }
 
-.review .star {
-    color: lightgray;
+/* نظام التقييم */
+.rating {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+    font-size: 2rem;
+    user-select: none;
 }
 
-.review .star.filled {
-    color: gold;
+    .rating input {
+        display: none;
+    }
+
+    .rating label {
+        color: #555;
+        cursor: pointer;
+        transition: color 0.3s ease;
+    }
+
+        .rating input:checked ~ label,
+        .rating label:hover,
+        .rating label:hover ~ label {
+            color: #ffd700;
+        }
+
+/* زر إرسال مراجعة */
+.submit-review-btn {
+    background: #800000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    color: #eee;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
 }
 
+    .submit-review-btn:hover {
+        background: #a23333;
+    }
+
+/* رابط تسجيل الدخول بالذهبي مع ظل مارون */
+.login-link {
+    font-weight: 700;
+    color: #ffd700;
+    text-shadow: 0 0 6px #800000;
+}
+
+/* شريط التمرير للأفلام المشابهة */
+.related-movies-section::-webkit-scrollbar {
+    height: 8px;
+}
+
+.related-movies-section::-webkit-scrollbar-thumb {
+    background-color: #5b1f1f;
+    border-radius: 10px;
+}
+
+/* استجابة الشاشات الصغيرة */
+@media (max-width: 900px) {
+    .main-content-container {
+        flex-direction: column;
+        padding: 0 20px;
+    }
+
+    .info-description {
+        flex-direction: column;
+    }
+
+    .poster-overlay {
+        display: none;
+    }
+
+    .info-overlay h1 {
+        font-size: 2.2rem;
+    }
+
+    .trailer-wrapper {
+        height: 650px;
+    }
+
+    .related-movies-section,
+    .reviews-section {
+        max-height: none;
+    }
+}
+/* تكبير الوصف عند المرور بالماوس */
+.description:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+/* تكبير العناوين h2 و h3 عند المرور */
+h2:hover, h3:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+/* صندوق التعليق (textarea) */
 textarea[name="Comment"] {
     width: 100%;
-    max-width: 600px;
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #340909;
-    font-family: inherit;
-    font-size: 14px;
-    resize: vertical;
-    background-color: #340505;
-    color: white;
+    max-width: 100%;
+    min-height: 120px;
+    padding: 12px 15px;
+    font-size: 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: 2px solid #444; /* لون الحدود رمادي غامق */
+    border-radius: 8px;
+    background-color: #121212; /* خلفية داكنة */
+    color: #fff; /* نص أبيض */
+    resize: vertical; /* يسمح بتغيير الطول فقط */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.7);
 }
 
-button[type="submit"] {
-    background-color: gold;
-    color: black;
-    padding: 8px 16px;
-    font-weight: bold;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-button[type="submit"]:hover {
-    background-color: #ffd700;
-}
-.login-link {
-    color: gold;
-    font-weight: bold;
-    text-decoration: underline;
-}
-
-.login-link:hover {
-    color: #ffd700;
-}
+    textarea[name="Comment"]:focus {
+        outline: none;
+        border-color: #800000; /* اللون الدارك ريد */
+        box-shadow: 0 0 8px #800000;
+        background-color: #1e1e1e;
+    }

@@ -20,226 +20,307 @@
 <link rel="stylesheet" href="~/css/related_movie.css" />
 
 <div class="ShowDetails-container">
-    <div class="title-edit">
-        <h1>
-    @Model.Name
-    @if (ViewBag.AverageRating != null)
-{
-    var fullStars = (int)Math.Floor((double)ViewBag.AverageRating);
-    var hasHalfStar = ((double)ViewBag.AverageRating - fullStars) >= 0.5;
-    var emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+    <div id="trailer-wrapper" style="position: relative; height: 650px;overflow: hidden;">
+        <iframe id="trailer"
+                width="100%"
+                height="100%"
+                src="@GetEmbeddedYouTubeURL(Model.TrailerURL)?enablejsapi=1&controls=0&rel=0"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+        </iframe>
 
-    <div class="average-rating" style="font-size: 24px; color: gold;">
-        @for (int i = 0; i < fullStars; i++)
-        {
-            @:★
-        }
-        @if (hasHalfStar)
-        {
-            @:☆ <!-- You can use a half-star icon if you have one -->
-        }
-        @for (int i = 0; i < emptyStars; i++)
-        {
-            @:☆
-        }
-        <span style="font-size: 16px; color: #666;">(@ViewBag.AverageRating out of 5)</span>
-    </div>
-}
+        <!-- Dark Overlay -->
+        <div id="dark-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+         background: rgba(0, 0, 0, 0.6); z-index: 2; transition: opacity 0.5s ease;">
+        </div>
 
+        <!-- Poster -->
+        <div id="poster-overlay" style="position: absolute; top: 50%; right: 70px;transform: translateY(-50%); cursor: pointer; z-index: 3;width: 450px;height: 630px;">
+            <img src="@Model.ImageURL" alt="@Model.Name" style="width: 100%;height: 100%;object-fit: cover;border-radius: 8px;" />
+        </div>
 
-</h1>
+        <!-- Movie Info: Name + Rating + Edit/Delete Buttons -->
+        <div id="info-overlay" style="position: absolute; bottom: 10px; left: 10px; color: white; text-shadow: 0 0 5px black; z-index: 3; display: flex; align-items: center; gap: 15px;">
+
+            <div>
+                <h1 style="margin: 0; font-size: 5rem;font-family:'Times New Roman', Times, serif;">@Model.Name</h1>
+                @if (ViewBag.AverageRating != null)
+                {
+                    var fullStars = (int)Math.Floor((double)ViewBag.AverageRating);
+                    var hasHalfStar = ((double)ViewBag.AverageRating - fullStars) >= 0.5;
+                    var emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+
+                    <div class="average-rating" style="font-size: 3rem; color: gold;">
+                        @for (int i = 0; i < fullStars; i++)
+                        {
+                            @:★
+                        }
+                        @if (hasHalfStar)
+                        {
+                            @:☆
+                        }
+                        @for (int i = 0; i < emptyStars; i++)
+                        {
+                            @:☆
+                        }
+                        <span style="font-size: 1.5rem; color: #ccc;">(@ViewBag.AverageRating out of 5)</span>
+                    </div>
+                }
+            </div>
 
             @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-{
-        <div style="display: flex; gap: 10px; align-items: center;"> 
-                <a href="@Url.Action("Edit", "Movie", new { id = Model.Id })" class="edit-btn hover-zoom">✏ Edit</a>
-
-
-            <form id="deleteForm-@Model.Id" asp-action="Delete" asp-route-id="@Model.Id" method="post" style="display: inline; margin: 0;">
-                @Html.AntiForgeryToken()
-                <a href="javascript:void(0);"
-                   onclick="if(confirm('Are you sure?')) document.getElementById('deleteForm-@Model.Id').submit();"
-                       class="edit-btn hover-zoom">
-                    🗑 Delete
-                </a>
-            </form>
-        </div>
-}
-
-
-    </div>
-    <div class="media-section">
-        <div class="poster-section hover-zoom">
-            <img src="@Model.ImageURL" alt="@Model.Name" class="movie-poster" />
-        </div>
-        <div class="trailer-section hover-zoom">
-            @if (!string.IsNullOrEmpty(@Model.TrailerURL))
             {
-                <div class="trailer-section">
-                    <iframe width="100%" height="100%"
-                            src="@GetEmbeddedYouTubeURL(@Model.TrailerURL)"
-                            title="YouTube video player"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen>
-                    </iframe>
-                </div>
-            }
+                <div style="display: flex; gap: 10px;">
 
-
-        </div>
-    </div>
-    <hr class="thin-line" style="margin: 50px 0;" />
-
-    <div class="info-description">
-        <div class="details">
-            <p><strong>Genre:</strong> @Model.MovieCategory</p>
-            <p> <strong>Release Date:</strong> @Model.ReleaseDate.ToString("dd MMMM yyyy")</p>
-            <p><strong>Producer:</strong> <a asp-controller="Producers" asp-action="Details" asp-route-id="@Model.Producer.Id" style="text-decoration: none; color: inherit;">@Model.Producer.FullName</a> </p>
-            <p>
-                <strong>Starring:</strong> @foreach (var movieactor in Model.MovieActors)
-                {
-                <a asp-controller="Actors" asp-action="Details" asp-route-id="@movieactor.Actor.Id" style="text-decoration: none; color: inherit;"> @movieactor.Actor.FullName</a>
-               
-                }
-                </p>
-        </div>
-        <div class="description hover-zoom">
-            <p class="movie-description">@Model.Description</p>
-        </div>
-
-    </div>
-
-    <hr class="thin-line" style="margin: 50px 0;" />
-
-    @if (ViewBag.RelatedMovies != null && ((List<Movie>)ViewBag.RelatedMovies).Any())
-    {
-        <h3 >Related Movies</h3>
-        <div class="related-movies-section">
-            @foreach (var relatedMovie in (List<Movie>)ViewBag.RelatedMovies)
-            {
-                <div class="related-movie-card">
-                    <a asp-action="Showdetails" asp-controller="Movie" asp-route-id="@relatedMovie.Id">
-                        <img src="@relatedMovie.ImageURL" alt="@relatedMovie.Name" class="related-movie-poster" />
-                       
+                    <a href="@Url.Action("Edit", "Movie", new { id = Model.Id })"
+                       class="edit-btn hover-zoom"
+                       style="background: gold; color: #121212; padding: 8px 12px; border-radius: 5px; text-decoration: none; font-weight: bold; box-shadow: 0 0 8px rgba(255,215,0,0.8);">
+                        ✏ Edit
                     </a>
+
+                    <form id="deleteForm-@Model.Id" asp-action="Delete" asp-route-id="@Model.Id" method="post" style="display: inline; margin: 0;">
+                        @Html.AntiForgeryToken()
+                        <button type="submit"
+                                onclick="return confirm('Are you sure you want to delete this movie?');"
+                                style="background: #c0392b; color: white; border: none; padding: 8px 12px; border-radius: 5px; font-weight: bold; cursor: pointer; box-shadow: 0 0 8px rgba(192,57,43,0.8);">
+                            🗑 Delete
+                        </button>
+                    </form>
+
                 </div>
             }
         </div>
-    }
 
-    <div class="showtimes-section">
-        <h2 >ShowTimes</h2>
+        <!-- Play Button -->
+        <button id="play-button" title="Play Trailer"
+                style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+                   background: rgba(255, 215, 0, 0.9); border: none; border-radius: 50%;
+                   width: 80px; height: 80px; font-size: 2.5rem; color: #121212;
+                   cursor: pointer; box-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+                   z-index: 4;align-content:center;">
+            ▶
+        </button>
+    </div>
 
-        @if (Model.Showtimes.Any())
-        {
-            @foreach (var showTimeGroup in Model.Showtimes.GroupBy(st => st.Cinema.Name))
-            {
-                <div class="cinema-group">
-                    <h3>
-                        <a asp-action="Details" asp-controller="Cinemas" asp-route-id="@showTimeGroup.First().Cinema.Id" style="text-decoration: none; color: inherit;">
-                            @showTimeGroup.Key
-                        </a>
-                    </h3>
+    <div class="main-content-container">
+        <!-- العمود الرئيسي الكبير على الشمال -->
+        <div class="left-column">
+            <div class="info-description">
+                <!-- تفاصيل الفيلم + الوصف -->
+                <h3>Info: </h3>
+                <div class="details">
+                    <p><strong>Genre:</strong> @Model.MovieCategory</p>
+                    <p><strong>Release Date:</strong> @Model.ReleaseDate.ToString("dd MMMM yyyy")</p>
+                    <p><strong>Producer:</strong> <a asp-controller="Producers" asp-action="Details" asp-route-id="@Model.Producer.Id" class="link">@Model.Producer.FullName</a></p>
+                    <p>
+                        <strong>Starring:</strong>
+                        @foreach (var movieactor in Model.MovieActors)
+                        {
+                            <a asp-controller="Actors" asp-action="Details" asp-route-id="@movieactor.Actor.Id" class="link">@movieactor.Actor.FullName</a>
+                            @(movieactor != Model.MovieActors.Last() ? ", " : "")
+                        }
+                    </p>
 
-                    @foreach (var dateGroup in showTimeGroup.GroupBy(st => st.Date))
+                    <div class="description hover-zoom">
+                        <p class="movie-description"><strong>Description: </strong>@Model.Description</p>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <div class="showtimes-section">
+                <h2>Showtimes</h2>
+                @if (Model.Showtimes.Any())
+                {
+                    @foreach (var showTimeGroup in Model.Showtimes.GroupBy(st => st.Cinema.Name))
                     {
-                        <div class="showtime-date">
-                            <strong>@dateGroup.Key.ToString("dd-MM-yyyy")</strong>
-                            <div class="timings">
-                                @foreach (var showTime in dateGroup)
-                                {
-                                    foreach (var timing in showTime.Timings)
-                                    {
-                                        <a class="time-btn" asp-controller="Ticket" asp-action="ChooseSeats" asp-route-id="@timing.Id">
-                                            @timing.StartTime.ToString(@"hh\:mm")
+                        <div class="cinema-group">
+                            <h3><a asp-controller="Cinemas" asp-action="Details" asp-route-id="@showTimeGroup.First().Cinema.Id" class="link">@showTimeGroup.Key</a></h3>
 
-                                        </a>
-
-                                    }
-                                }
-                            </div>
+                            @foreach (var dateGroup in showTimeGroup.GroupBy(st => st.Date))
+                            {
+                                <div class="showtime-date">
+                                    <strong>@dateGroup.Key.ToString("dd-MM-yyyy")</strong>
+                                    <div class="timings">
+                                        @foreach (var showTime in dateGroup)
+                                        {
+                                            foreach (var timing in showTime.Timings)
+                                            {
+                                                <a class="time-btn" asp-controller="Ticket" asp-action="ChooseSeats" asp-route-id="@timing.Id">@timing.StartTime.ToString(@"hh\:mm")</a>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                                <div class="thick-short-line"></div>
+                            }
                         </div>
-                        <div class="thick-short-line"></div>
+                    }
+                }
+                else
+                {
+                    <p>No showtimes available for this movie.</p>
+                }
+            </div>
+        </div>
+
+        <!-- العمود الجانبي على اليمين -->
+        <div class="right-column">
+
+            @if (ViewBag.RelatedMovies != null && ((List<Movie>)ViewBag.RelatedMovies).Any())
+            {
+                <h3>Related Movies</h3>
+                <div class="related-movies-section">
+                    @foreach (var relatedMovie in (List<Movie>)ViewBag.RelatedMovies)
+                    {
+                        <div class="related-movie-card">
+                            <a asp-action="Showdetails" asp-controller="Movie" asp-route-id="@relatedMovie.Id">
+                                <img src="@relatedMovie.ImageURL" alt="@relatedMovie.Name" class="related-movie-poster" />
+                            </a>
+                        </div>
                     }
                 </div>
             }
-        }
-        else
-        {
-            <p>No showtimes available for this movie.</p>
-        }
+
+            <div class="reviews-section">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <h3>Leave a Review</h3>
+                    <form asp-action="Create" asp-controller="Review" method="post">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="MovieId" value="@Model.Id" />
+                        <label>Rating:</label>
+                        <div class="rating" id="star-rating">
+                            @for (int i = 5; i >= 1; i--)
+                            {
+                                <input type="radio" name="Rating" id="star@i" value="@i" />
+                                <label for="star@i">★</label>
+                            }
+                        </div>
+                        <label>Comment:</label><br />
+                        <textarea name="Comment" rows="4" cols="50"></textarea><br /><br />
+                        <button type="submit" class="submit-review-btn">Submit Review</button>
+                    </form>
+                }
+                else
+                {
+                    <p><a asp-controller="Account" asp-action="Login" class="link login-link">Log in</a> to leave a review.</p>
+                }
+
+                <h3>User Reviews</h3>
+                @foreach (var review in Model.Reviews.OrderByDescending(r => r.CreatedAt))
+                {
+                    <div class="review">
+                        <strong>@review.User.FullName</strong> -
+                        <span class="review-stars">
+                            @for (int i = 1; i <= 5; i++)
+                            {
+                                if (i <= review.Rating)
+                                {
+                                    <span class="star filled">★</span>
+                                }
+                                else
+                                {
+                                    <span class="star">★</span>
+                                }
+                            }
+                        </span><br />
+                        <p>@review.Comment</p>
+                        <small>@review.CreatedAt.ToShortDateString()</small>
+                    </div>
+                }
+            </div>
+        </div>
     </div>
-    @if (User.Identity.IsAuthenticated)
-{
-    <hr class="thin-line" style="margin: 40px 0;" />
-    <h3>Leave a Review</h3>
-
-    <form asp-action="Create" asp-controller="Review" method="post">
-        @Html.AntiForgeryToken()
-
-        <input type="hidden" name="MovieId" value="@Model.Id" />
-
-  <label>Rating:</label>
-<div class="rating" id="star-rating">
-  <input type="radio" name="Rating" id="star5" value="5" />
-  <label for="star5">★</label>
-
-  <input type="radio" name="Rating" id="star4" value="4" />
-  <label for="star4">★</label>
-
-  <input type="radio" name="Rating" id="star3" value="3" />
-  <label for="star3">★</label>
-
-  <input type="radio" name="Rating" id="star2" value="2" />
-  <label for="star2">★</label>
-
-  <input type="radio" name="Rating" id="star1" value="1" />
-  <label for="star1">★</label>
-</div>
-
-
-        <label>Comment:</label><br />
-        <textarea name="Comment" rows="4" cols="50" ></textarea><br /><br />
-
-        <button type="submit">Submit Review</button>
-    </form>
-}
-else
-{
-<p>
-  <a asp-controller="Account" asp-action="Login" style="color: gold; font-weight: bold; text-decoration: underline;">
-    Log in
-  </a> to leave a review.
-</p>
-}
-    <h3 style="margin-top: 40px;">User Reviews</h3>
-@foreach (var review in Model.Reviews.OrderByDescending(r => r.CreatedAt))
-{
-    <div class="review">
-        <strong>@review.User.FullName</strong> -
-        <span class="review-stars">
-    @for (int i = 1; i <= 5; i++)
-    {
-        if (i <= review.Rating)
-        {
-            <span class="star filled">★</span>
-        }
-        else
-        {
-            <span class="star">★</span>
-        }
-    }
-</span><br />
-        <p>@review.Comment</p>
-        <small>@review.CreatedAt.ToShortDateString()</small>
-    </div>
-}
 
 </div>
-
-
 @section Scripts {
-    <script src="~/js/main.js"></script>
-    
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+        var player;
+        var isPlaying = false;
+
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('trailer', {
+                events: {
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+
+        const playButton = document.getElementById('play-button');
+        const posterOverlay = document.getElementById('poster-overlay');
+        const infoOverlay = document.getElementById('info-overlay');
+        const darkOverlay = document.getElementById('dark-overlay');
+        const trailerWrapper = document.getElementById('trailer-wrapper');
+        const trailer = document.getElementById('trailer');
+
+        // Apply transitions initially
+        posterOverlay.style.transition = 'transform 0.7s ease, opacity 0.5s ease';
+        infoOverlay.style.transition = 'transform 0.7s ease, opacity 0.5s ease';
+        darkOverlay.style.transition = 'opacity 0.5s ease';
+
+        playButton.addEventListener('click', () => {
+            if (player && typeof player.playVideo === 'function') {
+                player.playVideo();
+                isPlaying = true;
+
+                // Hide overlays
+                darkOverlay.style.opacity = '0';
+
+                // Slide out poster and info overlays
+                posterOverlay.style.transform = 'translateX(100%)';
+                posterOverlay.style.opacity = '0';
+
+                infoOverlay.style.transform = 'translateX(-100%)';
+                infoOverlay.style.opacity = '0';
+
+                // Hide play button
+                playButton.style.display = 'none';
+
+                // لا تغير ارتفاع التريلر عشان يظل ثابت
+                // trailerWrapper.style.height = '600px';
+            }
+        });
+
+        // Clicking on trailer area pauses the video (if playing)
+        trailerWrapper.addEventListener('click', () => {
+            if (!player || typeof player.getPlayerState !== 'function') return;
+
+            const state = player.getPlayerState();
+            if (state === YT.PlayerState.PLAYING) {
+                player.pauseVideo(); // triggers return via onPlayerStateChange
+            }
+        });
+
+        function onPlayerStateChange(event) {
+            if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) {
+                isPlaying = false;
+
+                // Show overlays again
+                darkOverlay.style.opacity = '0.6';
+
+                posterOverlay.style.transform = 'translateY(-50%)'; // حافظ على المحاذاة الرأسية
+                posterOverlay.style.opacity = '1';
+
+                infoOverlay.style.transform = 'translateX(0)';
+                infoOverlay.style.opacity = '1';
+
+                // Show play button with animation
+                playButton.classList.add('show-again');
+                playButton.style.display = 'block';
+
+                setTimeout(() => {
+                    playButton.classList.remove('show-again');
+                }, 600);
+
+                // لا تغير ارتفاع التريلر عشان يظل ثابت
+
+            }
+        }
+    </script>
 }
+
