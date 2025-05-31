@@ -148,7 +148,7 @@
                                     <div class="timings">
                                         @foreach (var showTime in dateGroup)
                                         {
-                                            foreach (var timing in showTime.Timings)
+                                            foreach (var timing in showTime.Timings.OrderBy(t => t.StartTime))
                                             {
                                                 <a class="time-btn" asp-controller="Ticket" asp-action="ChooseSeats" asp-route-id="@timing.Id">@timing.StartTime.ToString(@"hh\:mm")</a>
                                             }
