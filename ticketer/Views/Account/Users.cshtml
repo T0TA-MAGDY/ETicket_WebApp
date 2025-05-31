@@ -8,7 +8,11 @@
 
 <link rel="stylesheet" href="~/css/users.css" />
 
+
+
 <div class="page-content">
+    <div class="popcorn-container"></div>
+
     <div class="container-center">
         <h2 class="orders-title animate-fade-in">List of all users</h2>
 
@@ -35,3 +39,29 @@
         </div>
     </div>
 </div>
+
+
+@section Scripts {
+    <script>
+        function createPopcorn() {
+            const container = document.querySelector('.popcorn-container');
+            const popcorn = document.createElement('div');
+            popcorn.classList.add('popcorn');
+
+            // Random X position + duration
+            popcorn.style.left = Math.random() * 100 + 'vw';
+            popcorn.style.animationDuration = (Math.random() * 2 + 2) + 's';
+
+            container.appendChild(popcorn);
+
+            // Remove it after animation
+            setTimeout(() => {
+                popcorn.remove();
+            }, 4000);
+        }
+
+        // Generate multiple at interval
+        setInterval(createPopcorn, 1200);
+    </script>
+}
+

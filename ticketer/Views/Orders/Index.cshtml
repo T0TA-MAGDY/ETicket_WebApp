@@ -1,6 +1,101 @@
 ﻿
 
- @model List<ticketer.Models.TicketOrder>
+@*  @model List<ticketer.Models.TicketOrder> *@
+@* @{ *@
+@*     ViewData["Title"] = "All orders"; *@
+@*     ViewBag.Hidefooter = true; *@
+@* } *@
+
+@* <!DOCTYPE html> *@
+@* <html> *@
+@* <head> *@
+@*     <title>Order List</title> *@
+@*     <link rel="stylesheet" href="@Url.Content("~/css/orderList.css")" /> *@
+@* </head> *@
+@* <body> *@
+
+
+@*     <div class="film-strip-wrapper"> *@
+@*         <div class="film-strip"> *@
+@*             <div class="holes"></div> *@
+@*             <div class="holes"></div> *@
+@*             <div class="holes"></div> *@
+@*             <div class="holes"></div> *@
+@*             <div class="holes"></div> *@
+@*         </div> *@
+@*         <div class="clapperboard">🎬</div> *@
+@*     </div> *@
+
+
+
+
+@*     <div class="page-content"> *@
+@*         <div class="container-fluid mt-4"> *@
+@*             <br /> *@
+@*             <br /> *@
+
+@*             <h2 class="orders-title animate-fade-in">List of all your orders</h2> *@
+           
+@*             <div class="table-wrapper animate-fade-in animate-delay"> *@
+@*                 <table class="table table-bordered"> *@
+@*                     <thead> *@
+@*                         <tr> *@
+@*                             <th>Order ID</th> *@
+@*                             <th>Items</th> *@
+@*                             <th>Total</th> *@
+@*                             @if (User?.Identity?.IsAuthenticated == true && User.IsInRole("Admin")) *@
+@*                             { *@
+@*                                 <th>User</th> *@
+@*                             } *@
+@*                         </tr> *@
+@*                     </thead> *@
+@*                     <tbody> *@
+@*                     <tbody> *@
+@*                             @if (Model != null && Model.Any()) *@
+@*                             { *@
+@*                                 foreach (var order in Model) *@
+@*                                 { *@
+@*                                 <tr> *@
+@*                                     <td>@order.Order_Id</td> *@
+@*                                     <td> *@
+@*                                         <ul style="list-style-type:none; padding-left:0;"> *@
+@*                                                 @foreach (var ticket in order.Tickets) *@
+@*                                                 { *@
+@*                                                 <li> *@
+@*                                                     <div class="alert alert-info" role="alert"> *@
+@*                                                         <strong>Movie:</strong> @ticket.timing.Showtime.Movie.Name <br /> *@
+@*                                                         <strong>Price:</strong> @ticket.timing.Price.ToString("c") *@
+@*                                                     </div> *@
+@*                                                 </li> *@
+@*                                                 } *@
+@*                                         </ul> *@
+@*                                     </td> *@
+@*                                     <td>@order.TotalPrice.ToString("c")</td> *@
+@*                                         @if (User?.Identity?.IsAuthenticated == true && User.IsInRole("Admin")) *@
+@*                                         { *@
+@*                                         <td>@order.User.FullName</td> *@
+@*                                         } *@
+@*                                 </tr> *@
+@*                                 } *@
+@*                             } *@
+@*                             else *@
+@*                             { *@
+@*                             <tr> *@
+@*                                 <td colspan="4" class="text-center">No orders found.</td> *@
+@*                             </tr> *@
+@*                             } *@
+@*                     </tbody> *@
+
+@*                     </tbody> *@
+@*                 </table> *@
+@*             </div> *@
+@*         </div> *@
+@*     </div> *@
+@* </body> *@
+@* </html> *@
+
+@model List<ticketer.Models.TicketOrder>
+
 @{
     ViewData["Title"] = "All orders";
     ViewBag.Hidefooter = true;
@@ -13,13 +108,22 @@
     <link rel="stylesheet" href="@Url.Content("~/css/orderList.css")" />
 </head>
 <body>
+
+    <!-- شريط الفيلم المتحرك -->
+    <div class="film-strip-wrapper">
+        <div class="film-strip"></div>
+    </div>
+
+    <!-- كلاكيت بيتنط -->
+    <div class="clapperboard">🎬</div>
+
+    <!-- محتوى الصفحة -->
     <div class="page-content">
         <div class="container-fluid mt-4">
             <br />
             <br />
-
             <h2 class="orders-title animate-fade-in">List of all your orders</h2>
-           
+
             <div class="table-wrapper animate-fade-in animate-delay">
                 <table class="table table-bordered">
                     <thead>
@@ -34,42 +138,39 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <tbody>
-                            @if (Model != null && Model.Any())
+                        @if (Model != null && Model.Any())
+                        {
+                            foreach (var order in Model)
                             {
-                                foreach (var order in Model)
-                                {
                                 <tr>
                                     <td>@order.Order_Id</td>
                                     <td>
                                         <ul style="list-style-type:none; padding-left:0;">
-                                                @foreach (var ticket in order.Tickets)
-                                                {
+                                            @foreach (var ticket in order.Tickets)
+                                            {
                                                 <li>
                                                     <div class="alert alert-info" role="alert">
                                                         <strong>Movie:</strong> @ticket.timing.Showtime.Movie.Name <br />
                                                         <strong>Price:</strong> @ticket.timing.Price.ToString("c")
                                                     </div>
                                                 </li>
-                                                }
+                                            }
                                         </ul>
                                     </td>
                                     <td>@order.TotalPrice.ToString("c")</td>
-                                        @if (User?.Identity?.IsAuthenticated == true && User.IsInRole("Admin"))
-                                        {
+                                    @if (User?.Identity?.IsAuthenticated == true && User.IsInRole("Admin"))
+                                    {
                                         <td>@order.User.FullName</td>
-                                        }
+                                    }
                                 </tr>
-                                }
                             }
-                            else
-                            {
+                        }
+                        else
+                        {
                             <tr>
                                 <td colspan="4" class="text-center">No orders found.</td>
                             </tr>
-                            }
-                    </tbody>
-
+                        }
                     </tbody>
                 </table>
             </div>
@@ -77,4 +178,5 @@
     </div>
 </body>
 </html>
+
 

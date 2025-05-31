@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="~/css/producer_actorIndex.css" />
 <link rel="stylesheet" href="~/css/CinemaIndex.css" />
 
-
+<div class="CAP-container spotlight-effect">
 <div class="stage-light left-light"></div>
 <div class="stage-light right-light"></div>
 
@@ -47,12 +47,21 @@
 @await Html.PartialAsync("_CreateItem", "Producers")
 
 
-@section Scripts {
-    <script>
-        window.addEventListener("DOMContentLoaded", function () {
-            document.querySelectorAll('.stage-light').forEach(el => {
-                el.style.opacity = 1;
-            });
-        });
-    </script>
-}
+
+    @section Scripts {
+        <script>
+            //light stage
+             window.addEventListener("DOMContentLoaded", function () {
+                 document.querySelectorAll('.stage-light').forEach(el => {
+                     el.style.opacity = 1;
+                 });
+             });
+
+             //curser motion light
+             document.addEventListener("mousemove", function (e) {
+                 const root = document.documentElement;
+                 root.style.setProperty("--mouse-x", e.clientX + "px");
+                 root.style.setProperty("--mouse-y", e.clientY + "px");
+             });
+        </script>
+    }
