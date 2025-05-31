@@ -5,6 +5,12 @@
 }
 <link rel="stylesheet" href="~/css/producer_actorIndex.css" />
 <link rel="stylesheet" href="~/css/CinemaIndex.css" />
+
+
+<div class="stage-light left-light"></div>
+<div class="stage-light right-light"></div>
+
+
 <div class="CAP-container">
 
     <table>
@@ -44,4 +50,15 @@
 </div>
 
 
-@await Html.PartialAsync("_CreateItem", "Actors") 
+@await Html.PartialAsync("_CreateItem", "Actors")
+
+
+@section Scripts {
+    <script>
+        window.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll('.stage-light').forEach(el => {
+                el.style.opacity = 1;
+            });
+        });
+    </script>
+}

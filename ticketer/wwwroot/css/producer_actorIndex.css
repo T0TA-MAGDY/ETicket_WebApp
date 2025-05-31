@@ -182,3 +182,80 @@ td:nth-child(4) {
         display: none;
     }
 }
+
+.stage-light {
+    position: fixed;
+    top: -80px;
+    width: 150px;
+    height: 250px;
+    background: radial-gradient(ellipse at center, rgba(255,255,150,0.5) 0%, rgba(255,255,150,0) 80%);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.left-light {
+    left: -60px;
+    transform-origin: bottom right;
+    animation: swingLeft 2.5s ease-in-out infinite, fadeIn 1.5s forwards;
+}
+
+.right-light {
+    right: -60px;
+    transform-origin: bottom left;
+    animation: swingRight 2.5s ease-in-out infinite, fadeIn 1.5s forwards;
+}
+
+@keyframes swingLeft {
+    0% {
+        transform: rotate(25deg);
+    }
+
+    25% {
+        transform: rotate(40deg);
+    }
+
+    50% {
+        transform: rotate(32deg);
+    }
+
+    75% {
+        transform: rotate(38deg);
+    }
+
+    100% {
+        transform: rotate(25deg);
+    }
+}
+
+@keyframes swingRight {
+    0% {
+        transform: rotate(-25deg);
+    }
+
+    25% {
+        transform: rotate(-40deg);
+    }
+
+    50% {
+        transform: rotate(-32deg);
+    }
+
+    75% {
+        transform: rotate(-38deg);
+    }
+
+    100% {
+        transform: rotate(-25deg);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 0.6;
+    }
+}
