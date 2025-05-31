@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
+using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 using ticketer.Data;
 using ticketer.Models;
@@ -12,22 +12,25 @@ namespace ticketer.Controllers
     public class ReviewController : Controller
     {
         private readonly AppDbContext _context;
+         private readonly UserManager<ApplicationUser> _userManager;
 
-        public ReviewController(AppDbContext context)
+
+        public ReviewController(AppDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(int movieId, int rating, string comment)
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userId = _userManager.GetUserId(User);
 
             var review = new Review
             {
                 MovieId = movieId,
-                UserId = userId, // use string for identity user IDs
+                UserId = userId, 
                 Rating = rating,
                 Comment = comment,
                 CreatedAt = DateTime.Now
