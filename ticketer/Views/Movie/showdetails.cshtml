@@ -146,17 +146,20 @@
                                 <div class="showtime-date">
                                     <strong>@dateGroup.Key.ToString("dd-MM-yyyy")</strong>
                                     <div class="timings">
-                                        @foreach (var showTime in dateGroup)
+                                        @{
+                                            var allTimings = dateGroup
+                                            .SelectMany(st => st.Timings)
+                                            .OrderBy(t => t.StartTime);
+                                        }
+
+                                        @foreach (var timing in allTimings)
                                         {
-                                            foreach (var timing in showTime.Timings.OrderBy(t => t.StartTime))
-                                            {
-                                                <a class="time-btn" asp-controller="Ticket" asp-action="ChooseSeats" asp-route-id="@timing.Id">@timing.StartTime.ToString(@"hh\:mm")</a>
-                                            }
+                                            <a class="time-btn" asp-controller="Ticket" asp-action="ChooseSeats" asp-route-id="@timing.Id">@timing.StartTime.ToString(@"hh\:mm")</a>
                                         }
                                     </div>
                                 </div>
-                               
                             }
+
                         </div>
                         <div class="thick-short-line"></div>
                     }
