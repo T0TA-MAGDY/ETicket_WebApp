@@ -118,28 +118,101 @@ namespace ticketer.Data
                             Bio = "Jaden Christopher Syre Smith is an American rapper and actor. The son of Jada Pinkett-Smith and Will Smith, he has received various accolades, including a Teen Choice Award, an MTV Movie Award, a BET Award and a Young Artist Award.",
                             ProfilePictureURL = "https://media.npr.org/assets/artslife/movies/2010/06/the-karate-kid/smith-133c75eeaa22dd073c50c907cd2844bf0c25f6e9.jpg"
                         },
-                        
+
                         new Actor()//11
                         {
                             FullName = "Daniel Radcliffe\r\n",
                             Bio = "Daniel Jacob Radcliffe is an English actor. Radcliffe rose to fame at age twelve for portraying the title character in the Harry Potter film series. He starred in all eight films in the series, from Harry Potter and the Philosopher's Stone to Harry Potter and the Deathly Hallows",
                             ProfilePictureURL = "https://i.insider.com/579f9175d7c3dbe72f8b47f8?width=800&format=jpeg&auto=webp"
                         },
-                        
+
                         new Actor()//12
                         {
                             FullName = "Emma Watson",
                             Bio = "Emma Charlotte Duerre Watson is an English actress. Known for her roles in both blockbusters and independent films, she has received a selection of accolades, including a Young Artist Award and three MTV Movie Awards.",
                             ProfilePictureURL = "https://people.com/thmb/RpnNLplOGndVrTF-rdBlp0biuxE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(719x39:721x41)/Emma-Watson-c59dff78899047bb839b894665b85a13.jpg"
                         },
-                        
+
                         new Actor()//13
                         {
                             FullName = "Emma Stone",
                             Bio = "Emily Jean \"Emma\" Stone is an American actress and film producer. Her accolades include two Academy Awards, two British Academy Film Awards, and two Golden Globe Awards. In 2017, she was the world's highest-paid actress and named by Time magazine as one of the 100 most influential people in the world.",
                             ProfilePictureURL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSTjCZFA66JXAzA7DKfj2ltseAWz2NGsKV3Wptp1SY73lhlHRLCQbkC0gd-9OFxRG9lvlIZlYrbp5F6_Vl_9CLxw"
-                        }
- 
+                        },new Actor()//13
+                        {
+                            FullName = "Emma Stone",
+                            Bio = "Emily Jean \"Emma\" Stone is an American actress and film producer. Her accolades include two Academy Awards, two British Academy Film Awards, and two Golden Globe Awards. In 2017, she was the world's highest-paid actress and named by Time magazine as one of the 100 most influential people in the world.",
+                            ProfilePictureURL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSTjCZFA66JXAzA7DKfj2ltseAWz2NGsKV3Wptp1SY73lhlHRLCQbkC0gd-9OFxRG9lvlIZlYrbp5F6_Vl_9CLxw"
+                        },
+    new Actor() //14
+  {
+      FullName = "Leonardo DiCaprio",
+      Bio = "Leonardo DiCaprio is an award-winning American actor and producer known for films such as Titanic, Inception, and The Revenant.",
+      ProfilePictureURL = "https://th.bing.com/th/id/R.32a9ce6b462f0e6bc8ec9c6f5985f0b8?rik=gVLDvKkEJ7PCMg&pid=ImgRaw&r=0"
+  },
+
+  new Actor() //15
+  {
+      FullName = "Matthew Broderick",
+      Bio = "Matthew Broderick is an American actor who voiced adult Simba in Disney's The Lion King.",
+      ProfilePictureURL = "https://th.bing.com/th/id/R.c136fb2c717d1fd3aa58cdf4eb4451c3?rik=vbgzIAA72rwaqg&pid=ImgRaw&r=0"
+  },
+
+  new Actor() //16
+  {
+      FullName = "Christian Bale",
+      Bio = "Christian Bale is an award-winning actor known for portraying Bruce Wayne/Batman in Christopher Nolan’s The Dark Knight trilogy.",
+      ProfilePictureURL = "https://th.bing.com/th/id/OIP.8wIXCKrN1Bj_F1WzX-YiLwHaKR?rs=1&pid=ImgDetMain"
+  },
+
+  new Actor() //17
+  {
+      FullName = "Matthew McConaughey",
+      Bio = "Matthew McConaughey is an American actor who played the role of Cooper in the science fiction film Interstellar.",
+      ProfilePictureURL = "https://th.bing.com/th/id/R.1bd9a715ac22b0c4f259d2bccf2d1398?rik=Vj%2bLNztw5QowNQ&pid=ImgRaw&r=0"
+  },
+
+  new Actor() //18
+  {
+      FullName = "Idina Menzel",
+      Bio = "Idina Menzel is an American actress and singer who voiced Elsa in Disney’s Frozen and performed the song 'Let It Go'.",
+      ProfilePictureURL = "https://www.hawtcelebs.com/wp-content/uploads/2019/11/idina-menzel-at-frozen-2-premiere-in-london-11-17-2019-5.jpg"
+},
+new Actor() //19
+{
+    FullName = "Sam Worthington",
+    Bio = "Sam Worthington is an Australian actor best known for his role as Jake Sully in James Cameron's Avatar.",
+    ProfilePictureURL = "https://th.bing.com/th/id/R.50ba5bd91e06a0d01202f1be8fc5c7f7?rik=V7vA0vJXQVKpcQ&pid=ImgRaw&r=0"
+},
+
+new Actor() //20
+{
+    FullName = "Tom Hanks",
+    Bio = "Tom Hanks is a beloved American actor who voiced Woody in the Toy Story franchise and starred in numerous acclaimed films.",
+    ProfilePictureURL = "https://th.bing.com/th/id/OIP.buuhBhTejMMZSBtbvxwpzwHaLH?rs=1&pid=ImgDetMain"
+},
+
+new Actor() //21
+{
+    FullName = "Russell Crowe",
+    Bio = "Russell Crowe is an Academy Award-winning actor known for his powerful performance in Gladiator and many other dramatic roles.",
+    ProfilePictureURL = "https://th.bing.com/th/id/R.9ed90ff7e11b169126e558b9fca20320?rik=xbyTZFQ0TGCbKQ&pid=ImgRaw&r=0"
+},
+
+new Actor() //22
+{
+    FullName = "Anthony Gonzalez",
+    Bio = "Anthony Gonzalez is a young actor who voiced Miguel in Pixar’s Coco, bringing the character to life with charm and talent.",
+    ProfilePictureURL = "https://th.bing.com/th/id/OIP.C9W_RP3VmEtSvNpsjqCD-gHaLG?rs=1&pid=ImgDetMain"
+},
+
+new Actor() //23
+{
+    FullName = "Keanu Reeves",
+    Bio = "Keanu Reeves is a Canadian actor known for his roles in The Matrix, John Wick, and Speed, praised for both action and emotional depth.",
+    ProfilePictureURL = "https://th.bing.com/th/id/OIP.lFDmnNfJ8e6VuVFWJwrSzgHaLH?rs=1&pid=ImgDetMain"
+}
+
 
 
                     });
@@ -220,10 +293,77 @@ namespace ticketer.Data
                                 FullName ="Warner Bros",
                                 Bio="Warner Bros. Entertainment Inc. (WBEI), commonly known as Warner Bros. (WB), is an American film and entertainment studio.",
                                 ProfilePictureURL="https://production786.wordpress.com/wp-content/uploads/2016/10/0.jpg"
-                             }
-            
+                             },new Producer() //12
+ {
+     FullName = "Emma Thomas",
+     Bio = "Emma Thomas is a British film producer best known for producing the films directed by her husband, Christopher Nolan, including Inception, Interstellar, and the Dark Knight trilogy.",
+     ProfilePictureURL = "https://variety.com/wp-content/uploads/2024/01/Emma-Thomas-Variety-Awards-Season-Extra-Edition.jpg?w=1200&h=1500&crop=1"
+ },
 
-                    });
+ new Producer() //13
+ {
+     FullName = "Don Hahn",
+     Bio = "Don Hahn is an American film producer who produced several successful Disney films including Beauty and the Beast and The Lion King.",
+     ProfilePictureURL = "https://th.bing.com/th/id/R.b6bb7517e9f291783da48f6f6e9db1a9?rik=RmMfTNRfbkWtFA&pid=ImgRaw&r=0"
+ },
+
+ new Producer() //14
+ {
+     FullName = "Charles Roven",
+     Bio = "Charles Roven is a Hollywood film producer known for producing The Dark Knight trilogy, Man of Steel, and other DC Universe films.",
+     ProfilePictureURL = "https://th.bing.com/th/id/OIP.Wjc4MHjW07ZTkLKRmKCobgHaIy?rs=1&pid=ImgDetMain"
+ },
+
+ new Producer() //15
+ {
+     FullName = "Christopher Nolan",
+     Bio = "Christopher Nolan is a British-American filmmaker known for his complex storytelling and groundbreaking visuals in films like Inception, Interstellar, and Tenet.",
+     ProfilePictureURL = "https://th.bing.com/th/id/OIP.61lt8eMBtqUiFDop0HH4BQHaE8?rs=1&pid=ImgDetMain"
+ },
+
+ new Producer() //16
+ {
+     FullName = "Peter Del Vecho",
+     Bio = "Peter Del Vecho is an American film producer at Walt Disney Animation Studios, known for producing Frozen and Frozen II.",
+     ProfilePictureURL = "https://th.bing.com/th/id/R.6bcd71f902e222438721a91e925811e9?rik=ugiR6wZ%2fKstjrQ&riu=http%3a%2f%2fvignette4.wikia.nocookie.net%2fdisney%2fimages%2ff%2ff7%2fPeter_Del_Vecho.jpg%2frevision%2flatest%3fcb%3d20151210174134&ehk=fzLh0eF6UqZ18PyI6rc57Y52n1Fx%2f6vFW3h5RWayssA%3d&risl=&pid=ImgRaw&r=0"
+},
+new Producer() //17
+{
+    FullName = "James Cameron",
+    Bio = "James Cameron is an acclaimed filmmaker known for directing and producing groundbreaking films like Titanic, Avatar, and Terminator 2.",
+    ProfilePictureURL = "https://th.bing.com/th/id/R.e35a3f70e9d70dbf7f6db1c4cf3426fc?rik=GO8bFgNdDr0cOw&pid=ImgRaw&r=0"
+},
+
+new Producer() //18
+{
+    FullName = "Ralph Guggenheim",
+    Bio = "Ralph Guggenheim is an American film producer and one of the original producers at Pixar. He worked on the landmark animated feature Toy Story.",
+    ProfilePictureURL = "https://vignette.wikia.nocookie.net/pixar/images/f/f7/Ralph_Guggenheim.jpg/revision/latest?cb=20130816162650"
+},
+
+new Producer() //19
+{
+    FullName = "Douglas Wick",
+    Bio = "Douglas Wick is a film producer known for producing Gladiator, the Academy Award-winning epic directed by Ridley Scott.",
+    ProfilePictureURL = "https://www.filmindependent.org/wp-content/uploads/2020/10/Douglas-Wick-2020_600x600.jpg"
+},
+
+new Producer() //20
+{
+    FullName = "Darla K. Anderson",
+    Bio = "Darla K. Anderson is an award-winning producer at Pixar known for her work on Coco, Toy Story 3, and Monsters, Inc.",
+    ProfilePictureURL = "https://th.bing.com/th/id/OIP.nFZVOo4cE-yv5ZNH3Swh4QHaE8?rs=1&pid=ImgDetMain"
+},
+
+new Producer() //21
+{
+    FullName = "Joel Silver",
+    Bio = "Joel Silver is a prolific American film producer known for The Matrix trilogy, Die Hard, and Lethal Weapon series.",
+    ProfilePictureURL = "https://th.bing.com/th/id/OIP.KgWS_A9JAFjc2HvBz4zHYwHaFj?rs=1&pid=ImgDetMain"
+}
+
+
+                  });
                     context.SaveChanges();
                 }
                 if (!context.Movies.Any())
@@ -368,9 +508,124 @@ namespace ticketer.Data
                                 ProducerId=7,
                                ReleaseDate = new DateTime(2023, 1, 1, 0, 0, 0, DateTimeKind.Utc)
 
-                            }
+                            },new Movie() //14
+{
+    Name = "Inception",
+    Description = "A thief who steals corporate secrets through dream-sharing technology is given the inverse task of planting an idea into the mind of a CEO.",
+    ImageURL = "https://th.bing.com/th/id/OIP.ps02Cq1ZLtzBEPPpSVttKgHaLH?rs=1&pid=ImgDetMain",
+    TrailerURL = "https://www.youtube.com/watch?v=YoHD9XEInc0",
+    MovieCategory = MovieCategory.Action,
+    ProducerId = 12,
+    ReleaseDate = new DateTime(2010, 7, 16, 0, 0, 0, DateTimeKind.Utc)
+},
 
-                     
+new Movie() //15
+{
+    Name = "The Lion King",
+    Description = "Lion prince Simba and his father are targeted by his bitter uncle, who wants to ascend the throne himself.",
+    ImageURL = "https://th.bing.com/th/id/R.68423a589db68b81d8011149d4e2f216?rik=htf79yDmcv%2f1Bg&pid=ImgRaw&r=0",
+    TrailerURL = "https://www.youtube.com/watch?v=7TavVZMewpY",
+    MovieCategory = MovieCategory.Cartoon,
+    ProducerId = 13,
+    ReleaseDate = new DateTime(1994, 6, 24, 0, 0, 0, DateTimeKind.Utc)
+},
+
+new Movie() //16
+{
+    Name = "The Dark Knight",
+    Description = "Batman faces the Joker, a criminal mastermind who plunges Gotham City into anarchy.",
+    ImageURL = "https://th.bing.com/th/id/R.7858584e0e540252618d7bfb1ef46804?rik=pde7ZIE3QaH7Ig&riu=http%3a%2f%2fhost.trivialbeing.org%2fup%2ftdk-may17-joker-poster-large.jpg&ehk=g8dnVbBCb1VT%2fO9yUlm0aTB9RfEQ80PTB1aYTenHrKs%3d&risl=&pid=ImgRaw&r=0",
+    TrailerURL = "https://www.youtube.com/watch?v=EXeTwQWrcwY",
+    MovieCategory = MovieCategory.Action,
+    ProducerId = 14,
+    ReleaseDate = new DateTime(2008, 7, 18, 0, 0, 0, DateTimeKind.Utc)
+},
+
+new Movie() //17
+{
+    Name = "Interstellar",
+    Description = "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+    ImageURL = "https://m.media-amazon.com/images/I/91kFYg4fX3L.AC_SL1500.jpg",
+    TrailerURL = "https://www.youtube.com/watch?v=zSWdZVtXT7E",
+    MovieCategory = MovieCategory.ScienceFiction,
+    ProducerId = 15,
+    ReleaseDate = new DateTime(2014, 11, 7, 0, 0, 0, DateTimeKind.Utc)
+},
+
+new Movie() //18
+{
+    Name = "Frozen",
+    Description = "When the newly crowned Queen Elsa accidentally uses her power to turn things into ice, her sister Anna teams up with a mountain man to change the weather condition.",
+    ImageURL = "https://th.bing.com/th/id/OIP.wmyQyDloEy1tI3uCLGiTswHaKb?rs=1&pid=ImgDetMain",
+    TrailerURL = "https://www.youtube.com/watch?v=TbQm5doF_Uc",
+    MovieCategory = MovieCategory.Cartoon,
+    ProducerId = 16,
+    ReleaseDate = new DateTime(2013, 11, 27, 0, 0, 0, DateTimeKind.Utc)
+},
+new Movie() //19
+{
+    Name = "Avatar",
+    Description = "A paraplegic Marine is dispatched to the moon Pandora on a unique mission but becomes torn between following orders and protecting an alien civilization.",
+    ImageURL = "https://m.media-amazon.com/images/I/41kTVLeW1CL._AC_SY445_.jpg",
+    TrailerURL = "https://www.youtube.com/watch?v=5PSNL1qE6VY",
+    MovieCategory = MovieCategory.ScienceFiction,
+    ProducerId = 17,
+    ReleaseDate = new DateTime(2009, 12, 18, 0, 0, 0, DateTimeKind.Utc)
+},
+
+new Movie() //20
+{
+    Name = "Toy Story",
+    Description = "A cowboy doll is profoundly threatened and jealous when a new spaceman figure supplants him as top toy in a boy's room.",
+    ImageURL = "https://m.media-amazon.com/images/I/51K8ouYrHeL._AC_SY445_.jpg",
+    TrailerURL = "https://www.youtube.com/watch?v=4YKv__f7KzE",
+    MovieCategory = MovieCategory.Cartoon,
+    ProducerId = 18,
+    ReleaseDate = new DateTime(1995, 11, 22, 0, 0, 0, DateTimeKind.Utc)
+},
+
+new Movie() //21
+{
+    Name = "Gladiator",
+    Description = "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.",
+    ImageURL = "https://image.tmdb.org/t/p/original/ehGpN04mLJIrSnxcZBMvHeG0eDc.jpg",
+    TrailerURL = "https://www.youtube.com/watch?v=owK1qxDselE",
+    MovieCategory = MovieCategory.Action,
+    ProducerId = 19,
+    ReleaseDate = new DateTime(2000, 5, 5, 0, 0, 0, DateTimeKind.Utc)
+},
+
+new Movie() //22
+{
+    Name = "Coco",
+    Description = "Aspiring musician Miguel, confronted with his family's ancestral ban on music, enters the Land of the Dead to find his great-great-grandfather.",
+    ImageURL = "https://image.tmdb.org/t/p/original/fqZEc92MAFy5mR6aSMRDx1QN73N.jpg",
+    TrailerURL = "https://www.youtube.com/watch?v=Ga6RYejo6Hk",
+    MovieCategory = MovieCategory.Cartoon,
+    ProducerId = 20,
+    ReleaseDate = new DateTime(2017, 11, 22, 0, 0, 0, DateTimeKind.Utc)
+},
+
+new Movie() //23
+{
+    Name = "The Matrix",
+    Description = "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
+    ImageURL = "https://m.media-amazon.com/images/I/51EG732BV3L._AC_SY445_.jpg",
+    TrailerURL = "https://www.youtube.com/watch?v=vKQi3bBA1y8",
+    MovieCategory = MovieCategory.ScienceFiction,
+    ProducerId = 21,
+    ReleaseDate = new DateTime(1999, 3, 31, 0, 0, 0, DateTimeKind.Utc)
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -467,7 +722,43 @@ namespace ticketer.Data
                             ActorId= 13,
                             MovieId = 12,
                             RoleName="Cruella"
-                        }
+                        },new MovieActor()
+{
+    ActorId= 14,
+    MovieId = 14,
+    RoleName="Leonardo DiCaprio"
+},
+
+  new MovieActor()
+{
+    ActorId= 15,
+    MovieId = 15,
+    RoleName="Matthew Broderick"
+},
+
+   new MovieActor()
+{
+    ActorId= 16,
+    MovieId = 16,
+    RoleName="Christian Bale"
+},
+    new MovieActor()
+{
+    ActorId= 17,
+    MovieId = 17,
+    RoleName="Matthew McConaughey"
+},
+
+     new MovieActor()
+{
+    ActorId= 18,
+    MovieId = 18,
+    RoleName="Idina Menzel"
+}
+
+
+
+
 
 
                     });

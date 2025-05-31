@@ -8,7 +8,7 @@
       Context?.Request?.Query.ContainsKey("filter") == true ||
         Context?.Request?.Query.ContainsKey("Category") == true;
 
-    var movieList = Model?.ToList() ?? new List<Movie>();
+var movieList = Model?.OrderByDescending(m => m.ReleaseDate).ToList() ?? new List<Movie>();
     var userFavorites = ViewBag.UserFavorites as List<int> ?? new List<int>();
 }
 
@@ -41,7 +41,7 @@
 
     @if (movieList.Count > 1)
     {
-        var secondItem = movieList[7];
+        var secondItem = movieList[5];
 
         <h2 class="now-showing-title hover-zoom">Now Showing</h2>
 
