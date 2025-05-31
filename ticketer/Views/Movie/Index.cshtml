@@ -13,8 +13,6 @@
 }
 
 <link rel="stylesheet" href="~/css/movie.css" />
-<div class="curtain curtain-left" id="curtainLeft"></div>
-<div class="curtain curtain-right" id="curtainRight"></div>
 
 
 @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
@@ -135,13 +133,7 @@
             }
         });
 
-        // ✅ كود الستارة – يشتغل بعد التصحيح
-        window.addEventListener("load", () => {
-            setTimeout(() => {
-                document.getElementById('curtainLeft')?.classList.add('open');
-                document.getElementById('curtainRight')?.classList.add('open');
-            }, 1000);
-        });
+        );
     </script>
 
     <script src="~/js/main.js"></script>

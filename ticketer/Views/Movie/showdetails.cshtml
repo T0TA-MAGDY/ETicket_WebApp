@@ -1,4 +1,6 @@
-﻿@model Movie
+﻿
+
+@model Movie
 @functions {
     public string GetEmbeddedYouTubeURL(string url)
     {
@@ -16,8 +18,17 @@
     }
 }
 
-<link rel="stylesheet" href="~/css/ShowDetails.css" />
-<link rel="stylesheet" href="~/css/related_movie.css" />
+<link rel="stylesheet" href="@Url.Content("~/css/ShowDetails.css")" />
+<link rel="stylesheet" href="@Url.Content("~/css/related_movie.css")" />
+
+
+
+<div class="curtain curtain-left" id="curtainLeft"></div>
+<div class="curtain curtain-right" id="curtainRight"></div>
+
+
+
+
 
 <div class="ShowDetails-container">
     <div id="trailer-wrapper" style="position: relative; height: 650px;overflow: hidden;">
@@ -130,8 +141,6 @@
 
             </div>
 
-
-
             <div class="showtimes-section">
                 <h2>Showtimes</h2>
                 @if (Model.Showtimes.Any())
@@ -147,6 +156,7 @@
                                     <strong>@dateGroup.Key.ToString("dd-MM-yyyy")</strong>
                                     <div class="timings">
                                         @{
+
                                             var allTimings = dateGroup
                                             .SelectMany(st => st.Timings)
                                             .OrderBy(t => t.StartTime);
@@ -209,7 +219,7 @@
                             <input type="radio" name="Rating" id="star1" value="1" />
                             <label for="star1">★</label>
                         </div>
-                       
+
                         <label>Comment:</label><br />
                         <textarea name="Comment" rows="4" cols="50"></textarea><br /><br />
                         <button type="submit" class="submit-review-btn">Submit Review</button>
@@ -237,100 +247,95 @@
                                     <span class="star">☆</span>
                                 }
                             }
-                        </span><br />
+                        </span>
                         <p>@review.Comment</p>
-                        <small>@review.CreatedAt.ToShortDateString()</small>
+                        <small>@review.CreatedAt.ToString("dd MMM yyyy")</small>
                     </div>
                 }
             </div>
+
         </div>
     </div>
+ </div> 
 
-</div>
-@section Scripts {
-    <script src="https://www.youtube.com/iframe_api"></script>
-    <script>
-        var player;
-        var isPlaying = false;
 
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('trailer', {
-                events: {
-                    'onStateChange': onPlayerStateChange
+    @section Scripts {
+        <script>
+            // كود الـ YouTube API الحالي عندك
+            var tag = document.createElement('script');
+            tag.src = "https://www.youtube.com/iframe_api";
+            var firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+            var player;
+
+            function onYouTubeIframeAPIReady() {
+                player = new YT.Player('trailer', {
+                    events: {
+                        'onReady': onPlayerReady,
+                        'onStateChange': onPlayerStateChange
+                    }
+                });
+            }
+
+            function onPlayerReady(event) {
+                var playButton = document.getElementById("play-button");
+                var darkOverlay = document.getElementById("dark-overlay");
+                var posterOverlay = document.getElementById("poster-overlay");
+
+                // عند الضغط على زر التشغيل
+                playButton.addEventListener("click", function () {
+                    event.target.playVideo();
+                    playButton.style.display = "none";
+                    darkOverlay.style.opacity = "0";
+                    posterOverlay.style.opacity = "0";
+                });
+            }
+
+            function onPlayerStateChange(event) {
+                var playButton = document.getElementById("play-button");
+                var darkOverlay = document.getElementById("dark-overlay");
+                var posterOverlay = document.getElementById("poster-overlay");
+
+                if (event.data == YT.PlayerState.ENDED) {
+                    playButton.style.display = "block";
+                    darkOverlay.style.opacity = "0.6";
+                    posterOverlay.style.opacity = "1";
                 }
-            });
-        }
-
-        const playButton = document.getElementById('play-button');
-        const posterOverlay = document.getElementById('poster-overlay');
-        const infoOverlay = document.getElementById('info-overlay');
-        const darkOverlay = document.getElementById('dark-overlay');
-        const trailerWrapper = document.getElementById('trailer-wrapper');
-        const trailer = document.getElementById('trailer');
-
-        // Apply transitions initially
-        posterOverlay.style.transition = 'transform 0.7s ease, opacity 0.5s ease';
-        infoOverlay.style.transition = 'transform 0.7s ease, opacity 0.5s ease';
-        darkOverlay.style.transition = 'opacity 0.5s ease';
-
-        playButton.addEventListener('click', () => {
-            if (player && typeof player.playVideo === 'function') {
-                player.playVideo();
-                isPlaying = true;
-
-                // Hide overlays
-                darkOverlay.style.opacity = '0';
-
-                // Slide out poster and info overlays
-                posterOverlay.style.transform = 'translateX(100%)';
-                posterOverlay.style.opacity = '0';
-
-                infoOverlay.style.transform = 'translateX(-100%)';
-                infoOverlay.style.opacity = '0';
-
-                // Hide play button
-                playButton.style.display = 'none';
-
-                // لا تغير ارتفاع التريلر عشان يظل ثابت
-                // trailerWrapper.style.height = '600px';
             }
-        });
 
-        // Clicking on trailer area pauses the video (if playing)
-        trailerWrapper.addEventListener('click', () => {
-            if (!player || typeof player.getPlayerState !== 'function') return;
+            // ==== الكود الجديد لتشغيل / إيقاف الصوت ====
 
-            const state = player.getPlayerState();
-            if (state === YT.PlayerState.PLAYING) {
-                player.pauseVideo(); // triggers return via onPlayerStateChange
+            var volumeButton = document.getElementById('volumeBtn');
+            var trailerIframe = document.getElementById('trailer');
+
+            var isMuted = false;
+
+            if (volumeButton) {
+                volumeButton.addEventListener('click', function () {
+                    if (!player) {
+                        console.warn("Player is not ready yet.");
+                        return;
+                    }
+
+                    if (isMuted) {
+                        player.unMute();
+                        volumeButton.textContent = "🔊"; // أيقونة صوت
+                    } else {
+                        player.mute();
+                        volumeButton.textContent = "🔈"; // أيقونة صامت
+                    }
+                    isMuted = !isMuted;
+                });
             }
-        });
 
-        function onPlayerStateChange(event) {
-            if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) {
-                isPlaying = false;
-
-                // Show overlays again
-                darkOverlay.style.opacity = '0.6';
-
-                posterOverlay.style.transform = 'translateY(-50%)'; // حافظ على المحاذاة الرأسية
-                posterOverlay.style.opacity = '1';
-
-                infoOverlay.style.transform = 'translateX(0)';
-                infoOverlay.style.opacity = '1';
-
-                // Show play button with animation
-                playButton.classList.add('show-again');
-                playButton.style.display = 'block';
-
+            // هنا تضيف الكود المطلوب بعد تحميل الصفحة
+                 window.addEventListener("load", () => {
                 setTimeout(() => {
-                    playButton.classList.remove('show-again');
-                }, 600);
+                    document.getElementById('curtainLeft').classList.add('open');
+                    document.getElementById('curtainRight').classList.add('open');
+                }, 1000);
+            });
 
-                // لا تغير ارتفاع التريلر عشان يظل ثابت
-
-            }
-        }
-    </script>
-}
-
+        </script>
+    }

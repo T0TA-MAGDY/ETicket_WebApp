@@ -139,6 +139,9 @@ namespace ticketer.Data
                             Bio = "Emily Jean \"Emma\" Stone is an American actress and film producer. Her accolades include two Academy Awards, two British Academy Film Awards, and two Golden Globe Awards. In 2017, she was the world's highest-paid actress and named by Time magazine as one of the 100 most influential people in the world.",
                             ProfilePictureURL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSTjCZFA66JXAzA7DKfj2ltseAWz2NGsKV3Wptp1SY73lhlHRLCQbkC0gd-9OFxRG9lvlIZlYrbp5F6_Vl_9CLxw"
                         }
+ 
+
+
                     });
                     context.SaveChanges();
 
@@ -218,6 +221,7 @@ namespace ticketer.Data
                                 Bio="Warner Bros. Entertainment Inc. (WBEI), commonly known as Warner Bros. (WB), is an American film and entertainment studio.",
                                 ProfilePictureURL="https://production786.wordpress.com/wp-content/uploads/2016/10/0.jpg"
                              }
+            
 
                     });
                     context.SaveChanges();
@@ -366,6 +370,9 @@ namespace ticketer.Data
 
                             }
 
+                     
+
+
 
 
                     });
@@ -461,6 +468,7 @@ namespace ticketer.Data
                             MovieId = 12,
                             RoleName="Cruella"
                         }
+
 
                     });
                     context.SaveChanges();
