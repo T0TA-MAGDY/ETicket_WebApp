@@ -141,7 +141,7 @@
                         <div class="cinema-group">
                             <h3><a asp-controller="Cinemas" asp-action="Details" asp-route-id="@showTimeGroup.First().Cinema.Id" class="link">@showTimeGroup.Key</a></h3>
 
-                            @foreach (var dateGroup in showTimeGroup.GroupBy(st => st.Date))
+                            @foreach (var dateGroup in showTimeGroup.GroupBy(st => st.Date).OrderBy(g => g.Key))
                             {
                                 <div class="showtime-date">
                                     <strong>@dateGroup.Key.ToString("dd-MM-yyyy")</strong>
@@ -155,9 +155,10 @@
                                         }
                                     </div>
                                 </div>
-                                <div class="thick-short-line"></div>
+                               
                             }
                         </div>
+                        <div class="thick-short-line"></div>
                     }
                 }
                 else
