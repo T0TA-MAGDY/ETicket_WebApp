@@ -187,7 +187,7 @@
             {
                 <h3>Related Movies</h3>
                 <div class="related-movies-section">
-                    @foreach (var relatedMovie in (List<Movie>)ViewBag.RelatedMovies)
+                    @foreach (var relatedMovie in ((List<Movie>)ViewBag.RelatedMovies).Take(5))
                     {
                         <div class="related-movie-card">
                             <a asp-action="Showdetails" asp-controller="Movie" asp-route-id="@relatedMovie.Id">
