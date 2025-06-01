@@ -1,5 +1,4 @@
 ﻿
-
 @model Movie
 @functions {
     public string GetEmbeddedYouTubeURL(string url)
@@ -23,8 +22,8 @@
 
 
 
-<div class="curtain curtain-left" id="curtainLeft"></div>
-<div class="curtain curtain-right" id="curtainRight"></div>
+@* <div class="curtain curtain-left" id="curtainLeft"></div> *@
+@* <div class="curtain curtain-right" id="curtainRight"></div> *@
 
 
 
@@ -181,7 +180,7 @@
             </div>
         </div>
 
-        <!-- العمود الجانبي على اليمين -->
+       
         <div class="right-column">
 
             @if (ViewBag.RelatedMovies != null && ((List<Movie>)ViewBag.RelatedMovies).Any())
@@ -258,10 +257,9 @@
     </div>
  </div> 
 
-
     @section Scripts {
         <script>
-            // كود الـ YouTube API الحالي عندك
+          
             var tag = document.createElement('script');
             tag.src = "https://www.youtube.com/iframe_api";
             var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -283,7 +281,6 @@
                 var darkOverlay = document.getElementById("dark-overlay");
                 var posterOverlay = document.getElementById("poster-overlay");
 
-                // عند الضغط على زر التشغيل
                 playButton.addEventListener("click", function () {
                     event.target.playVideo();
                     playButton.style.display = "none";
@@ -304,7 +301,7 @@
                 }
             }
 
-            // ==== الكود الجديد لتشغيل / إيقاف الصوت ====
+       
 
             var volumeButton = document.getElementById('volumeBtn');
             var trailerIframe = document.getElementById('trailer');
@@ -320,21 +317,17 @@
 
                     if (isMuted) {
                         player.unMute();
-                        volumeButton.textContent = "🔊"; // أيقونة صوت
+                        volumeButton.textContent = "🔊"; 
                     } else {
                         player.mute();
-                        volumeButton.textContent = "🔈"; // أيقونة صامت
+                        volumeButton.textContent = "🔈";
                     }
                     isMuted = !isMuted;
                 });
             }
 
-            // هنا تضيف الكود المطلوب بعد تحميل الصفحة
-                 window.addEventListener("load", () => {
-                setTimeout(() => {
-                    document.getElementById('curtainLeft').classList.add('open');
-                    document.getElementById('curtainRight').classList.add('open');
-                }, 1000);
+       
+               
             });
 
         </script>

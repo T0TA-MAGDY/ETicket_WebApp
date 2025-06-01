@@ -8,7 +8,7 @@ body {
     color: #eee;
 }
 
-/* الحاويات الأساسية */
+
 .main-content-container {
     display: flex;
     gap: 40px;
@@ -30,22 +30,22 @@ body {
     gap: 30px;
 }
 
-/* صناديق المحتوى - خلفية سوداء شفافة */
+
 .details,
 .description,
 .showtimes-section,
 .reviews-section {
-    background-color: rgba(0, 0, 0, 0.7); /* خلفية سوداء شفافة */
+    background-color: rgba(0, 0, 0, 0.7);
     padding: 25px;
     border-radius: 12px;
-    border: 1px solid #4a1c1c; /* ظل مارون */
+    border: 1px solid #4a1c1c; 
     box-shadow: 0 0 12px rgba(128, 0, 0, 0.35);
     font-size: 1.05rem;
     line-height: 1.6;
     color: #eee;
 }
 
-    /* نص التفاصيل */
+ 
     .details strong {
         color: #fff;
     }
@@ -66,7 +66,7 @@ body {
             text-decoration: underline;
         }
 
-/* الخطوط */
+
 
 .thick-short-line {
     height: 3px;
@@ -75,7 +75,7 @@ body {
     margin: 20px 0;
 }
 
-/* عناوين مواعيد العرض */
+
 .showtimes-section h2 {
     color: #fff;
     font-size: 2rem;
@@ -87,7 +87,7 @@ body {
     margin-bottom: 10px;
 }
 
-/* مواعيد العرض */
+
 .showtime-date {
     margin: 10px 0 5px 15px;
     font-weight: 600;
@@ -117,7 +117,7 @@ body {
         box-shadow: 0 0 12px rgba(128, 0, 0, 0.6);
     }
 
-/* الأفلام المشابهة */
+
 .related-movies-section {
     background-color: rgba(0, 0, 0, 0.7);
     padding: 15px;
@@ -149,7 +149,7 @@ body {
     object-fit: cover;
 }
 
-/* المراجعات */
+
 .reviews-section h3 {
     color: white;
     font-size: 2rem;
@@ -157,19 +157,19 @@ body {
     margin-bottom: 20px;
 }
 
-/* اسم المراجع باللون الذهبي مع ظل مارون */
+
 .review strong {
     color: #ffd700;
     text-shadow: 0 0 6px #800000;
 }
 
-/* نجوم التقييم باللون الذهبي */
+
 .review-stars {
     color: #ffd700;
     font-size: 1.2rem;
 }
 
-/* نظام التقييم */
+
 .rating {
     direction: rtl;
     unicode-bidi: bidi-override;
@@ -193,7 +193,7 @@ body {
             color: #ffd700;
         }
 
-/* زر إرسال مراجعة */
+
 .submit-review-btn {
     background: #800000;
     border: none;
@@ -210,14 +210,13 @@ body {
         background: #a23333;
     }
 
-/* رابط تسجيل الدخول بالذهبي مع ظل مارون */
 .login-link {
     font-weight: 700;
     color: #ffd700;
     text-shadow: 0 0 6px #800000;
 }
 
-/* شريط التمرير للأفلام المشابهة */
+
 .related-movies-section::-webkit-scrollbar {
     height: 8px;
 }
@@ -227,7 +226,7 @@ body {
     border-radius: 10px;
 }
 
-/* استجابة الشاشات الصغيرة */
+
 @media (max-width: 900px) {
     .main-content-container {
         flex-direction: column;
@@ -255,18 +254,17 @@ body {
         max-height: none;
     }
 }
-/* تكبير الوصف عند المرور بالماوس */
+
 .description:hover {
     transform: scale(1.05);
     transition: transform 0.3s ease;
 }
 
-/* تكبير العناوين h2 و h3 عند المرور */
 h2:hover, h3:hover {
     transform: scale(1.05);
     transition: transform 0.3s ease;
 }
-/* صندوق التعليق (textarea) */
+
 textarea[name="Comment"] {
     width: 100%;
     max-width: 100%;
@@ -274,55 +272,18 @@ textarea[name="Comment"] {
     padding: 12px 15px;
     font-size: 1rem;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    border: 2px solid #444; /* لون الحدود رمادي غامق */
+    border: 2px solid #444;
     border-radius: 8px;
-    background-color: #121212; /* خلفية داكنة */
-    color: #fff; /* نص أبيض */
-    resize: vertical; /* يسمح بتغيير الطول فقط */
+    background-color: #121212; 
+    color: #fff;
+    resize: vertical;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
     box-shadow: inset 0 0 5px rgba(0,0,0,0.7);
 }
 
     textarea[name="Comment"]:focus {
         outline: none;
-        border-color: #800000; /* اللون الدارك ريد */
+        border-color: #800000; 
         box-shadow: 0 0 8px #800000;
         background-color: #1e1e1e;
     }
-
-
-.curtain {
-    position: fixed;
-    top: 0;
-    width: 50%;
-    height: 100vh;
-    z-index: 9999;
-    background: radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, transparent 70%), repeating-linear-gradient(90deg, #7c0a02 0 15px, #8b0000 15px 30px);
-    background-size: cover;
-    background-blend-mode: overlay;
-    box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.6);
-    transition: transform 2s cubic-bezier(.55, .06, .17, .99);
-}
-
-.curtain-left {
-    left: 0;
-    border-top-right-radius: 60px;
-    border-bottom-right-radius: 60px;
-    transform: translateX(0);
-}
-
-.curtain-right {
-    right: 0;
-    border-top-left-radius: 60px;
-    border-bottom-left-radius: 60px;
-    transform: translateX(0);
-}
-
-.curtain-left.open {
-    transform: translateX(-100%);
-}
-
-.curtain-right.open {
-    transform: translateX(100%);
-}
-
