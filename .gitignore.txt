@@ -6,7 +6,3 @@ obj/
 *.exe
 *.dll
 *.pdb
-appsettings.Development.json
-secrets.json
-.env
-appsettings.json
