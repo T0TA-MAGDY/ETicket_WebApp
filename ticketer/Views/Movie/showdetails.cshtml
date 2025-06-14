@@ -1,33 +1,36 @@
-﻿
-@model Movie
+﻿@model Movie
 @functions {
     public string GetEmbeddedYouTubeURL(string url)
+
     {
+
         try
+
         {
+
             var uri = new Uri(url);
+
             var query = System.Web.HttpUtility.ParseQueryString(uri.Query);
+
             var videoId = query["v"];
+
             return $"https://www.youtube.com/embed/{videoId}";
+
         }
+
         catch
+
         {
+
             return "";
+
         }
+
     }
 }
 
-<link rel="stylesheet" href="@Url.Content("~/css/ShowDetails.css")" />
-<link rel="stylesheet" href="@Url.Content("~/css/related_movie.css")" />
-
-
-
-@* <div class="curtain curtain-left" id="curtainLeft"></div> *@
-@* <div class="curtain curtain-right" id="curtainRight"></div> *@
-
-
-
-
+<link rel="stylesheet" href="~/css/ShowDetails.css" />
+<link rel="stylesheet" href="~/css/related_movie.css" />
 
 <div class="ShowDetails-container">
     <div id="trailer-wrapper" style="position: relative; height: 650px;overflow: hidden;">
@@ -57,6 +60,7 @@
             <div>
                 <h1 style="margin: 0; font-size: 5rem;font-family:'Times New Roman', Times, serif;">@Model.Name</h1>
                 @if (ViewBag.AverageRating != null)
+
                 {
                     var fullStars = (int)Math.Floor((double)ViewBag.AverageRating);
                     var hasHalfStar = ((double)ViewBag.AverageRating - fullStars) >= 0.5;
@@ -64,14 +68,17 @@
 
                     <div class="average-rating" style="font-size: 3rem; color: gold;">
                         @for (int i = 0; i < fullStars; i++)
+
                         {
                             @:★
                         }
                         @if (hasHalfStar)
+
                         {
                             @:☆
                         }
                         @for (int i = 0; i < emptyStars; i++)
+
                         {
                             @:☆
                         }
@@ -115,10 +122,10 @@
     </div>
 
     <div class="main-content-container">
-        <!-- العمود الرئيسي الكبير على الشمال -->
+        
         <div class="left-column">
             <div class="info-description">
-                <!-- تفاصيل الفيلم + الوصف -->
+               
                 <h3>Info: </h3>
                 <div class="details">
                     <p><strong>Genre:</strong> @Model.MovieCategory</p>
@@ -127,6 +134,7 @@
                     <p>
                         <strong>Starring:</strong>
                         @foreach (var movieactor in Model.MovieActors)
+
                         {
                             <a asp-controller="Actors" asp-action="Details" asp-route-id="@movieactor.Actor.Id" class="link">@movieactor.Actor.FullName</a>
                             @(movieactor != Model.MovieActors.Last() ? ", " : "")
@@ -140,9 +148,12 @@
 
             </div>
 
+
+
             <div class="showtimes-section">
                 <h2>Showtimes</h2>
                 @if (Model.Showtimes.Any())
+
                 {
                     @foreach (var showTimeGroup in Model.Showtimes.GroupBy(st => st.Cinema.Name))
                     {
@@ -155,13 +166,15 @@
                                     <strong>@dateGroup.Key.ToString("dd-MM-yyyy")</strong>
                                     <div class="timings">
                                         @{
-
                                             var allTimings = dateGroup
+
                                             .SelectMany(st => st.Timings)
+
                                             .OrderBy(t => t.StartTime);
                                         }
 
                                         @foreach (var timing in allTimings)
+
                                         {
                                             <a class="time-btn" asp-controller="Ticket" asp-action="ChooseSeats" asp-route-id="@timing.Id">@timing.StartTime.ToString(@"hh\:mm")</a>
                                         }
@@ -173,7 +186,9 @@
                         <div class="thick-short-line"></div>
                     }
                 }
+
                 else
+
                 {
                     <p>No showtimes available for this movie.</p>
                 }
@@ -187,7 +202,8 @@
             {
                 <h3>Related Movies</h3>
                 <div class="related-movies-section">
-                    @foreach (var relatedMovie in ((List<Movie>)ViewBag.RelatedMovies).Take(5))
+
+                    @foreach (var relatedMovie in ((List<Movie>)ViewBag.RelatedMovies).Take(4))
                     {
                         <div class="related-movie-card">
                             <a asp-action="Showdetails" asp-controller="Movie" asp-route-id="@relatedMovie.Id">
@@ -195,11 +211,13 @@
                             </a>
                         </div>
                     }
+
                 </div>
             }
 
             <div class="reviews-section">
                 @if (User.Identity.IsAuthenticated)
+
                 {
                     <h3>Leave a Review</h3>
                     <form asp-action="Create" asp-controller="Review" method="post">
@@ -224,112 +242,129 @@
                         <button type="submit" class="submit-review-btn">Submit Review</button>
                     </form>
                 }
+
                 else
+
                 {
                     <p><a asp-controller="Account" asp-action="Login" class="link login-link">Log in</a> to leave a review.</p>
                 }
 
                 <h3>User Reviews</h3>
                 @foreach (var review in Model.Reviews.OrderByDescending(r => r.CreatedAt))
+
                 {
                     <div class="review">
                         <strong>@review.User.FullName</strong> -
                         <span class="review-stars">
                             @for (int i = 1; i <= 5; i++)
+
                             {
+
                                 if (i <= review.Rating)
+
                                 {
                                     <span class="star filled">★</span>
                                 }
+
                                 else
+
                                 {
                                     <span class="star">☆</span>
                                 }
+
                             }
-                        </span>
+                        </span><br />
                         <p>@review.Comment</p>
-                        <small>@review.CreatedAt.ToString("dd MMM yyyy")</small>
+                        <small>@review.CreatedAt.ToShortDateString()</small>
                     </div>
                 }
             </div>
-
         </div>
     </div>
- </div> 
 
-    @section Scripts {
-        <script>
-            
-          
-            var tag = document.createElement('script');
-            tag.src = "https://www.youtube.com/iframe_api";
-            var firstScriptTag = document.getElementsByTagName('script')[0];
-            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+</div>
+@section Scripts {
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+        var player;
+        var isPlaying = false;
 
-            var player;
-
-            function onYouTubeIframeAPIReady() {
-                player = new YT.Player('trailer', {
-                    events: {
-                        'onReady': onPlayerReady,
-                        'onStateChange': onPlayerStateChange
-                    }
-                });
-            }
-
-            function onPlayerReady(event) {
-                var playButton = document.getElementById("play-button");
-                var darkOverlay = document.getElementById("dark-overlay");
-                var posterOverlay = document.getElementById("poster-overlay");
-
-                playButton.addEventListener("click", function () {
-                    event.target.playVideo();
-                    playButton.style.display = "none";
-                    darkOverlay.style.opacity = "0";
-                    posterOverlay.style.opacity = "0";
-                });
-            }
-
-            function onPlayerStateChange(event) {
-                var playButton = document.getElementById("play-button");
-                var darkOverlay = document.getElementById("dark-overlay");
-                var posterOverlay = document.getElementById("poster-overlay");
-
-                if (event.data == YT.PlayerState.ENDED) {
-                    playButton.style.display = "block";
-                    darkOverlay.style.opacity = "0.6";
-                    posterOverlay.style.opacity = "1";
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('trailer', {
+                events: {
+                    'onStateChange': onPlayerStateChange
                 }
-            }
-
-       
-
-            var volumeButton = document.getElementById('volumeBtn');
-            var trailerIframe = document.getElementById('trailer');
-
-            var isMuted = false;
-
-            if (volumeButton) {
-                volumeButton.addEventListener('click', function () {
-                    if (!player) {
-                        console.warn("Player is not ready yet.");
-                        return;
-                    }
-
-                    if (isMuted) {
-                        player.unMute();
-                        volumeButton.textContent = "🔊"; 
-                    } else {
-                        player.mute();
-                        volumeButton.textContent = "🔈";
-                    }
-                    isMuted = !isMuted;
-                });
-            }
-
-       
-               
             });
+        }
 
-        </script>
-    }
+        const playButton = document.getElementById('play-button');
+        const posterOverlay = document.getElementById('poster-overlay');
+        const infoOverlay = document.getElementById('info-overlay');
+        const darkOverlay = document.getElementById('dark-overlay');
+        const trailerWrapper = document.getElementById('trailer-wrapper');
+        const trailer = document.getElementById('trailer');
+
+       
+        posterOverlay.style.transition = 'transform 0.7s ease, opacity 0.5s ease';
+        infoOverlay.style.transition = 'transform 0.7s ease, opacity 0.5s ease';
+        darkOverlay.style.transition = 'opacity 0.5s ease';
+
+        playButton.addEventListener('click', () => {
+            if (player && typeof player.playVideo === 'function') {
+                player.playVideo();
+                isPlaying = true;
+
+                
+                darkOverlay.style.opacity = '0';
+
+                posterOverlay.style.transform = 'translateX(100%)';
+                posterOverlay.style.opacity = '0';
+
+                infoOverlay.style.transform = 'translateX(-100%)';
+                infoOverlay.style.opacity = '0';
+
+                // Hide play button
+                playButton.style.display = 'none';
+
+               
+                // trailerWrapper.style.height = '600px';
+            }
+        });
+
+        // Clicking on trailer area pauses the video (if playing)
+        trailerWrapper.addEventListener('click', () => {
+            if (!player || typeof player.getPlayerState !== 'function') return;
+
+            const state = player.getPlayerState();
+            if (state === YT.PlayerState.PLAYING) {
+                player.pauseVideo(); // triggers return via onPlayerStateChange
+            }
+        });
+
+        function onPlayerStateChange(event) {
+            if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) {
+                isPlaying = false;
+
+                // Show overlays again
+                darkOverlay.style.opacity = '0.6';
+
+                posterOverlay.style.transform = 'translateY(-50%)'; // حافظ على المحاذاة الرأسية
+                posterOverlay.style.opacity = '1';
+
+                infoOverlay.style.transform = 'translateX(0)';
+                infoOverlay.style.opacity = '1';
+
+                // Show play button with animation
+                playButton.classList.add('show-again');
+                playButton.style.display = 'block';
+
+                setTimeout(() => {
+                    playButton.classList.remove('show-again');
+                }, 600);
+
+               
+
+            }
+        }
+    </script>
+}

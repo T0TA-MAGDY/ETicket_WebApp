@@ -11,6 +11,7 @@ namespace ticketer.Data
 {
     public class AppDbInitializer
     {
+        
         public static void Seed(IApplicationBuilder applicationBuilder)
         {
             using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
@@ -764,7 +765,72 @@ new Movie() //23
                     });
                     context.SaveChanges();
                 }
+
+                if (!context.Showtimes.Any())
+                {
+                    var movies = context.Movies.ToList();
+                    var cinemaIds = new List<int> { 1, 2, 3, 4 };
+
+                    foreach (var movie in movies)
+                    {
+                        foreach (var cinemaId in cinemaIds)
+                        {
+                            var showtime = new Showtime
+                            {
+                                Movie_Id = movie.Id,
+                                Cinema_Id = cinemaId,
+                                Date = new DateTime(2026, 6, (movie.Id + cinemaId) % 28 + 1)
+                            };
+
+                            context.Showtimes.Add(showtime);
+                            context.SaveChanges(); // get showtime.Id
+
+                            // Add timings
+                            var timings = new List<Timing>
+            {
+                new Timing { showtime_id = showtime.Showtime_Id, StartTime = new TimeSpan(4, 0, 0), Price = 100 + movie.Id + cinemaId },
+                new Timing { showtime_id = showtime.Showtime_Id, StartTime = new TimeSpan(6, 0, 0), Price = 110 + movie.Id + cinemaId },
+                new Timing { showtime_id = showtime.Showtime_Id, StartTime = new TimeSpan(8, 0, 0), Price = 120 + movie.Id + cinemaId },
+                new Timing { showtime_id = showtime.Showtime_Id, StartTime = new TimeSpan(10, 0, 0), Price = 130 + movie.Id + cinemaId }
+            };
+
+                            context.Timings.AddRange(timings);
+                            context.SaveChanges(); // get timings' Ids
+
+                            // Generate seats for each timing
+                            foreach (var timing in timings)
+                            {
+                                var tickets = new List<Ticket>();
+
+                                for (int row = 1; row <= 10; row++)
+                                {
+                                    for (int seat = 1; seat <= 15; seat++)
+                                    {
+                                        tickets.Add(new Ticket
+                                        {
+                                            Timing_Id = timing.Id,
+                                            RowNumber = row,
+                                            SeatNumber = seat,
+                                            SeatType = (row <= 2) ? "Premium" : "Regular",
+                                            IsBooked = false
+                                        });
+                                    }
+                                }
+
+                                context.Tickets.AddRange(tickets);
+                            }
+
+                            context.SaveChanges(); // save all tickets at once after adding
+                        }
+                    }
+                }
+
+
             }
+
+
+
+
         }
 
         public static async Task SeedUsersAndRolesAsync(IApplicationBuilder applicationBuilder)
