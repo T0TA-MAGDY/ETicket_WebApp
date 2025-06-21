@@ -1,0 +1,31 @@
+﻿@using ticketer.ViewModels
+@model List<MovieBookingStatsViewModel>
+    @{
+        ViewData["Title"] = "Top 5 Booked Movies This Month";
+    }
+
+    <link rel="stylesheet" href="~/css/movie.css" />
+
+    <section class="top-movies-section">
+        <h2 class="hover-zoom">🎬 Top 5 Booked Movies This Month</h2>
+
+        <div class="top-movies-table-wrapper">
+            <table class="top-movies-table">
+                <thead>
+                    <tr>
+                        <th>Movie</th>
+                        <th>Tickets Sold</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.MovieTitle</td>
+                            <td>@item.TicketsSold</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </section>

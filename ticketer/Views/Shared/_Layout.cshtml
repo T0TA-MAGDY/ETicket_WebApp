@@ -1,179 +1,178 @@
-﻿
-@using ticketer.Data.Enums
+﻿@using ticketer.Data.Enums
 @{
-    var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
-    var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
-    var currentSearch = Context.Request.Query["searchString"];
-    var currentFilter = Context.Request.Query["filter"];
-    var currentCategory = Context.Request.Query["category"];
+	var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+	var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+	var currentSearch = Context.Request.Query["searchString"];
+	var currentFilter = Context.Request.Query["filter"];
+	var currentCategory = Context.Request.Query["category"];
 }
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Ticketer</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] - Ticketer</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
-    @RenderSection("Styles", required: false)
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+	<link rel="stylesheet" href="~/css/site.css" />
+	@RenderSection("Styles", required: false)
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-dark box-shadow mb-3" style="background-color: #400000; border-bottom: 2px solid #400000;">
-            <div class="container-fluid">
-                <a class="navbar-brand text-light" asp-area="" asp-controller="Movie" asp-action="Index">Ticketer</a>
+	<header>
+		<nav class="navbar navbar-expand-sm navbar-dark box-shadow mb-3" style="background-color: #400000; border-bottom: 2px solid #400000;">
+			<div class="container-fluid">
+				<a class="navbar-brand text-light" asp-area="" asp-controller="Movie" asp-action="Index">Ticketer</a>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
-                        aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+						aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
 
-                <div class="collapse navbar-collapse justify-content-between align-items-center" id="mainNavbar">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item me-3">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Movie" asp-action="Index">
-                                <i class="bi bi-film"></i> Movies
-                            </a>
-                        </li>
+				<div class="collapse navbar-collapse justify-content-between align-items-center" id="mainNavbar">
+					<ul class="navbar-nav flex-grow-1">
+						<li class="nav-item me-3">
+							<a class="nav-link text-light" asp-area="" asp-controller="Movie" asp-action="Index">
+								<i class="bi bi-film"></i> Movies
+							</a>
+						</li>
 
-                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-                        {
-                            <li class="nav-item dropdown me-3">
-                                <a class="nav-link dropdown-toggle text-light mgmt-animated" href="#" id="navbarDropdown" role="button"
-                                   data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi bi-gear"></i>
-                                    <span class="mgmt-text">Management</span>
-                                    <i class="bi bi-chevron-down"></i>
-                                </a>
-                                <ul class="dropdown-menu" style="background-color:white;">
-                                    <li>
-                                        <a class="dropdown-item text-dark" asp-controller="Cinemas" asp-action="Index">
-                                            <i class="bi bi-camera-reels"></i> Cinemas
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item text-dark" asp-controller="Producers" asp-action="Index">
-                                            <i class="bi bi-headset"></i> Producers
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item text-dark" asp-controller="Actors" asp-action="Index">
-                                            <i class="bi bi-person-square"></i> Actors
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        }
-                    </ul>
+						@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+						{
+							<li class="nav-item dropdown me-3">
+								<a class="nav-link dropdown-toggle text-light mgmt-animated" href="#" id="navbarDropdown" role="button"
+								   data-bs-toggle="dropdown" aria-expanded="false">
+									<i class="bi bi-gear"></i>
+									<span class="mgmt-text">Management</span>
+									<i class="bi bi-chevron-down"></i>
+								</a>
+								<ul class="dropdown-menu" style="background-color:white;">
+									<li>
+										<a class="dropdown-item text-dark" asp-controller="Cinemas" asp-action="Index">
+											<i class="bi bi-camera-reels"></i> Cinemas
+										</a>
+									</li>
+									<li>
+										<a class="dropdown-item text-dark" asp-controller="Producers" asp-action="Index">
+											<i class="bi bi-headset"></i> Producers
+										</a>
+									</li>
+									<li>
+										<a class="dropdown-item text-dark" asp-controller="Actors" asp-action="Index">
+											<i class="bi bi-person-square"></i> Actors
+										</a>
+									</li>
+								</ul>
+							</li>
+						}
+					</ul>
 
-                    @if (currentController == "Movie" && currentAction == "Index")
-                    {
-                        <form asp-area="" asp-controller="Movie" asp-action="Index" method="get"
-                              class="d-flex align-items-center justify-content-end gap-3 flex-wrap me-4">
+					@if (currentController == "Movie" && currentAction == "Index")
+					{
+						<form asp-area="" asp-controller="Movie" asp-action="Index" method="get"
+							  class="d-flex align-items-center justify-content-end gap-3 flex-wrap me-4">
 
-                            <!-- Filter + Category -->
-                            <div class="d-flex align-items-center gap-3">
+							<!-- Filter + Category -->
+							<div class="d-flex align-items-center gap-3">
 
-                                <!-- Filter -->
-                                <div class="dropdown">
-                                    <button class="btn btn-sm dropdown-toggle d-flex align-items-center"
-                                            type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false"
-                                            style="background-color: transparent; border: none; color: white;">
-                                        <i class="bi bi-funnel-fill"></i>
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="filterDropdown">
-                                        <li><a class="dropdown-item" href="?searchString=@currentSearch&category=@currentCategory">-- All --</a></li>
-                                        <li><a class="dropdown-item" href="?searchString=@currentSearch&category=@currentCategory&filter=favorites">Favorites</a></li>
-                                        <li><a class="dropdown-item" href="?searchString=@currentSearch&category=@currentCategory&filter=newest">Newest</a></li>
-                                    </ul>
-                                </div>
+								<!-- Filter -->
+								<div class="dropdown">
+									<button class="btn btn-sm dropdown-toggle d-flex align-items-center"
+											type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false"
+											style="background-color: transparent; border: none; color: white;">
+										<i class="bi bi-funnel-fill"></i>
+									</button>
+									<ul class="dropdown-menu" aria-labelledby="filterDropdown">
+										<li><a class="dropdown-item" href="?searchString=@currentSearch&category=@currentCategory">-- All --</a></li>
+										<li><a class="dropdown-item" href="?searchString=@currentSearch&category=@currentCategory&filter=favorites">Favorites</a></li>
+										<li><a class="dropdown-item" href="?searchString=@currentSearch&category=@currentCategory&filter=newest">Newest</a></li>
+									</ul>
+								</div>
 
-                                <!-- Category -->
-                                <div class="dropdown">
-                                    <button class="btn btn-sm dropdown-toggle d-flex align-items-center"
-                                            type="button" id="categoryDropdown" data-bs-toggle="dropdown" aria-expanded="false"
-                                            style="background-color: transparent; border: none; color: white;">
-                                        <i class="bi bi-tags-fill"></i>
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="categoryDropdown">
-                                        <li><a class="dropdown-item" href="?searchString=@currentSearch&filter=@currentFilter">-- All --</a></li>
-                                        @if (ViewBag.Categories != null)
-                                        {
-                                            foreach (var cat in (IEnumerable<MovieCategory>)ViewBag.Categories)
-                                            {
-                                                <li><a class="dropdown-item" href="?searchString=@currentSearch&filter=@currentFilter&category=@cat">@cat</a></li>
-                                            }
-                                        }
-                                    </ul>
-                                </div>
-                            </div>
+								<!-- Category -->
+								<div class="dropdown">
+									<button class="btn btn-sm dropdown-toggle d-flex align-items-center"
+											type="button" id="categoryDropdown" data-bs-toggle="dropdown" aria-expanded="false"
+											style="background-color: transparent; border: none; color: white;">
+										<i class="bi bi-tags-fill"></i>
+									</button>
+									<ul class="dropdown-menu" aria-labelledby="categoryDropdown">
+										<li><a class="dropdown-item" href="?searchString=@currentSearch&filter=@currentFilter">-- All --</a></li>
+										@if (ViewBag.Categories != null)
+										{
+											foreach (var cat in (IEnumerable<MovieCategory>)ViewBag.Categories)
+											{
+												<li><a class="dropdown-item" href="?searchString=@currentSearch&filter=@currentFilter&category=@cat">@cat</a></li>
+											}
+										}
+									</ul>
+								</div>
+							</div>
 
-                            <!-- Search -->
-                            <div class="position-relative d-flex align-items-center"
-                                 style="background-color: lightgray; border-radius: 50px; padding-right: 40px; padding-left: 15px; height: 40px; transition: all 0.3s ease;">
-                                <input type="text" name="searchString"
-                                       value="@currentSearch"
-                                       class="form-control border-0 bg-transparent shadow-none h-100"
-                                       placeholder="search for movie..."
-                                       style="font-size: 0.9rem; border-radius: 50px;" />
+							<!-- Search -->
+							<div class="position-relative d-flex align-items-center"
+								 style="background-color: lightgray; border-radius: 50px; padding-right: 40px; padding-left: 15px; height: 40px; transition: all 0.3s ease;">
+								<input type="text" name="searchString"
+									   value="@currentSearch"
+									   class="form-control border-0 bg-transparent shadow-none h-100"
+									   placeholder="search for movie..."
+									   style="font-size: 0.9rem; border-radius: 50px;" />
 
-                                <button type="submit"
-                                        class="position-absolute top-50 end-0 translate-middle-y me-2 border-0 bg-transparent"
-                                        style="width: 30px; height: 30px;">
-                                    <i class="bi bi-search search-icon-rotate" style="font-size: 1.2rem; color: black;"></i>
-                                </button>
-                            </div>
+								<button type="submit"
+										class="position-absolute top-50 end-0 translate-middle-y me-2 border-0 bg-transparent"
+										style="width: 30px; height: 30px;">
+									<i class="bi bi-search search-icon-rotate" style="font-size: 1.2rem; color: black;"></i>
+								</button>
+							</div>
 
-                            <input type="hidden" name="filter" value="@currentFilter" />
-                            <input type="hidden" name="category" value="@currentCategory" />
-                        </form>
-                    }
+							<input type="hidden" name="filter" value="@currentFilter" />
+							<input type="hidden" name="category" value="@currentCategory" />
+						</form>
+					}
 
-                    <!-- Identity -->
-                    <div class="d-flex align-items-center">
-                        <partial name="_Identity.cshtml" />
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </header>
+					<!-- Identity -->
+					<div class="d-flex align-items-center">
+						<partial name="_Identity.cshtml" />
+					</div>
+				</div>
+			</div>
+		</nav>
+	</header>
 
-    <div class="container-fluid">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+	<div class="container-fluid">
+		<main role="main" class="pb-3">
+			@RenderBody()
+		</main>
+	</div>
 
-    @if (ViewBag.HideFooter == null || ViewBag.HideFooter == false)
-    {
-        <footer class="footer text-center text-muted mt-4">
-            © 2025 eTickets
-        </footer>
-    }
+	@if (ViewBag.HideFooter == null || ViewBag.HideFooter == false)
+	{
+		<footer class="footer text-center text-muted mt-4">
+			© 2025 eTickets
+		</footer>
+	}
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
 
-    <script>
-        function rotateAndSubmit(button) {
-            const icon = button.querySelector('.search-icon-rotate');
-            const form = button.closest('form');
+	<script>
+		function rotateAndSubmit(button) {
+			const icon = button.querySelector('.search-icon-rotate');
+			const form = button.closest('form');
 
-            if (icon && form) {
-                icon.classList.add('clicked');
-                setTimeout(() => {
-                    icon.classList.remove('clicked');
-                    form.submit();
-                }, 600);
-            }
-        }
-    </script>
+			if (icon && form) {
+				icon.classList.add('clicked');
+				setTimeout(() => {
+					icon.classList.remove('clicked');
+					form.submit();
+				}, 600);
+			}
+		}
+	</script>
 
-    @await RenderSectionAsync("Scripts", required: false)
+	@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

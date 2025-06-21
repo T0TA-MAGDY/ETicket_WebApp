@@ -290,3 +290,53 @@
         text-align: center;
     }
 }
+/*extra styles for admin dashboard*/
+.top-movies-section {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+    .top-movies-section h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: #333;
+        font-weight: 600;
+    }
+
+.top-movies-table-wrapper {
+    overflow-x: auto;
+}
+
+.top-movies-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+    .top-movies-table thead {
+        background-color: #222;
+        color: #fff;
+    }
+
+    .top-movies-table th,
+    .top-movies-table td {
+        padding: 14px 18px;
+        text-align: left;
+        color: #330202
+    }
+
+    .top-movies-table tbody tr {
+        border-bottom: 1px solid #e5e5e5;
+    }
+
+        .top-movies-table tbody tr:hover {
+            background-color: #f3f3f3;
+            transition: background 0.2s ease-in-out;
+        }

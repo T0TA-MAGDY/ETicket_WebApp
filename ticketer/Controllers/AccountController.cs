@@ -8,6 +8,7 @@ using ticketer.Data.Static;
 using ticketer.Models;
 using ticketer.ViewModels;
 using RazorLight;
+using ticketer.Data.Services;
 namespace ticketer.Controllers
 {
     public class AccountController : Controller
@@ -17,28 +18,41 @@ namespace ticketer.Controllers
         private readonly AppDbContext _context;
         private readonly IEmailService _emailService;
         private readonly ILogger<AccountController> _logger;
+        private readonly IReportService _reportService;
 
         public AccountController(
            UserManager<ApplicationUser> userManager,
            SignInManager<ApplicationUser> signInManager,
            AppDbContext context,
            IEmailService emailService,
-           ILogger<AccountController> logger)
+           ILogger<AccountController> logger,
+           IReportService reportService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
-            _context = context; 
+            _context = context;
             _emailService = emailService;
             _logger = logger;
+            _reportService = reportService;
         }
 
 
 
-        public async Task<IActionResult>Users()
+        public async Task<IActionResult> Users()
         {
             var users = await _context.Users.ToListAsync();
             return View(users);
         }
+        [HttpGet]
+        public async Task<IActionResult> Dashboard()
+        {
+            var stats = await _reportService.GetTopBookedMoviesAsync(
+                DateTime.Now.Month, DateTime.Now.Year
+            );
+
+            return View(stats);
+        }
+
         [HttpGet]
         public IActionResult ChangePassword()
         {
@@ -111,7 +125,7 @@ namespace ticketer.Controllers
             }
 
             var token = await _userManager.GeneratePasswordResetTokenAsync(user);
-            var resetLink = Url.Action("ResetPassword", "Account",new { token = token, email = user.Email }, Request.Scheme);
+            var resetLink = Url.Action("ResetPassword", "Account", new { token = token, email = user.Email }, Request.Scheme);
 
             var engine = new RazorLightEngineBuilder()
              .UseFileSystemProject(Path.Combine(Directory.GetCurrentDirectory(), "EmailTemplates"))
@@ -189,22 +203,23 @@ namespace ticketer.Controllers
             };
             var newUserResponse = await _userManager.CreateAsync(newUser, registerVM.Password);
 
-             if (newUserResponse.Succeeded)
-             {
-                       await _userManager.AddToRoleAsync(newUser, UserRoles.User);
-                       await _signInManager.SignInAsync(newUser, isPersistent: false);
-                        return RedirectToAction("Index", "Movie");
+            if (newUserResponse.Succeeded)
+            {
+                await _userManager.AddToRoleAsync(newUser, UserRoles.User);
+                await _signInManager.SignInAsync(newUser, isPersistent: false);
+                return RedirectToAction("Index", "Movie");
 
             }
 
 
             // ❗ If failed, add all errors to the page
             foreach (var error in newUserResponse.Errors)
-    {
-        ModelState.AddModelError(string.Empty, error.Description);
-    }
+            {
+                ModelState.AddModelError(string.Empty, error.Description);
+            }
 
-    return View(registerVM);}
+            return View(registerVM);
+        }
 
         [HttpPost]
         public async Task<IActionResult> Logout()

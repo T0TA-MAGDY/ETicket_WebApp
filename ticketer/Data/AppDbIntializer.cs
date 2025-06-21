@@ -11,7 +11,7 @@ namespace ticketer.Data
 {
     public class AppDbInitializer
     {
-        
+
         public static void Seed(IApplicationBuilder applicationBuilder)
         {
             using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
@@ -779,7 +779,7 @@ new Movie() //23
                             {
                                 Movie_Id = movie.Id,
                                 Cinema_Id = cinemaId,
-                                Date = new DateTime(2026, 6, (movie.Id + cinemaId) % 28 + 1)
+                                Date = new DateTime(2025, 6, (movie.Id + cinemaId) % 28 + 1)
                             };
 
                             context.Showtimes.Add(showtime);
