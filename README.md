@@ -18,6 +18,7 @@
 - Add and update showtimes
 - View all registered users
 - View all orders
+- view top 5 booked movies this month
 
 > ✅ **Note:** Admin accounts are *seeded* and not created manually.
 
